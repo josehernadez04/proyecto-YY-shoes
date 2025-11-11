@@ -43,7 +43,18 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', 'index')->middleware('can:Dashboard,Dashboard')->name('Dashboard');
         });
 
-        Route::prefix('/Users')->group(function () {
+        Route::prefix('/Users')->group(function (){
+            Route::controller(UserController::class)->group(function (){
+                Route::get('/Index', 'index')->name('users.index');
+                Route::get('/Create', 'create')->name('users.create');
+                Route::post('/Store', 'store')->name('users.store');
+                Route::get('/Edit/{id}', 'edit')->name('users.edit');
+                Route::put('/Update/{id}', 'update')->name('users.update');
+                Route::delete('/Delete/{id}', 'delete');
+            });
+        });
+
+        /*Route::prefix('/Users')->group(function () {
             Route::controller(UserController::class)->group(function () {
                 Route::get('/Index', 'index')->middleware('can:Users,Dashboard.Users.Index')->name('Dashboard.Users.Index');
                 Route::post('/Index/Query', 'indexQuery')->middleware('can:Users,Dashboard.Users.Index.Query')->name('Dashboard.Users.Index.Query');
@@ -60,7 +71,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::post('/RemoveRoleAndPermissions', 'removeRoleAndPermissions')->middleware('can:Users,Dashboard.Users.RemoveRoleAndPermissions')->name('Dashboard.Users.RemoveRoleAndPermissions');
                 Route::post('/RemoveRoleAndPermissions/Query', 'removeRoleAndPermissionsQuery')->middleware('can:Users,Dashboard.Users.RemoveRoleAndPermissions.Query')->name('Dashboard.Users.RemoveRoleAndPermissions.Query');
             });
-        });
+        });*/
 
         Route::prefix('/RolesAndPermissions')->group(function () {
             Route::controller(RolesAndPermissionsController::class)->group(function () {

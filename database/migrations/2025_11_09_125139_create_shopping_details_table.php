@@ -1,7 +1,8 @@
 <?php
 
 use App\Models\Product;
-use App\Models\shopping;
+use App\Models\Shopping;
+use App\Models\ShoppingDetail;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,7 +21,7 @@ return new class extends Migration
             $table->integer('cantidad');
             $table->decimal('precio_unitario', 10, 2);
             $table->decimal('subtotal', 10, 2);
-            $table->foreignIdFor(shopping::class)->constrained('shoppings')->onDelete('cascade');
+            $table->foreignIdFor(Shopping::class)->constrained('shoppings')->onDelete('cascade');
             $table->foreignIdFor(Product::class)->constrained('products')->onDelete('cascade');
             $table->timestamps();
         });

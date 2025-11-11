@@ -15,7 +15,7 @@ class ModulesAndSubmodulesSeeder extends Seeder
      */
     public function run()
     {
-        $Configuracion = Module::create(['name' => 'Configuración', 'icon' => 'fas fa-cog']);
+        /*$Configuracion = Module::create(['name' => 'Configuración', 'icon' => 'fas fa-cog']);
 
         $Configuracion->roles()->sync([2, 3, 4, 5, 6]);
 
@@ -173,6 +173,6 @@ class ModulesAndSubmodulesSeeder extends Seeder
             'icon' => 'fas fa-hand-holding-seedling',
             'module_id' => $Reportes->id,
             'permission_id' => 191
-        ]);
+        ]);*/
     }
 }

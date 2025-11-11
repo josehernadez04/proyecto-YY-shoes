@@ -33,7 +33,7 @@
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link active" type="button" onclick="CreateUserModal()" title="Agregar usuario">
+                                    <a class="nav-link active" type="button" href="{{ route('users.create') }}">
                                         <i class="fas fa-user-plus"></i>
                                     </a>
                                 </li>
@@ -44,32 +44,29 @@
                                 <table id="users" class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th colspan="11">INFORMACION PERSONAL</th>
-                                            <th colspan="5">GESTIONAR USUARIO</th>
-                                            <th colspan="2">ROLES Y PERMISOS</th>
-                                        </tr>
-                                        <tr>
                                             <th>#</th>
-                                            <th>NOMBRES</th>
-                                            <th>APELLIDOS</th>
+                                            <th>NOMBRE COMPLETO</th>
+                                            <th>TIPO DOCUMENTO</th>
                                             <th>DOCUMENTO</th>
-                                            <th>TELEFONO</th>
-                                            <th>DIRECCION</th>
                                             <th>CORREO ELECTRONICO</th>
-                                            <th>TITULO</th>
-                                            <th>ZONA</th>
-                                            <th>SUCURSAL</th>
-                                            <th>ESTADO</th>
-                                            <th>BODEGA</th>
-                                            <th>CONTRASEÑA</th>
-                                            <th>EDITAR</th>
-                                            <th>ELIMINAR</th>
-                                            <th>RESTAURAR</th>
-                                            <th>ASIGNAR</th>
-                                            <th>REMOVER</th>
+                                            <th>ACCIONES</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($users as $user)
+                                        <tr>
+                                            <td>{{ $user->id }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->type_document->code }}</td>
+                                            <td>{{ $user->document }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>
+                                                <a class="nav-link active" type="button" href="{{ route('users.edit', $user->id) }}">
+                                                    <i class="fas fa-pencil"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -78,22 +75,7 @@
                 </div>
             </div>
         </div>
-        @include('Dashboard.Users.Create')
-        @include('Dashboard.Users.Edit')
-        @include('Dashboard.Users.Password')
-        @include('Dashboard.Users.AssignRoleAndPermission')
-        @include('Dashboard.Users.RemoveRoleAndPermission')
-        @include('Dashboard.Users.Warehouses')
     </section>
 @endsection
 @section('script')
-    <script src="{{ asset('js/Dashboard/Users/DataTableIndex.js') }}"></script>
-    <script src="{{ asset('js/Dashboard/Users/Create.js') }}"></script>
-    <script src="{{ asset('js/Dashboard/Users/Edit.js') }}"></script>
-    <script src="{{ asset('js/Dashboard/Users/Password.js') }}"></script>
-    <script src="{{ asset('js/Dashboard/Users/Delete.js') }}"></script>
-    <script src="{{ asset('js/Dashboard/Users/Restore.js') }}"></script>
-    <script src="{{ asset('js/Dashboard/Users/AssignRoleAndPermissions.js') }}"></script>
-    <script src="{{ asset('js/Dashboard/Users/RemoveRoleAndPermissions.js') }}"></script>
-    <script src="{{ asset('js/Dashboard/Users/Warehouses.js') }}"></script>
 @endsection
