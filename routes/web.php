@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModulesAndSubmodulesController;
 use App\Http\Controllers\RolesAndPermissionsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,6 +55,19 @@ Route::middleware(['auth'])->group(function () {
             });
         });
 
+        Route::prefix('/Categories')->group(function () {
+            Route::controller(CategoryController::class)->group(function () {
+                Route::get('/Index', 'index')->name('Categories.index');
+                Route::post('/Index/Query', 'indexQuery')->name('Dashboard.Categories.Index.Query');
+                Route::post('/Create', 'create')->name('Dashboard.Categories.Create');
+                Route::post('/Store', 'store')->name('Dashboard.Categories.Store');
+                Route::post('/Edit/{id}', 'edit')->name('Dashboard.Categories.Edit');
+                Route::put('/Update/{id}', 'update')->name('Dashboard.Categories.Update');
+                Route::delete('/Delete', 'delete')->name('Dashboard.Categories.Delete');
+            });
+            
+        });
+
         /*Route::prefix('/Users')->group(function () {
             Route::controller(UserController::class)->group(function () {
                 Route::get('/Index', 'index')->middleware('can:Users,Dashboard.Users.Index')->name('Dashboard.Users.Index');
@@ -96,6 +110,8 @@ Route::middleware(['auth'])->group(function () {
                 Route::delete('/Delete', 'delete')->middleware('can:ModulesAndSubmodules,Dashboard.ModulesAndSubmodules.Delete')->name('Dashboard.ModulesAndSubmodules.Delete');
             });
         });
+
+        
     });
 
 });
