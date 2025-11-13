@@ -73,7 +73,7 @@ class UserController extends Controller
         $typeDocuments = TypeDocument::all();
         $user = User::findOrFail($id);
         return view('Dashboard.Users.Edit', compact('typeDocuments', 'user'));
-    }
+    } 
 
     public function update(Request $request, $id)
     {
