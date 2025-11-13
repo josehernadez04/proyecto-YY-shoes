@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\type_documents;
+use App\Models\TypeDocument;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('tipo_documento_id', 20)->nullable(false);
             $table->string('documento', 20)->unique()->nullable(false);
-            $table->string('nombre', length: 20)->nullable();
+            $table->string('nombre',  20)->nullable();
             $table->string('phone', 20)->nullable();
             $table->string('email', 100)->nullable();
             $table->string('address', 150)->nullable();
-            $table->foreignIdFor(type_documents::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(TypeDocument::class)->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

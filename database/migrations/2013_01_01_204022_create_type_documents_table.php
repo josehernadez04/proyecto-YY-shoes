@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('type_documents', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo', 10)->unique();
-            $table->string('descripcion', 50)->notNullable();
+            $table->string('code', 10)->unique();
+            $table->string('description', 50)->notNullable();
             $table->timestamps();
         });
     }
