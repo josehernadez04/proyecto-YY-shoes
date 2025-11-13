@@ -35,7 +35,7 @@ erick
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
                                     <a class="nav-link active" type="button" href=" ">
-                                        <i class="fas fa-user-plus"></i>
+                                        <i class="fas fa-category-plus"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -45,15 +45,28 @@ erick
                                 <table  class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th>#</th>
-                                            <th>NOMBRE COMPLETO</th>
-                                            <th>TIPO DOCUMENTO</th>
-                                            <th>DOCUMENTO</th>
-                                            <th>CORREO ELECTRONICO</th>
+                                            <th>CODIGO</th>
+                                            <th>NOMBRE </th>
+                                            <th>DESCRIPCION</th>
+                                            <th>FECHA DE CREACION</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
-                                    
+                                <tbody>
+                                        @foreach ($categories as $category)
+                                        <tr>
+                                            <td>{{ $category->id }}</td>
+                                            <td>{{ $category->name }}</td>
+                                            <td>{{ $category->description }}</td>
+                                            <td>{{ $category->created_at }}</td>
+                                            <td>
+                                                <a class="nav-link active" type="button" href="{{ route('Categories.Edit', $category->id) }}">
+                                                    <i class="fas fa-pencil"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>   
                                 </table>
                             </div>
                         </div>

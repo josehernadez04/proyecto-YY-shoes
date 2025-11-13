@@ -57,12 +57,12 @@ Route::middleware(['auth'])->group(function () {
 
         Route::prefix('/Categories')->group(function () {
             Route::controller(CategoryController::class)->group(function () {
-                Route::get('/Index', 'index')->name('Categories.index');
+                Route::get('/Index', 'index')->name('Categories.Index');
                 Route::post('/Index/Query', 'indexQuery')->name('Dashboard.Categories.Index.Query');
                 Route::post('/Create', 'create')->name('Dashboard.Categories.Create');
                 Route::post('/Store', 'store')->name('Dashboard.Categories.Store');
-                Route::post('/Edit/{id}', 'edit')->name('Dashboard.Categories.Edit');
-                Route::put('/Update/{id}', 'update')->name('Dashboard.Categories.Update');
+                Route::get('/Edit/{id}', 'edit')->name('Categories.Edit');
+                Route::put('/Update/{id}', 'update')->name('Categories.Update');
                 Route::delete('/Delete', 'delete')->name('Dashboard.Categories.Delete');
             });
             
