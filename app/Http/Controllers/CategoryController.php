@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
- public function index()  
+ public function index()
   {
     $categories=Category::all();
     return view('Dashboard.Categories.Index',compact('categories'));
-   
+
   }
 
   public function edit($id)
     {
-       
+
         $categories = Category::findOrFail($id);
         return view('Dashboard.Categories.Edit', compact( 'categories'));
     }
