@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Provider extends Model
 {
     use HasFactory;
+
+    public function type_document(){
+        return $this->belongsTo(TypeDocument::class);
+    }
 }
