@@ -19,12 +19,14 @@ use App\Http\Requests\User\UserRestoreRequest;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Models\ModelWarehouse;
+use App\Models\TypeDocument;
 use App\Models\Warehouse;
 use App\Services\UserService;
 use App\Traits\ApiMessage;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -43,177 +45,49 @@ class UserController extends Controller
 
     public function index()
     {
-        try {
-            return view('Dashboard.Users.Index');
-        } catch (Exception $e) {
-            return back()->with('danger', 'Ocurrió un error al cargar la vista: ' . $e->getMessage());
-        }
-    }
-
-    public function indexQuery(UserIndexQueryRequest $request)
-    {
-        try {
-            $users = $this->userService->getAllUsers($request);
-
-            return $this->successResponse(
-                new UserIndexQueryCollection($users),
-                $this->getMessage('Success'),
-                200
-            );
-        } catch (QueryException $e) {
-            return $this->errorResponse(
-                [
-                    'message' => $this->getMessage('QueryException'),
-                    'error' => $e->getMessage()
-                ],
-                500
-            );
-        } catch (Exception $e) {
-            return $this->errorResponse(
-                [
-                    'message' => $this->getMessage('Exception'),
-                    'error' => $e->getMessage()
-                ],
-                500
-            );
-        }
+        $users = User::with('type_document')->get();
+        return view('Dashboard.Users.Index', compact('users'));
     }
 
     public function create()
     {
-        try {
-            $titles = $this->titles();
-            $zones = $this->zones();
-
-            return $this->successResponse(
-                [
-                    'titles' => $titles,
-                    'zones' => $zones
-                ],
-                'Ingrese los datos para hacer la validacion y registro.',
-                204
-            );
-        } catch (Exception $e) {
-            return $this->errorResponse(
-                [
-                    'message' => $this->getMessage('Exception'),
-                    'error' => $e->getMessage()
-                ],
-                500
-            );
-        }
+        $typeDocuments = TypeDocument::all();
+        return view('Dashboard.Users.Create', compact('typeDocuments'));
     }
 
-    public function store(UserStoreRequest $request)
+    public function store(Request $request)
     {
-        try {
-            $user = $this->userService->createUser($request);
+        $user = new User();
+        $user->name = $request->name;
+        $user->type_document_id = $request->type_document_id;
+        $user->document = $request->document;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
 
-            $user->assignRole(['Dashboard']);
-            $user->givePermissionTo('Dashboard');
-
-            return $this->successResponse(
-                $user,
-                'El usuario fue registrado exitosamente.',
-                201
-            );
-        } catch (ModelNotFoundException $e) {
-            return $this->errorResponse(
-                [
-                    'message' => $this->getMessage('ModelNotFoundException'),
-                    'error' => $e->getMessage()
-                ],
-                500
-            );
-        } catch (QueryException $e) {
-            return $this->errorResponse(
-                [
-                    'message' => $this->getMessage('QueryException'),
-                    'error' => $e->getMessage()
-                ],
-                500
-            );
-        } catch (Exception $e) {
-            return $this->errorResponse(
-                [
-                    'message' => $this->getMessage('Exception'),
-                    'error' => $e->getMessage()
-                ],
-                500
-            );
-        }
+        return redirect()->route('users.index');
     }
 
     public function edit($id)
     {
-        try {
-            $user = $this->userService->getUserById($id);
-            $titles = $this->titles();
-            $zones = $this->zones();
+        $typeDocuments = TypeDocument::all();
+        $user = User::findOrFail($id);
+        return view('Dashboard.Users.Edit', compact('typeDocuments', 'user'));
+    } 
 
-            return $this->successResponse(
-                [
-                    'user' => $user,
-                    'titles' => $titles,
-                    'zones' => $zones
-                ],
-                'El usuario fue encontrado exitosamente.',
-                204
-            );
-        } catch (ModelNotFoundException $e) {
-            return $this->errorResponse(
-                [
-                    'message' => $this->getMessage('ModelNotFoundException'),
-                    'error' => $e->getMessage()
-                ],
-                404
-            );
-        } catch (Exception $e) {
-            return $this->errorResponse(
-                [
-                    'message' => $this->getMessage('Exception'),
-                    'error' => $e->getMessage()
-                ],
-                500
-            );
-        }
-    }
-
-    public function update(UserUpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        try {
-            $user = $this->userService->updateUser($request, $id);
-
-            return $this->successResponse(
-                $user,
-                'El usuario fue actualizado exitosamente.',
-                200
-            );
-        } catch (ModelNotFoundException $e) {
-            return $this->errorResponse(
-                [
-                    'message' => $this->getMessage('ModelNotFoundException'),
-                    'error' => $e->getMessage()
-                ],
-                404
-            );
-        } catch (QueryException $e) {
-            return $this->errorResponse(
-                [
-                    'message' => $this->getMessage('QueryException'),
-                    'error' => $e->getMessage()
-                ],
-                500
-            );
-        } catch (Exception $e) {
-            return $this->errorResponse(
-                [
-                    'message' => $this->getMessage('Exception'),
-                    'error' => $e->getMessage()
-                ],
-                500
-            );
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->type_document_id = $request->type_document_id;
+        $user->document = $request->document;
+        $user->email = $request->email;
+        if($request->password) {
+            $user->password = bcrypt($request->password);
         }
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     public function show($id)
