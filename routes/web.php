@@ -6,6 +6,7 @@ use App\Http\Controllers\ModulesAndSubmodulesController;
 use App\Http\Controllers\RolesAndPermissionsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProviderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,7 +66,20 @@ Route::middleware(['auth'])->group(function () {
                 Route::put('/Update/{id}', 'update')->name('Categories.Update');
                 Route::delete('/Delete', 'delete')->name('Dashboard.Categories.Delete');
             });
-            
+
+        });
+
+        Route::prefix('/Providers')->group(function () {
+            Route::controller(ProviderController::class)->group(function () {
+                Route::get('/Index', 'index')->name('Providers.Index');
+                Route::post('/Index/Query', 'indexQuery')->name('Providers.Index.Query');
+                Route::post('/Create', 'create')->name('Providers.Create');
+                Route::post('/Store', 'store')->name('Providers.Store');
+                Route::get('/Edit/{id}', 'edit')->name('Providers.Edit');
+                Route::put('/Update/{id}', 'update')->name('Providers.Update');
+                Route::delete('/Delete', 'delete')->name('Providers.Delete');
+            });
+
         });
 
         /*Route::prefix('/Users')->group(function () {
@@ -111,7 +125,7 @@ Route::middleware(['auth'])->group(function () {
             });
         });
 
-        
+
     });
 
 });
