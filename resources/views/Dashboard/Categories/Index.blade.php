@@ -34,8 +34,8 @@ erick
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link active" type="button" href=" ">
-                                        <i class="fas fa-category-plus"></i>
+                                    <a class="nav-link active" type="button" href="{{ route('Categories.Create') }}">
+                                        <i class="fas fa-user-plus"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -78,3 +78,4 @@ erick
 @endsection
 @section('script')
 @endsection
+ 

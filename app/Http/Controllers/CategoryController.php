@@ -34,4 +34,23 @@ class CategoryController extends Controller
         return redirect()->route('Categories.Index');
     }
 
+     public function create()
+    {
+        
+        return view('Dashboard.Categories.Create');
+    }
+
+    public function store(Request $request)
+    {
+        $categories = new Category();
+        $categories->name = $request->name;
+        $categories->description = $request->description;
+        
+       
+        $categories->save();
+
+        return redirect()->route('Categories.Index');
+    }
+
+
 }

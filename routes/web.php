@@ -59,8 +59,8 @@ Route::middleware(['auth'])->group(function () {
             Route::controller(CategoryController::class)->group(function () {
                 Route::get('/Index', 'index')->name('Categories.Index');
                 Route::post('/Index/Query', 'indexQuery')->name('Dashboard.Categories.Index.Query');
-                Route::post('/Create', 'create')->name('Dashboard.Categories.Create');
-                Route::post('/Store', 'store')->name('Dashboard.Categories.Store');
+                Route::get('/Create', 'create')->name('Categories.Create');
+                Route::post('/Store', 'store')->name('Categories.Store');
                 Route::get('/Edit/{id}', 'edit')->name('Categories.Edit');
                 Route::put('/Update/{id}', 'update')->name('Categories.Update');
                 Route::delete('/Delete', 'delete')->name('Dashboard.Categories.Delete');
