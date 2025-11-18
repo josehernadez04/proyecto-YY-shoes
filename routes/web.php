@@ -71,9 +71,8 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/Categories')->group(function () {
             Route::controller(CategoryController::class)->group(function () {
                 Route::get('/Index', 'index')->name('Categories.Index');
-                Route::post('/Index/Query', 'indexQuery')->name('Dashboard.Categories.Index.Query');
-                Route::post('/Create', 'create')->name('Dashboard.Categories.Create');
-                Route::post('/Store', 'store')->name('Dashboard.Categories.Store');
+                Route::get('/Create', 'create')->name('Categories.Create');
+                Route::post('/Store', 'store')->name('Categories.Store');
                 Route::get('/Edit/{id}', 'edit')->name('Categories.Edit');
                 Route::put('/Update/{id}', 'update')->name('Categories.Update');
                 Route::delete('/Delete', 'delete')->name('Dashboard.Categories.Delete');
@@ -84,7 +83,6 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/Providers')->group(function () {
             Route::controller(ProviderController::class)->group(function () {
                 Route::get('/Index', 'index')->name('Providers.Index');
-                Route::post('/Index/Query', 'indexQuery')->name('Providers.Index.Query');
                 Route::post('/Create', 'create')->name('Providers.Create');
                 Route::post('/Store', 'store')->name('Providers.Store');
                 Route::get('/Edit/{id}', 'edit')->name('Providers.Edit');
@@ -148,5 +146,6 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/Delete', 'delete')->middleware('can:ModulesAndSubmodules,Dashboard.ModulesAndSubmodules.Delete')->name('Dashboard.ModulesAndSubmodules.Delete');
         });
     });
-
 });
+});
+
