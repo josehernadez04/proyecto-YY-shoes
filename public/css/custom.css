@@ -1,0 +1,6 @@
+.logo-login {
+    width: 200px;      /* ajusta a tu gusto */
+    height: auto;      /* mantiene proporciones */
+    display: block;
+    margin: 0 auto;    /* centrado */
+}

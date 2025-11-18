@@ -9,6 +9,7 @@ use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\RolesAndPermissionsController;
 use App\Http\Controllers\TypeDocumentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -83,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/Providers')->group(function () {
             Route::controller(ProviderController::class)->group(function () {
                 Route::get('/Index', 'index')->name('Providers.Index');
-                Route::post('/Create', 'create')->name('Providers.Create');
+                Route::get('/Create', 'create')->name('Providers.Create');
                 Route::post('/Store', 'store')->name('Providers.Store');
                 Route::get('/Edit/{id}', 'edit')->name('Providers.Edit');
                 Route::put('/Update/{id}', 'update')->name('Providers.Update');
@@ -100,6 +101,17 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/Edit/{id}', 'edit')->name('TypeDocuments.Edit');
                 Route::put('/Update/{id}', 'update')->name('TypeDocuments.Update');
                 Route::delete('/Delete/{id}', 'delete')->name('TypeDocuments.Delete');
+            });
+        });
+
+        Route::prefix('/Products')->group(function () {
+            Route::controller(ProductController::class)->group(function () {
+                Route::get('/Index', 'index')->name('Products.Index');
+                Route::get('/Create', 'create')->name('Products.Create');
+                Route::post('/Store', 'store')->name('Products.Store');
+                Route::get('/Edit/{id}', 'edit')->name('Products.Edit');
+                Route::put('/Update/{id}', 'update')->name('Products.Update');
+                Route::delete('/Delete', 'delete')->name('Products.Delete');
             });
         });
     });
@@ -147,5 +159,5 @@ Route::middleware(['auth'])->group(function () {
         });
     });
 });
-});
+
 

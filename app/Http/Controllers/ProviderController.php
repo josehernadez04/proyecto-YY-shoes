@@ -52,7 +52,7 @@ class ProviderController extends Controller
 
         $provider->save();
 
-        return redirect()->route('Dashboard.Providers.Update');
+        return redirect()->route('Providers.Index');
     }
 }
 

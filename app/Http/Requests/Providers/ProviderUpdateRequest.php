@@ -24,10 +24,10 @@ class ProviderUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'document' => ['required','string','max:20'],
-            'type_document_id' => ['required','numeric','exists:type_documents,id',$this->route('id')],
+            'document' => ['required','string','max:20','unique:providers,document'],
+            'type_document_id' => ['required','numeric','exists:type_documents,id'],
             'name'=>['required','string','max:100'],
-            'phone'=>['nullable','numeric','max:20'],
+            'phone'=>['nullable','regex:/^[0-9]+$/','max:20'],
             'address'=>['nullable','string','max:150'],
             'email'=>['nullable','email','max:100'],
 

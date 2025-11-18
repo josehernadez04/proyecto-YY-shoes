@@ -52,7 +52,10 @@
                                             <th>COLOR</th>
                                             <th>PRECIO COMPRA </th>
                                             <th>PRECIO VENTA</th>
-
+                                            <th>STOCK</th>
+                                            <th>CATEGORIA</th>
+                                            <th>PROVEEDOR</th>
+                                            <th>ACCIONES</th>
                                         </tr>
                                     </thead>
                                 <tbody>
@@ -67,9 +70,9 @@
                                             <td>{{ $product->purchase_price }}</td>
                                             <td>{{ $product->sale_price }}</td>
                                             <td>{{ $product->stock }}</td>
-                                            <td>{{ $product->category->code }}</td>
-                                            <td>{{ $product->provider->code }}</td>
-                                            <td>{{ $product->created_at }}</td>
+                                            <td>{{ $product->category->name }}</td>
+                                            <td>{{ $product->provider->name }}</td>
+
                                             <td>
                                                 <a class="nav-link active" type="button" href="{{ route('Products.Edit', $product->id) }}">
                                                     <i class="fas fa-pencil"></i>

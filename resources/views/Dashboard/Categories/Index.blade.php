@@ -1,4 +1,3 @@
-erick
 @extends('Templates.Dashboard')
 @section('content')
     <section class="content">
@@ -66,7 +65,7 @@ erick
                                             </td>
                                         </tr>
                                         @endforeach
-                                    </tbody>   
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -78,4 +77,3 @@ erick
 @endsection
 @section('script')
 @endsection
- 
