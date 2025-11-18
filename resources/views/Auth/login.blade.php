@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="css/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -25,7 +26,7 @@
 
         <div class="card card-outline card-dark">
             <div class="card-header text-center">
-                <img src="{{ asset('images/logo-bless.png') }}">
+                <img src={{ asset('/images/logo.png') }} alt="logo" class="logo-login">
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">

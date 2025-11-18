@@ -62,7 +62,7 @@
                                             <td>{{ $provider->type_document->code }}</td>
                                             <td>{{ $provider->document }}</td>
                                             <td>{{ $provider->phone }}</td>
-                                            <td>{{ $provider->adress }}</td>
+                                            <td>{{ $provider->address }}</td>
                                             <td>{{ $provider->email }}</td>
                                             <td>
                                                 <a class="nav-link active" type="button" href="{{ route('Providers.Edit', $provider->id) }}">

@@ -8,7 +8,7 @@
     <meta name="user-id" content="{{ Auth::user()->id }}">
     <meta name="business-id" content="{{ Auth::user()->business_id }}">
     <meta name="title" content="{{ Auth::user()->title }}">
-    <title>BLESS</title>
+    <title>YY SHOES</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -164,7 +164,7 @@
             <a href="/Dashboard" class="brand-link">
                 <img src="{{ asset('css/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light"><b>ORG. BLESS</b></span>
+                <span class="brand-text font-weight-light"><b>YY SHOES</b></span>
             </a>
 
             <!-- Sidebar -->
@@ -190,6 +190,36 @@
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
+                                </p>
+                            </a>
+                            <a href="/Dashboard/Users/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Usuarios
+                                </p>
+                            </a>
+                            <a href="/Dashboard/Providers/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Proveedores
+                                </p>
+                            </a>
+                            <a href="/Dashboard/Categories/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Categoria
+                                </p>
+                            </a>
+                            <a href="/Dashboard/Products/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Producto
+                                </p>
+                            </a>
+                            <a href="/Dashboard/Clients/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Clientes
                                 </p>
                             </a>
                         </li>
@@ -235,7 +265,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; {{ Carbon::now()->format('Y') }} <a href="https://orgbless.com" target="_blank">ORGANIZACIÓN BLESS S.A.S</a>.</strong>
+            <strong>Copyright &copy; {{ Carbon::now()->format('Y') }} <a href="https://orgbless.com" target="_blank">YY SHOES</a>.</strong>
             Todos los derechos reservados.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 1.0.0
