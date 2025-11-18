@@ -73,7 +73,7 @@ Route::middleware(['auth'])->group(function () {
             Route::controller(ProviderController::class)->group(function () {
                 Route::get('/Index', 'index')->name('Providers.Index');
                 Route::post('/Index/Query', 'indexQuery')->name('Providers.Index.Query');
-                Route::post('/Create', 'create')->name('Providers.Create');
+                Route::get('/Create', 'create')->name('Providers.Create');
                 Route::post('/Store', 'store')->name('Providers.Store');
                 Route::get('/Edit/{id}', 'edit')->name('Providers.Edit');
                 Route::put('/Update/{id}', 'update')->name('Providers.Update');
