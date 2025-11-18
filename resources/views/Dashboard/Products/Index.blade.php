@@ -1,4 +1,3 @@
-erick
 @extends('Templates.Dashboard')
 @section('content')
     <section class="content">
@@ -6,12 +5,12 @@ erick
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Categoria</h1>
+                        <h1 class="m-0 text-dark">Producto</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item">Dashboard</li>
-                            <li class="breadcrumb-item">Categories</li>
+                            <li class="breadcrumb-item">Products</li>
                             <li class="breadcrumb-item">Index</li>
                         </ol>
                     </div><!-- /.col -->
@@ -34,7 +33,7 @@ erick
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link active" type="button" href="{{ route('Categories.Create') }}">
+                                    <a class="nav-link active" type="button" href="{{ route('Products.Create') }}">
                                         <i class="fas fa-user-plus"></i>
                                     </a>
                                 </li>
@@ -45,28 +44,40 @@ erick
                                 <table  class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th>CODIGO</th>
-                                            <th>NOMBRE </th>
+                                            <th>ID</th>
+                                            <th>REFERENCIA</th>
+                                            <th>NOMBRE</th>
                                             <th>DESCRIPCION</th>
-                                            <th>FECHA DE CREACION</th>
-                                            <th>ACCIONES</th>
+                                            <th>TALLA</th>
+                                            <th>COLOR</th>
+                                            <th>PRECIO COMPRA </th>
+                                            <th>PRECIO VENTA</th>
+
                                         </tr>
                                     </thead>
                                 <tbody>
-                                        @foreach ($categories as $category)
+                                        @foreach ($products as $product)
                                         <tr>
-                                            <td>{{ $category->id }}</td>
-                                            <td>{{ $category->name }}</td>
-                                            <td>{{ $category->description }}</td>
-                                            <td>{{ $category->created_at }}</td>
+                                            <td>{{ $product->id }}</td>
+                                            <td>{{ $product->reference }}</td>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->description }}</td>
+                                            <td>{{ $product->size }}</td>
+                                            <td>{{ $product->color }}</td>
+                                            <td>{{ $product->purchase_price }}</td>
+                                            <td>{{ $product->sale_price }}</td>
+                                            <td>{{ $product->stock }}</td>
+                                            <td>{{ $product->category->code }}</td>
+                                            <td>{{ $product->provider->code }}</td>
+                                            <td>{{ $product->created_at }}</td>
                                             <td>
-                                                <a class="nav-link active" type="button" href="{{ route('Categories.Edit', $category->id) }}">
+                                                <a class="nav-link active" type="button" href="{{ route('Products.Edit', $product->id) }}">
                                                     <i class="fas fa-pencil"></i>
                                                 </a>
                                             </td>
                                         </tr>
                                         @endforeach
-                                    </tbody>   
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -78,4 +89,3 @@ erick
 @endsection
 @section('script')
 @endsection
- 

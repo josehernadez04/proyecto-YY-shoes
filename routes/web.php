@@ -4,9 +4,10 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModulesAndSubmodulesController;
 use App\Http\Controllers\RolesAndPermissionsController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,9 +60,8 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/Categories')->group(function () {
             Route::controller(CategoryController::class)->group(function () {
                 Route::get('/Index', 'index')->name('Categories.Index');
-                Route::post('/Index/Query', 'indexQuery')->name('Dashboard.Categories.Index.Query');
-                Route::post('/Create', 'create')->name('Dashboard.Categories.Create');
-                Route::post('/Store', 'store')->name('Dashboard.Categories.Store');
+                Route::get('/Create', 'create')->name('Categories.Create');
+                Route::post('/Store', 'store')->name('Categories.Store');
                 Route::get('/Edit/{id}', 'edit')->name('Categories.Edit');
                 Route::put('/Update/{id}', 'update')->name('Categories.Update');
                 Route::delete('/Delete', 'delete')->name('Dashboard.Categories.Delete');
@@ -72,8 +72,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/Providers')->group(function () {
             Route::controller(ProviderController::class)->group(function () {
                 Route::get('/Index', 'index')->name('Providers.Index');
-                Route::post('/Index/Query', 'indexQuery')->name('Providers.Index.Query');
-                Route::get('/Create', 'create')->name('Providers.Create');
+                Route::post('/Create', 'create')->name('Providers.Create');
                 Route::post('/Store', 'store')->name('Providers.Store');
                 Route::get('/Edit/{id}', 'edit')->name('Providers.Edit');
                 Route::put('/Update/{id}', 'update')->name('Providers.Update');
@@ -81,6 +80,16 @@ Route::middleware(['auth'])->group(function () {
             });
 
         });
+
+        Route::prefix('/Products')->group(function () {
+            Route::controller(ProductController::class)->group(function () {
+                Route::get('/Index', 'index')->name('Products.Index');
+                Route::get('/Create', 'create')->name('Products.Create');
+                Route::post('/Store', 'store')->name('Products.Store');
+                Route::get('/Edit/{id}', 'edit')->name('Products.Edit');
+                Route::put('/Update/{id}', 'update')->name('Products.Update');
+                Route::delete('/Delete', 'delete')->name('Products.Delete');
+            });
 
         /*Route::prefix('/Users')->group(function () {
             Route::controller(UserController::class)->group(function () {
@@ -127,5 +136,6 @@ Route::middleware(['auth'])->group(function () {
 
 
     });
-
 });
+});
+
