@@ -5,12 +5,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Editar Categoria</h1>
+                        <h1 class="m-0 text-dark">Editar TipoDocumentos</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item">Dashboard</li>
-                            <li class="breadcrumb-item">Categories</li>
+                            <li class="breadcrumb-item">typedocument</li>
                             <li class="breadcrumb-item">Edit</li>
                         </ol>
                     </div><!-- /.col -->
@@ -23,7 +23,7 @@
     @include('Dashboard.Alerts.Info')
     @include('Dashboard.Alerts.Question')
     @include('Dashboard.Alerts.Warning')
-    @include('Dashboard.Alerts.Danger') 
+    @include('Dashboard.Alerts.Danger')
 
     <section class="content">
         <div class="container-fluid">
@@ -35,23 +35,21 @@
                             </ul>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('Categories.Update', $categories->id) }}" method="post">
+                            <form action="{{ route('TypeDocuments.Update', $typedocument->id) }}" method="post">
                                 @method('PUT')
                                 @csrf
                                 <div class="form-group c_form_group">
-                                    <label for="name">Nombre</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nombre completo" value="{{ $categories->name }}" required>
+                                    <label for="Code">code</label>
+                                    <input type="text" class="form-control" id="code" name="code"
+                                        placeholder="code" value="{{ old('description') }}">
                                 </div>
-                               
                                 <div class="form-group c_form_group">
                                     <label for="description">Descripcion</label>
-                                    <input type="text" class="form-control" id="description" name="description" placeholder="Descripcion" value="{{ $categories->description }}" required>
+                                    <input type="description" class="form-control" id="description" name="description"
+                                        placeholder="Descripcion" value="{{ old('description') }}">
                                 </div>
-
-                                <input type="hidden" name="created_at" value="{{ $categories->created_at }}">
-                               
-
-                                <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <a href="{{ route('TypeDocuments.Index') }}">regresar</a>
+                                <input type="submit" class="btn btn-primary" value="Guardar" />
                             </form>
                         </div>
                     </div>
