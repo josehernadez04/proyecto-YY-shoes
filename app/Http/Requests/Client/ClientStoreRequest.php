@@ -26,7 +26,7 @@ class ClientStoreRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:100'],
             'type_document_id' => ['required', 'numeric', 'exists:type_documents,id'],
-            'document' => ['required', 'numeric', 'max:20', 'unique:clients,document'],
+            'document' => ['required', 'regex:/^[0-9]+$/', 'max:20', 'unique:clients,document'],
             'phone' => ['nullable', 'string', 'max:20'],
             'email' => ['nullable', 'string', 'email', 'max:100'],
             'address' => ['nullable', 'string', 'max:150'],

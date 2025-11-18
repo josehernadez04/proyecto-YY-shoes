@@ -39,11 +39,13 @@
                                 @csrf
                                 <div class="form-group c_form_group">
                                     <label for="reference">Referencia</label>
-                                    <input type="number" class="form-control" id="refence" name="reference" placeholder="Referencia " required>
+                                    <input type="number" class="form-control" id="refence" name="reference"
+                                        placeholder="Referencia " required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="name">Nombre</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nombre " required>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Nombre " required>
                                 </div>
 
                                 <div class="form-group c_form_group">
@@ -51,48 +53,54 @@
                                     <select class="form-control" name="category_id" id="category_id">
                                         <option value="" selected disabled>Seleccione</option>
                                         @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
 
-                                    <div class="form-group c_form_group">
+                                <div class="form-group c_form_group">
                                     <label for="provider_id">Provedores</label>
                                     <select class="form-control" name="provider_id" id="provider_id">
                                         <option value="" selected disabled>Seleccione</option>
                                         @foreach ($providers as $provider)
-                                        <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                                            <option value="{{ $provider->id }}">{{ $provider->name }}</option>
                                         @endforeach
                                     </select>
-                                    </div>
-                                    
+                                </div>
+
                                 <div class="form-group c_form_group">
                                     <label for="description">description</label>
-                                    <input type="text" class="form-control" id="description" name="description" placeholder="Descripcion" required>
+                                    <input type="text" class="form-control" id="description" name="description"
+                                        placeholder="Descripcion" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="size">Talla</label>
-                                    <input type="number" class="form-control" id="size" name="size" placeholder="Talla" required>
+                                    <input type="number" class="form-control" id="size" name="size"
+                                        placeholder="Talla" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="color">Color</label>
-                                    <input type="text" class="form-control" id="color" name="color" placeholder="Color" required>
+                                    <input type="text" class="form-control" id="color" name="color"
+                                        placeholder="Color" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="purchase_price">Precio compra</label>
-                                    <input type="number" class="form-control" id="purchase_price" name="purchase_price" placeholder="Precio compra" required>
+                                    <input type="number" class="form-control" id="purchase_price" name="purchase_price"
+                                        placeholder="Precio compra" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="sale_price">Precio venta</label>
-                                    <input type="number" class="form-control" id="sale_price" name="sale_price" placeholder="Precio venta" required>
+                                    <input type="number" class="form-control" id="sale_price" name="sale_price"
+                                        placeholder="Precio venta" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="stock">stock</label>
-                                    <input type="number" class="form-control" id="stock" name="stock" placeholder="stock" required>
+                                    <input type="number" class="form-control" id="stock" name="stock"
+                                        placeholder="stock" required>
                                 </div>
 
 
-                                <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <input type="submit" class="btn btn-primary" value="Guardar" />
                             </form>
                         </div>
                     </div>

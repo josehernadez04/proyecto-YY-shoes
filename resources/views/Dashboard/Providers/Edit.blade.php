@@ -5,12 +5,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Editar Usuario</h1>
+                        <h1 class="m-0 text-dark">Editar Proveedor</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item">Dashboard</li>
-                            <li class="breadcrumb-item">Users</li>
+                            <li class="breadcrumb-item">Providers</li>
                             <li class="breadcrumb-item">Edit</li>
                         </ol>
                     </div><!-- /.col -->
