@@ -33,8 +33,8 @@
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link active" type="button" href="">
-                                        <i class="fas fa-provider-plus"></i>
+                                    <a class="nav-link active" type="button" href={{ route('Providers.Create') }}>
+                                        <i class="fas fa-user-plus"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -65,7 +65,7 @@
                                             <td>{{ $provider->adress }}</td>
                                             <td>{{ $provider->email }}</td>
                                             <td>
-                                                <a class="nav-link active" type="button" href="">
+                                                <a class="nav-link active" type="button" href="{{ route('Providers.Edit', $provider->id) }}">
                                                     <i class="fas fa-pencil"></i>
                                                 </a>
                                             </td>
