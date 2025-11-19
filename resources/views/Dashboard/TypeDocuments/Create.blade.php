@@ -37,23 +37,23 @@
                         <div class="card-body">
                             <form action="{{ route('TypeDocuments.Store') }}" method="post">
                                 @csrf
+
                                 <div class="form-group c_form_group">
-                                    <label for="name">Nombre completo</label>
-                                    <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Nombre completo" value="{{ old('name') }}" required>
-                                    <div class="form-group c_form_group">
-                                        <label for="Code">code</label>
-                                        <input type="text" class="form-control" id="code" name="code"
-                                            placeholder="code" value="{{ old('description') }}">
-                                    </div>
-                                    <div class="form-group c_form_group">
-                                        <label for="description">Descripcion</label>
-                                        <input type="description" class="form-control" id="description" name="description"
-                                            placeholder="Descripcion" value="{{ old('description') }}">
-                                    </div>
-                                    <a href="{{ route('TypeDocuments.Index') }}">regresar</a>
-                                    <input type="submit" class="btn btn-primary" value="Guardar" />
+                                    <label for="code">Código</label>
+                                    <input type="text" class="form-control" id="code" name="code"
+                                        placeholder="Código" value="{{ old('code') }}">
+                                </div>
+
+                                <div class="form-group c_form_group">
+                                    <label for="description">Descripción</label>
+                                    <input type="text" class="form-control" id="description" name="description"
+                                        placeholder="Descripción" value="{{ old('description') }}">
+                                </div>
+
+                                <a href="{{ route('TypeDocuments.Index') }}">Regresar</a>
+                                <input type="submit" class="btn btn-primary" value="Guardar" />
                             </form>
+
                         </div>
                     </div>
                 </div>

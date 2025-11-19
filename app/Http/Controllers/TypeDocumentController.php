@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TypeDocument\TypeDocumentStoreRequest;
+use App\Http\Requests\TypeDocument\TypeDocumentUpdateRequest;
 use App\Models\TypeDocument;
 
 class TypeDocumentController extends Controller
@@ -24,30 +26,33 @@ class TypeDocumentController extends Controller
 
     public function store(TypeDocumentStoreRequest $request)
     {
-        $typedocuments = new TypeDocument();
-        $typedocuments->code = $request->code;
-        $typedocuments->descripcion = $request->descripcion;
-        $typedocuments->save();
+        TypeDocument::create([
+            'code' => $request->code,
+            'description' => $request->description,
+        ]);
 
-        return redirect()->route('TypeDocuments.Index');
+        return redirect()->route('TypeDocuments.Index')
+            ->with('success', 'Tipo de documento creado correctamente.');
     }
 
     public function edit($id)
     {
-        $typedocuments = TypeDocument::all();
-        $typedocuments = TypeDocument::findOrFail($id);
+        $typedocument = TypeDocument::findOrFail($id);
 
-        return view('Dashboard.TypeDocuments.Edit', compact('TypeDocuments', 'typedocument'));
+        return view('Dashboard.TypeDocuments.Edit', compact('typedocument'));
     }
 
-    public function update(TypeDocumentStoreRequest $request)
+    public function update(TypeDocumentUpdateRequest $request, $id)
     {
-        $typedocuments = new TypeDocument();
-        $typedocuments->code = $request->code;
-        $typedocuments->descripcion = $request->descripcion;
-        $typedocuments->save();
+        $typedocument = TypeDocument::findOrFail($id);
 
-        return redirect()->route('TypeDocuments.Index');
+        $typedocument->update([
+            'code' => $request->code,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('TypeDocuments.Index')
+            ->with('success', 'Tipo de documento actualizado correctamente.');
     }
 
     public function delete($id)
