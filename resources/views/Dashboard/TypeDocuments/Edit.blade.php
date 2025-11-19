@@ -35,22 +35,26 @@
                             </ul>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('TypeDocuments.Update', $typedocument->id) }}" method="post">
+                            <form action="{{ route('TypeDocuments.Update', $typedocument->id) }}" method="POST">
                                 @method('PUT')
                                 @csrf
+
+
                                 <div class="form-group c_form_group">
-                                    <label for="Code">code</label>
-                                    <input type="text" class="form-control" id="code" name="code"
-                                        placeholder="code" value="{{ old('description') }}">
+                                    <label for="name">Código</label>
+                                    <input type="text" class="form-control" name="code"
+                                        value="{{ $typedocument->code }}" required>
                                 </div>
+
                                 <div class="form-group c_form_group">
-                                    <label for="description">Descripcion</label>
-                                    <input type="description" class="form-control" id="description" name="description"
-                                        placeholder="Descripcion" value="{{ old('description') }}">
+                                    <label for="description">Descripción</label>
+                                    <input type="text" class="form-control" name="description"
+                                        value="{{ $typedocument->description }}" required>
                                 </div>
-                                <a href="{{ route('TypeDocuments.Index') }}">regresar</a>
-                                <input type="submit" class="btn btn-primary" value="Guardar" />
+
+                                <button type="submit">Actualizar</button>
                             </form>
+
                         </div>
                     </div>
                 </div>

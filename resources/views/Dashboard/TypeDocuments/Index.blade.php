@@ -33,9 +33,8 @@
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link active" type="button"
-                                        href="{{ route('TypeDocuments.Create') }}">Crear Nuevo</a>
-                                    <i class="fas fa-user-plus"></i>
+                                    <a class="nav-link active" type="button" href="{{ route('TypeDocuments.Create') }}">
+                                        <i class="fas fa-user-plus"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -53,21 +52,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+
+
+                                        <tr>
+                                    <tbody>
                                         @foreach ($typedocuments as $typedocument)
                                             <tr>
                                                 <td>{{ $typedocument->id }}</td>
                                                 <td>{{ $typedocument->code }}</td>
-                                                <td>{{ $typedocument->descripcion }}</td>
+                                                <td>{{ $typedocument->description }}</td>
                                                 <td>
-
-                                                    <a class="nav-link active" type="button">
-                                                        <a href="{{ route('TypeDocuments.Edit', $typedocument->id) }}"></a>
-
-                                                        <i class="fas fa-pencil"></i>
+                                                    <a href="{{ route('TypeDocuments.Edit', $typedocument->id) }}"
+                                                        class="btn btn-sm btn-primary">
+                                                        <i class="fas fa-pencil-alt"></i>
                                                     </a>
                                                 </td>
                                             </tr>
-                                        @endforeach
+
+                                    </tbody>
+                                    </td>
+                                    </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
