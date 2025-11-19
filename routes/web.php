@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModulesAndSubmodulesController;
 use App\Http\Controllers\ProviderController;
@@ -42,8 +43,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/Dashboard')->group(function () {
 
+
         Route::controller(HomeController::class)->group(function () {
-            Route::get('/', 'index')->middleware('can:Dashboard,Dashboard')->name('Dashboard');
+            Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+            // Route::get('/', 'index')->middleware('can:Dashboard,Dashboard')->name('Dashboard');
         });
 
         Route::prefix('/Users')->group(function () {

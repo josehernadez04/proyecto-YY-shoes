@@ -52,7 +52,7 @@
                                         value="{{ $typedocument->description }}" required>
                                 </div>
 
-                                <button type="submit">Actualizar</button>
+                                <input type="submit" class="btn btn-primary" value="Guardar"/>
                             </form>
 
                         </div>

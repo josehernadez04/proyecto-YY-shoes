@@ -222,6 +222,12 @@
                                     Clientes
                                 </p>
                             </a>
+                            <a href="/Dashboard/TypeDocuments/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Tipo documento
+                                </p>
+                            </a>
                         </li>
 
                         @foreach ($items as $item)
@@ -393,7 +399,9 @@
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
     </script>
-    @yield('script')
+    <script>
+        @yield('script')
+    </script>
 
 </body>
 

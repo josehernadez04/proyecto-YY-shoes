@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\TypeDocument;
 use App\Models\User;
 use App\Traits\ApiMessage;
@@ -25,6 +26,12 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('Dashboard.home');
+        $category = Category::withCount('products')->get();
+        $stockProducts = Product::select('name', 'stock')->get();
+
+        return view('Dashboard.home', [
+            'category' => $category,
+            'stockProducts' => $stockProducts
+        ]);
     }
 }
