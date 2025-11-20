@@ -18,10 +18,9 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->integer('cantidad');
-            $table->decimal('precio_unitario', 10, 2);
+            $table->integer('count');
+            $table->decimal('unit_price', 10, 2);
             $table->decimal('subtotal', 10, 2);
-            $table->foreignIdFor(Sale::class)->constrained()->onDelete('cascade');
             $table->foreignIdFor(Product::class)->constrained()->onDelete('cascade');
             $table->timestamps();
         });
