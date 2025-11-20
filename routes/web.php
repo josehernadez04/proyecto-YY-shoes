@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModulesAndSubmodulesController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\RolesAndPermissionsController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\TypeDocumentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
@@ -114,7 +115,21 @@ Route::middleware(['auth'])->group(function () {
                 Route::delete('/Delete', 'delete')->name('Products.Delete');
             });
         });
+
+        Route::prefix('/Sales')->group(function(){
+            Route::controller(SalesController::class)->group(function(){
+                Route::get('/Index','index')->name('Sales.Index');
+                Route::get('/Create','create')->name('Sales.Create');
+                Route::post('/Store','store')->name('Sales.Store');
+                Route::get('/Edit/{id}', 'edit')->name('Sales.Edit');
+                Route::put('/Update/{id}', 'update')->name('Sales.Update'); 
+                Route::delete('/Delete','delete')->name('Sales.Delete');
+            });
+        });
+
     });
+
+
 
     /*Route::prefix('/Users')->group(function () {
         Route::controller(UserController::class)->group(function () {
@@ -158,6 +173,9 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/Delete', 'delete')->middleware('can:ModulesAndSubmodules,Dashboard.ModulesAndSubmodules.Delete')->name('Dashboard.ModulesAndSubmodules.Delete');
         });
     });
+
 });
+
+
 
 
