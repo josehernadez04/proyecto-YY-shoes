@@ -5,12 +5,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Ventas</h1>
+                        <h1 class="m-0 text-dark">Compras</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item">Dashboard</li>
-                            <li class="breadcrumb-item">Sales</li>
+                            <li class="breadcrumb-item">Shopping</li>
                             <li class="breadcrumb-item">Index</li>
                         </ol>
                     </div><!-- /.col -->
@@ -33,7 +33,7 @@
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link active" type="button" href="{{ route('Sales.Create') }}">
+                                    <a class="nav-link active" type="button" href="{{ route('Shopping.Create') }}">
                                         <i class="fas fa-user-plus"></i>
                                     </a>
                                 </li>
@@ -45,23 +45,23 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
-                                            <th>CANTIDAD</th>
-                                            <th>PRECIO UNITARIO</th>
-                                            <th>SUBTOTAL</th>
-                                            <th>PRODUCTO</th>
+                                            <th>FECHA</th>
+                                            <th>TOTAL</th>
+                                            <th>PROVEEDOR</th>
+                                            <th>USUARIO</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($sales as $sale)
+                                        @foreach ($shopping as $shipping)
                                         <tr>
-                                            <td>{{ $sale->id }}</td>
-                                            <td>{{ $sale->count }}</td>
-                                            <td>{{ $sale->unit_price }}</td>
-                                            <td>{{ $sale->subtotal }}</td>
-                                            <td>{{ $sale->product->name}}</td>
+                                            <td>{{ $shipping->id }}</td>
+                                            <td>{{ $shipping->date }}</td>
+                                            <td>{{ $shipping->total }}</td>
+                                            <td>{{ $shipping->provider->name}}</td>
+                                            <td>{{ $shipping->user->name}}</td>
                                             <td>
-                                                <a class="nav-link active" type="button" href="{{ route('Sales.Edit', $sale->id) }}">
+                                                <a class="nav-link active" type="button" href="{{ route('Shopping.Edit', $shipping->id) }}">
                                                     <i class="fas fa-pencil"></i>
                                                 </a>
                                             </td>

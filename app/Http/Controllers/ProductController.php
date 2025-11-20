@@ -34,7 +34,8 @@ class ProductController extends Controller
         $products->size = $request->size;
         $products->color = $request->color;
         $products->purchase_price = $request->purchase_price;
-        $products->sale_price= $request->sale_price;
+        $products->sale_price = $request->sale_price;
+        $products->stock = $request->stock;
         $products->category_id=$request->category_id;
         $products->provider_id =$request->provider_id;
         $products->save();

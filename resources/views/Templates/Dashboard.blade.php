@@ -228,6 +228,18 @@
                                     Tipo documento
                                 </p>
                             </a>
+                            <a href="/Dashboard/Sales/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Ventas
+                                </p>
+                            </a>
+                            <a href="/Dashboard/Shopping/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Compras
+                                </p>
+                            </a>
                         </li>
 
                         @foreach ($items as $item)

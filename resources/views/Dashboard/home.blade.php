@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Dashboard</h1>
+                    <h1 class="m-0 text-dark">Bienvenido</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -30,7 +30,7 @@
 
                 <div class="col-md-6">
                     <div class="card card-primary">
-                        <div class="card-header">Productos por Categoría</div>
+                        {{-- <div class="card-header">Productos por Categoría</div> --}}
                         <div class="card-body" style="height:300px;">
                             <canvas id="productosCategoria"></canvas>
                         </div>
@@ -53,28 +53,45 @@
 @endsection
 
 @section('script')
-    new Chart(document.getElementById('productosCategoria'), {
+
+new Chart(document.getElementById('productosCategoria'), {
     type: 'bar',
     data: {
-    labels: @json($category->pluck('name')),
-    datasets: [{
-    label: 'Productos por Categoría',
-    data: @json($category->pluck('products_count')),
-    backgroundColor: 'rgba(54,162,235,0.7)',
-    }]
-    }
-    });
-
-    {{-- new Chart(document.getElementById('ventasMes'), {
-    type: 'line',
-    data: {
-        labels: @json($ventasMes->pluck('mes')),
+        labels: @json($category->pluck('name')),
         datasets: [{
-            label: 'Ventas por Mes',
-            data: @json($ventasMes->pluck('total')),
-            borderColor: 'rgba(255,99,132,1)',
-            fill: false
+            label: 'Productos por Categoría',
+            data: @json($category->pluck('products_count')),
+            backgroundColor: 'rgba(54,162,235,0.7)',
+            borderColor: 'rgba(54,162,235,1)',
+            borderWidth: 1
         }]
+    },
+    options: {
+        maintainAspectRatio: false,       // 🔥 evita deformación
+        responsive: true,                 // 🔥 se adapta al card
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: '#e1e1e1'
+                }
+            },
+            x: {
+                grid: {
+                    display: false
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top'
+            },
+            tooltip: {
+                enabled: true
+            }
+        }
     }
-}); --}}
+});
+
 @endsection

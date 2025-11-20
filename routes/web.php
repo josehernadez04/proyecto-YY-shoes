@@ -12,6 +12,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\TypeDocumentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShoppingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -125,11 +126,21 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/Create','create')->name('Sales.Create');
                 Route::post('/Store','store')->name('Sales.Store');
                 Route::get('/Edit/{id}', 'edit')->name('Sales.Edit');
-                Route::put('/Update/{id}', 'update')->name('Sales.Update'); 
+                Route::put('/Update/{id}', 'update')->name('Sales.Update');
                 Route::delete('/Delete','delete')->name('Sales.Delete');
             });
         });
 
+        Route::prefix('/Shopping')->group(function () {
+            Route::controller(ShoppingController::class)->group(function () {
+                Route::get('/Index', 'index')->name('Shopping.Index');
+                Route::get('/Create', 'create')->name('Shopping.Create');
+                Route::post('/Store', 'store')->name('Shopping.Store');
+                Route::get('/Edit/{id}', 'edit')->name('Shopping.Edit');
+                Route::put('/Update/{id}', 'update')->name('Shopping.Update');
+                Route::delete('/Delete', 'delete')->name('Shopping.Delete');
+            });
+        });
     });
 
 
