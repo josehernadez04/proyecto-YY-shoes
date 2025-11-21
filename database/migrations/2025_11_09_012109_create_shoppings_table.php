@@ -17,7 +17,7 @@ return new class extends Migration
     {
         Schema::create('shoppings', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('time')->nullable();
+            $table->timestamp('date')->nullable();
             $table->decimal('total', 10, 2)->default(0);
             $table->foreignIdFor(Provider::class)->constrained()->onDelete('cascade');
             $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');

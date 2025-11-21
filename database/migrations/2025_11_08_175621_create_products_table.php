@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('reference',50)->unique();
             $table->string('name',100)->nullable();
             $table->text('description')->nullable();
-            $table->string('size',10)->nullable();
             $table->string('color',30)->nullable();
             $table->decimal('purchase_price',10,2)->default(0);
             $table->decimal('sale_price',10,2)->default(0);
