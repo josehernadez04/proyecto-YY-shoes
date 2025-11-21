@@ -193,13 +193,13 @@
                                 </p>
                             </a>
                             <a href="/Dashboard/Users/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fa-solid fa-circle-user"></i>
                                 <p>
                                     Usuarios
                                 </p>
                             </a>
                             <a href="/Dashboard/Providers/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fa-solid fa-truck-arrow-right"></i>
                                 <p>
                                     Proveedores
                                 </p>

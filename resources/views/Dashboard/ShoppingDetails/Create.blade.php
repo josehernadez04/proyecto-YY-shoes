@@ -35,29 +35,34 @@
                             </ul>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('Shopping.Store') }}" method="post">
+                            <form action="{{ route('Shopping.Details.Store') }}" method="post">
                                 @csrf
-                                <div class="form-group c_form_group">
-                                    <label for="name">Fecha</label>
-                                    <input type="datetime-local" class="form-control" id="date" name="date" placeholder=" cantidad " required>
+
+                                <div class="form-group c_form_group" hidden>
+                                    <label for="shopping_id">Id compra</label>
+                                    <input type="number" class="form-control" id="shopping_id" name="shopping_id" value="{{ $shopping_id }}" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="description">Proveedor</label>
-                                    <select class="form-control" name="provider_id" id="provider_id">
+                                    <label for="description">Producto</label>
+                                    <select class="form-control" name="product_id" id="product_id">
                                         <option selected disabled>Seleccione</option>
-                                        @foreach ($providers as $provider)
-                                        <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                                        @foreach ($products as $product)
+                                        <option value="{{ $product->id }}">{{ $product->name }}({{ $product->reference }}) - {{ $product->color }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="description">Usuario</label>
-                                    <select class="form-control" name="user_id" id="user_id">
+                                    <label for="size">Talla</label>
+                                    <select class="form-control" name="size" id="size">
                                         <option selected disabled>Seleccione</option>
-                                        @foreach ($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @foreach ($tallas as $talla)
+                                        <option value="{{ $talla }}">{{ $talla }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="form-group c_form_group">
+                                    <label for="quantity">Cantidad</label>
+                                    <input type="number" class="form-control" id="quantity" name="quantity" placeholder=" cantidad " required>
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
                             </form>

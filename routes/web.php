@@ -13,6 +13,7 @@ use App\Http\Controllers\TypeDocumentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShoppingController;
+use App\Http\Controllers\ShoppingDetailsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -136,9 +137,16 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/Index', 'index')->name('Shopping.Index');
                 Route::get('/Create', 'create')->name('Shopping.Create');
                 Route::post('/Store', 'store')->name('Shopping.Store');
+                Route::get('/Show/{id}', 'show')->name('Shopping.Show');
                 Route::get('/Edit/{id}', 'edit')->name('Shopping.Edit');
                 Route::put('/Update/{id}', 'update')->name('Shopping.Update');
                 Route::delete('/Delete', 'delete')->name('Shopping.Delete');
+
+            });
+
+            Route::controller(ShoppingDetailsController::class)->group(function () {
+                Route::get('/Details/Create', 'create')->name('Shopping.Details.Create');
+                Route::post('/Details/Store', 'store')->name('Shopping.Details.Store');
             });
         });
     });

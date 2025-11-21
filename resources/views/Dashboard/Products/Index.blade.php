@@ -48,7 +48,6 @@
                                             <th>REFERENCIA</th>
                                             <th>NOMBRE</th>
                                             <th>DESCRIPCION</th>
-                                            <th>TALLA</th>
                                             <th>COLOR</th>
                                             <th>PRECIO COMPRA </th>
                                             <th>PRECIO VENTA</th>
@@ -65,7 +64,6 @@
                                             <td>{{ $product->reference }}</td>
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->description }}</td>
-                                            <td>{{ $product->size }}</td>
                                             <td>{{ $product->color }}</td>
                                             <td>{{ $product->purchase_price }}</td>
                                             <td>{{ $product->sale_price }}</td>

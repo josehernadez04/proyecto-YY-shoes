@@ -31,7 +31,6 @@ class ProductController extends Controller
         $products->reference = $request->reference;
         $products->name = $request->name;
         $products->description = $request->description;
-        $products->size = $request->size;
         $products->color = $request->color;
         $products->purchase_price = $request->purchase_price;
         $products->sale_price = $request->sale_price;
@@ -56,7 +55,6 @@ class ProductController extends Controller
         $product->reference = $request->reference;
         $product->name = $request->name;
         $product->description = $request->description;
-        $product->size = $request->size;
         $product->color = $request->color;
         $product->purchase_price = $request->purchase_price;
         $product->sale_price= $request->sale_price;
