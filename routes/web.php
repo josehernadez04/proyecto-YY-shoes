@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModulesAndSubmodulesController;
 use App\Http\Controllers\ProviderController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\TypeDocumentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShoppingController;
+use App\Http\Controllers\ShoppingDetailsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,8 +46,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/Dashboard')->group(function () {
 
+
         Route::controller(HomeController::class)->group(function () {
-            Route::get('/', 'index')->middleware('can:Dashboard,Dashboard')->name('Dashboard');
+            Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+            // Route::get('/', 'index')->middleware('can:Dashboard,Dashboard')->name('Dashboard');
         });
 
         Route::prefix('/Users')->group(function () {
@@ -122,11 +127,28 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/Create','create')->name('Sales.Create');
                 Route::post('/Store','store')->name('Sales.Store');
                 Route::get('/Edit/{id}', 'edit')->name('Sales.Edit');
-                Route::put('/Update/{id}', 'update')->name('Sales.Update'); 
+                Route::put('/Update/{id}', 'update')->name('Sales.Update');
                 Route::delete('/Delete','delete')->name('Sales.Delete');
             });
         });
 
+        Route::prefix('/Shopping')->group(function () {
+            Route::controller(ShoppingController::class)->group(function () {
+                Route::get('/Index', 'index')->name('Shopping.Index');
+                Route::get('/Create', 'create')->name('Shopping.Create');
+                Route::post('/Store', 'store')->name('Shopping.Store');
+                Route::get('/Show/{id}', 'show')->name('Shopping.Show');
+                Route::get('/Edit/{id}', 'edit')->name('Shopping.Edit');
+                Route::put('/Update/{id}', 'update')->name('Shopping.Update');
+                Route::delete('/Delete', 'delete')->name('Shopping.Delete');
+
+            });
+
+            Route::controller(ShoppingDetailsController::class)->group(function () {
+                Route::get('/Details/Create', 'create')->name('Shopping.Details.Create');
+                Route::post('/Details/Store', 'store')->name('Shopping.Details.Store');
+            });
+        });
     });
 
 

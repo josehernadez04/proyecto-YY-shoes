@@ -193,13 +193,13 @@
                                 </p>
                             </a>
                             <a href="/Dashboard/Users/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fa-solid fa-circle-user"></i>
                                 <p>
                                     Usuarios
                                 </p>
                             </a>
                             <a href="/Dashboard/Providers/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fa-solid fa-truck-arrow-right"></i>
                                 <p>
                                     Proveedores
                                 </p>
@@ -220,6 +220,24 @@
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Clientes
+                                </p>
+                            </a>
+                            <a href="/Dashboard/TypeDocuments/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Tipo documento
+                                </p>
+                            </a>
+                            <a href="/Dashboard/Sales/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Ventas
+                                </p>
+                            </a>
+                            <a href="/Dashboard/Shopping/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Compras
                                 </p>
                             </a>
                         </li>
@@ -393,7 +411,9 @@
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
     </script>
-    @yield('script')
+    <script>
+        @yield('script')
+    </script>
 
 </body>
 
