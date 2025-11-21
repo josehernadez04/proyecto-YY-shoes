@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Shopping extends Model
 {
     use HasFactory;
+
+
+    public function provider()
+    {
+        return $this->belongsTo(Provider::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function details()
+    {
+        return $this->hasMany(ShoppingDetail::class);
+    }
 }

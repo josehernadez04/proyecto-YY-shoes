@@ -74,11 +74,6 @@
                                         placeholder="Descripcion" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="size">Talla</label>
-                                    <input type="number" class="form-control" id="size" name="size"
-                                        placeholder="Talla" required>
-                                </div>
-                                <div class="form-group c_form_group">
                                     <label for="color">Color</label>
                                     <input type="text" class="form-control" id="color" name="color"
                                         placeholder="Color" required>
