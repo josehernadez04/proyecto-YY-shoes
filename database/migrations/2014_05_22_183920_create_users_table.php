@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('document',20)->unique();
             $table->string('email',100)->unique();
             $table->string('password',255);
-            // $table->integer('rol_id',20);
+            $table->rememberToken()->nullable();
             $table->foreignIdFor(TypeDocument::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
