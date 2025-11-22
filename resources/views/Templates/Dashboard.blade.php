@@ -283,7 +283,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; {{ Carbon::now()->format('Y') }} <a href="https://orgbless.com" target="_blank">YY SHOES</a>.</strong>
+            <strong>Copyright &copy; {{ Carbon::now()->format('Y') }} <a>YY SHOES</a>.</strong>
             Todos los derechos reservados.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 1.0.0

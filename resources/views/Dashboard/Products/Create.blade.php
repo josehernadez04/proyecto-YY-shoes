@@ -96,6 +96,9 @@
 
 
                                 <input type="submit" class="btn btn-primary" value="Guardar" />
+
+                                <a type="submit" class="btn btn-danger" >enviar</a></a>
+
                             </form>
                         </div>
                     </div>
@@ -105,4 +108,5 @@
     </section>
 @endsection
 @section('script')
+$mensaje = alert('hola');
 @endsection
