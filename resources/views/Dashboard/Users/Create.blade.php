@@ -66,7 +66,7 @@
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
                                 {{-- <a type="button" class="btn btn-danger" value="devolver" href="{{ route('users.index') }}"></a> --}}
                                 <a class=" btn btn-danger" type="button" href="{{ route('users.index') }}">
-                                        {{-- <i class="fas fa-user-plus"></i> --}}volver
+                                        {{-- <i class="fas fa-user-plus"></i> --}}Devolver
                                     </a>
                             </form>
                         </div>

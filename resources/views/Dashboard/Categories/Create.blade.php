@@ -46,6 +46,7 @@
                                     <input type="text" class="form-control" id="description" name="description" placeholder="Descripcion" required>
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <a class=" btn btn-danger" type="button" href="{{ route('Categories.Index') }}"> Devolver </a>
                             </form>
                         </div>
                     </div>

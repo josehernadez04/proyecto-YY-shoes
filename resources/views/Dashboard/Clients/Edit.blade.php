@@ -67,12 +67,9 @@
                                     <label for="address">Direccion</label>
                                     <input type="text" class="form-control" id="address" name="address" value="{{ $client->address }}" placeholder="Direccion">
                                 </div>
-
-
                                 <input type="hidden" name="created_at" value="{{ $client->created_at }}">
-
-                                <a href="{{ route('Clients.Index') }}">regresar</a>
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <a class=" btn btn-danger" type="button" href="{{ route('Clients.Index') }}"> Devolver </a>
                             </form>
                         </div>
                     </div>

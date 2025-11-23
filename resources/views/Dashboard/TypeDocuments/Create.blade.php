@@ -49,9 +49,8 @@
                                     <input type="text" class="form-control" id="description" name="description"
                                         placeholder="Descripción" value="{{ old('description') }}">
                                 </div>
-
-                                <a href="{{ route('TypeDocuments.Index') }}">Regresar</a>
                                 <input type="submit" class="btn btn-primary" value="Guardar" />
+                                <a class=" btn btn-danger" type="button" href="{{ route('TypeDocuments.Index') }}"> Devolver </a>
                             </form>
 
                         </div>
