@@ -59,6 +59,7 @@
                                     </select>
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <a class=" btn btn-danger" type="button" href="{{ route('Sales.Index') }}"> Devolver </a>
                             </form>
                         </div>
                     </div>

@@ -59,14 +59,17 @@
                                 <div class="form-group c_form_group">
                                     <label for="email">Telefono</label>
                                     <input type="number" class="form-control" id="phone" name="phone" value="{{ $providers->phone }}" placeholder="phone">
+                                </div>
                                 <div class="form-group c_form_group">
                                     <label for="email">Direccion</label>
                                     <input type="text" class="form-control" id="address" name="address" value="{{ $providers->address }}" placeholder="Direccion">
+                                </div>
                                 <div class="form-group c_form_group">
                                     <label for="email">Correo Electrónico</label>
                                     <input type="email" class="form-control" id="email" name="email" value="{{ $providers->email }}" placeholder="Correo Electrónico">
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <a class=" btn btn-danger" type="button" href="{{ route('Providers.Index') }}"> Devolver </a>
                             </form>
                         </div>
                     </div>
