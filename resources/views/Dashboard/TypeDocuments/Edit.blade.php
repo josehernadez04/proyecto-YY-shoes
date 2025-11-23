@@ -53,6 +53,7 @@
                                 </div>
 
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <a class=" btn btn-danger" type="button" href="{{ route('TypeDocuments.Index') }}"> Devolver </a>
                             </form>
 
                         </div>

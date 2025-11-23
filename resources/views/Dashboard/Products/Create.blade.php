@@ -93,12 +93,8 @@
                                     <input type="number" class="form-control" id="stock" name="stock"
                                         placeholder="stock" required>
                                 </div>
-
-
                                 <input type="submit" class="btn btn-primary" value="Guardar" />
-
-                                <a type="submit" class="btn btn-danger" >enviar</a></a>
-
+                                <a class=" btn btn-danger" type="button" href="{{ route('Products.Index') }}"> Devolver </a>
                             </form>
                         </div>
                     </div>
@@ -108,5 +104,4 @@
     </section>
 @endsection
 @section('script')
-$mensaje = alert('hola');
 @endsection

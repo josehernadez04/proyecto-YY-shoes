@@ -57,16 +57,18 @@
                                 <div class="form-group c_form_group">
                                     <label for="phone">Teléfono</label>
                                     <input type="number" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Teléfono" required>
+                                </div>
                                 <div class="form-group c_form_group">
                                     <label for="address">Dirección</label>
                                     <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" placeholder="Dirección">
-
+                                </div>
                                 <div class="form-group c_form_group">
                                     <label for="email">Correo Electrónico</label>
                                     <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Correo Electrónico">
                                 </div>
 
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <a class=" btn btn-danger" type="button" href="{{ route('Providers.Index') }}"> Devolver </a>
                             </form>
                         </div>
                     </div>
