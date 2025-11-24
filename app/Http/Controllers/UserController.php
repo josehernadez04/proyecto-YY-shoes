@@ -65,7 +65,7 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return redirect()->route('users.index');
+        return redirect()->route('Users.Index');
     }
 
     public function edit($id)
@@ -73,7 +73,7 @@ class UserController extends Controller
         $typeDocuments = TypeDocument::all();
         $user = User::findOrFail($id);
         return view('Dashboard.Users.Edit', compact('typeDocuments', 'user'));
-    } 
+    }
 
     public function update(Request $request, $id)
     {
@@ -87,7 +87,7 @@ class UserController extends Controller
         }
         $user->save();
 
-        return redirect()->route('users.index');
+        return redirect()->route('Users.Index');
     }
 
     public function show($id)

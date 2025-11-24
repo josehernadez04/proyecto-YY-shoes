@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::with('details')->get();
         return view('Dashboard.Products.Index', compact('products'));
     }
 
@@ -26,7 +26,6 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // return $request;
         $products = new Product();
         $products->reference = $request->reference;
         $products->name = $request->name;
@@ -34,7 +33,6 @@ class ProductController extends Controller
         $products->color = $request->color;
         $products->purchase_price = $request->purchase_price;
         $products->sale_price = $request->sale_price;
-        $products->stock = $request->stock;
         $products->category_id=$request->category_id;
         $products->provider_id =$request->provider_id;
         $products->save();
@@ -44,8 +42,10 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        $categories = Category::all();
+        $providers = Provider::all();
         $products = Product::findOrFail($id);
-        return view('Dashboard.Products.Edit', compact('products'));
+        return view('Dashboard.Products.Edit', compact('products', 'categories', 'providers'));
     }
 
 
@@ -54,6 +54,8 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->reference = $request->reference;
         $product->name = $request->name;
+        $product->category_id = $request->category_id;
+        $product->provider_id = $request->provider_id;
         $product->description = $request->description;
         $product->color = $request->color;
         $product->purchase_price = $request->purchase_price;

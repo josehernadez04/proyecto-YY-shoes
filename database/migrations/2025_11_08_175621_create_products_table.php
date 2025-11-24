@@ -23,10 +23,10 @@ return new class extends Migration
             $table->string('color',30)->nullable();
             $table->decimal('purchase_price',10,2)->default(0);
             $table->decimal('sale_price',10,2)->default(0);
-            $table->integer('stock')->default(0);
             $table->foreignIdFor(Category::class)->constrained()->onDelete('cascade');
             $table->foreignIdFor(Provider::class)->constrained()->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

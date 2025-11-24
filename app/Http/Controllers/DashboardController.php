@@ -13,7 +13,7 @@ class DashboardController extends Controller
     {
         $category = Category::withCount('products')->get();
 
-        $stockProducts = Product::select('name', 'stock')->get();
+        $stockProducts = Product::select('name')->with('details')->get();
 
         return view('Dashboard.home', [
             'category' => $category,

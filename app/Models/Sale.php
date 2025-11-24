@@ -9,8 +9,18 @@ class Sale extends Model
 {
     use HasFactory;
 
-    public function product()
+    public function client()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Client::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function details()
+    {
+        return $this->hasMany(SaleDetail::class);
     }
 }

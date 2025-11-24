@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     public function category()
     {
@@ -19,8 +20,8 @@ class Product extends Model
         return $this->belongsTo(Provider::class);
     }
 
-    public function shoppingDetails()
+    public function details()
     {
-        return $this->hasMany(ShoppingDetail::class);
+        return $this->hasMany(ProductDetail::class)->orderBy('size', 'asc');
     }
 }

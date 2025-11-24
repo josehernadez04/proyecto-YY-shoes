@@ -33,7 +33,7 @@
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link active" type="button" href="{{ route('Shopping.Details.Create', ['shopping_id' => $shopping->id]) }}">
+                                    <a class="nav-link active" type="button" href="{{ route('Shoppings.Details.Create', ['shopping_id' => $shopping->id]) }}">
                                         AGREAGR DETALLE
                                     </a>
                                 </li>
@@ -80,11 +80,8 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <table class="table table-bordered table-hover dataTable dtr-inline nowrap w-100 pt-4">
+                                <table id="shoppingsTable" class="table table-bordered table-hover dataTable dtr-inline nowrap w-100 pt-4">
                                     <thead class="thead-dark">
-                                        <tr>
-                                            <th colspan="16" class="text-center">DETALLES ORDEN DE COMPRA</th>
-                                        </tr>
                                         <tr>
                                             <th>#</th>
                                             <th>Precio</th>
@@ -122,4 +119,28 @@
     </section>
 @endsection
 @section('script')
+let table = $('#shoppingsTable').DataTable({
+    paging: true,
+    searching: true,
+    info: true,
+    autoWidth: false,
+    responsive: true,
+    language: {
+        oPaginate: {
+            sFirst: 'Primero',
+            sLast: 'Último',
+            sNext: 'Siguiente',
+            sPrevious: 'Anterior',
+        },
+        info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
+        infoEmpty: 'No hay registros para mostrar',
+        infoFiltered: '(filtrados de _MAX_ registros en total)',
+        emptyTable: 'No hay datos disponibles.',
+        lengthMenu: 'Mostrar _MENU_ registros',
+        search: 'Buscar:',
+        zeroRecords: 'No se encontraron registros.',
+        decimal: ',',
+        thousands: '.'
+    }
+});
 @endsection

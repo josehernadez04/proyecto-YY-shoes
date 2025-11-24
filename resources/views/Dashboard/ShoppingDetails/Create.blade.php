@@ -35,7 +35,7 @@
                             </ul>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('Shopping.Details.Store') }}" method="post">
+                            <form action="{{ route('Shoppings.Details.Store') }}" method="post">
                                 @csrf
 
                                 <div class="form-group c_form_group" hidden>

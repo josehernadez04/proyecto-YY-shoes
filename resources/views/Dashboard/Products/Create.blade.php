@@ -88,11 +88,6 @@
                                     <input type="number" class="form-control" id="sale_price" name="sale_price"
                                         placeholder="Precio venta" required>
                                 </div>
-                                <div class="form-group c_form_group">
-                                    <label for="stock">stock</label>
-                                    <input type="number" class="form-control" id="stock" name="stock"
-                                        placeholder="stock" required>
-                                </div>
 
 
                                 <input type="submit" class="btn btn-primary" value="Guardar" />
@@ -100,6 +95,8 @@
                                 <a type="submit" class="btn btn-danger" >enviar</a></a>
 
                             </form>
+
+                                <button class="btn btn-danger" onclick="showmessage()">enviar2</button>
                         </div>
                     </div>
                 </div>
@@ -108,5 +105,10 @@
     </section>
 @endsection
 @section('script')
-$mensaje = alert('hola');
+function showmessage() {
+toastr.error('hola');
+toastr.success('hola');
+toastr.info('hola');
+toastr.warning('hola');
+}
 @endsection

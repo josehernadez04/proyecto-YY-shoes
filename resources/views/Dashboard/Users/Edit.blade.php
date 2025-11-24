@@ -35,7 +35,7 @@
                             </ul>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('users.update', $user->id) }}" method="post">
+                            <form action="{{ route('Users.Update', $user->id) }}" method="post">
                                 @method('PUT')
                                 @csrf
                                 <div class="form-group c_form_group">

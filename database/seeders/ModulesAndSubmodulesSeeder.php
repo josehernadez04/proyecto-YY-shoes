@@ -15,23 +15,23 @@ class ModulesAndSubmodulesSeeder extends Seeder
      */
     public function run()
     {
-        /*$Configuracion = Module::create(['name' => 'Configuración', 'icon' => 'fas fa-cog']);
+        $configuracion = Module::create(['name' => 'Configuración', 'icon' => 'fas fa-cog']);
 
-        $Configuracion->roles()->sync([2, 3, 4, 5, 6]);
+        $configuracion->roles()->sync([2, 3, 4]);
 
         Submodule::create([
             'name' => 'Usuarios',
             'url' => '/Dashboard/Users/Index',
             'icon' => 'fas fa-users',
-            'module_id' => $Configuracion->id,
+            'module_id' => $configuracion->id,
             'permission_id' => 2
         ]);
 
-        Submodule::create([
+        /*Submodule::create([
             'name' => 'Accesos',
             'url' => '/Dashboard/RolesAndPermissions/Index',
             'icon' => 'fas fa-key-skeleton-left-right',
-            'module_id' => $Configuracion->id,
+            'module_id' => $configuracion->id,
             'permission_id' => 19
         ]);
 
@@ -39,140 +39,72 @@ class ModulesAndSubmodulesSeeder extends Seeder
             'name' => 'Enrutamientos',
             'url' => '/Dashboard/ModulesAndSubmodules/Index',
             'icon' => 'fas fa-shield-keyhole',
-            'module_id' => $Configuracion->id,
+            'module_id' => $configuracion->id,
             'permission_id' => 26
+        ]);*/
+
+        Submodule::create([
+            'name' => 'Categorias',
+            'url' => '/Dashboard/Categories/Index',
+            'icon' => 'fas fa-list',
+            'module_id' => $configuracion->id,
+            'permission_id' => 6
         ]);
 
         Submodule::create([
-            'name' => 'Empresas',
-            'url' => '/Dashboard/Businesses/Index',
-            'icon' => 'fas fa-briefcase',
-            'module_id' => $Configuracion->id,
-            'permission_id' => 33
+            'name' => 'Tipos de Documentos',
+            'url' => '/Dashboard/TypeDocuments/Index',
+            'icon' => 'fas fa-address-card',
+            'module_id' => $configuracion->id,
+            'permission_id' => 10
         ]);
 
-        Submodule::create([
-            'name' => 'Correrias',
-            'url' => '/Dashboard/Correrias/Index',
-            'icon' => 'fas fa-rectangle-vertical-history',
-            'module_id' => $Configuracion->id,
-            'permission_id' => 44
-        ]);
+        $administracion = Module::create(['name' => 'Administración', 'icon' => 'fas fa-folder']);
 
-        Submodule::create([
-            'name' => 'Empaques',
-            'url' => '/Dashboard/PackageTypes/Index',
-            'icon' => 'fas fa-box',
-            'module_id' => $Configuracion->id,
-            'permission_id' => 51
-        ]);
-
-        Submodule::create([
-            'name' => 'Metodos de Pago',
-            'url' => '/Dashboard/PaymentMethods/Index',
-            'icon' => 'fas fa-credit-card',
-            'module_id' => $Configuracion->id,
-            'permission_id' => 58
-        ]);
-
-        $Administracion = Module::create(['name' => 'Administración', 'icon' => 'fas fa-folder']);
-
-        $Administracion->roles()->sync([7, 8, 9, 10]);
-
-        Submodule::create([
-            'name' => 'Bodegas',
-            'url' => '/Dashboard/Warehouses/Index',
-            'icon' => 'fas fa-warehouse',
-            'module_id' => $Administracion->id,
-            'permission_id' => 65
-        ]);
-
-        Submodule::create([
-            'name' => 'Colores',
-            'url' => '/Dashboard/Colors/Index',
-            'icon' => 'fas fa-palette',
-            'module_id' => $Administracion->id,
-            'permission_id' => 76
-        ]);
-
-        Submodule::create([
-            'name' => 'Productos',
-            'url' => '/Dashboard/Products/Index',
-            'icon' => 'fas fa-bookmark',
-            'module_id' => $Administracion->id,
-            'permission_id' => 86
-        ]);
-
-        Submodule::create([
-            'name' => 'Inventarios',
-            'url' => '/Dashboard/Inventories/Index',
-            'icon' => 'fas fa-shelves',
-            'module_id' => $Administracion->id,
-            'permission_id' => 94
-        ]);
-
-        $Comercial = Module::create(['name' => 'Comercial', 'icon' => 'fas fa-money-bill']);
-
-        $Comercial->roles()->sync([11, 12, 13, 14, 15, 16]);
+        $administracion->roles()->sync([5, 6, 7]);
 
         Submodule::create([
             'name' => 'Clientes',
             'url' => '/Dashboard/Clients/Index',
             'icon' => 'fas fa-user-tie',
-            'module_id' => $Comercial->id,
-            'permission_id' => 101
+            'module_id' => $administracion->id,
+            'permission_id' => 14
         ]);
 
         Submodule::create([
-            'name' => 'Pedidos',
-            'url' => '/Dashboard/Orders/Index',
-            'icon' => 'fas fa-receipt',
-            'module_id' => $Comercial->id,
-            'permission_id' => 119
+            'name' => 'Proveedores',
+            'url' => '/Dashboard/Providers/Index',
+            'icon' => 'fas fa-person-dolly',
+            'module_id' => $administracion->id,
+            'permission_id' => 18
         ]);
 
         Submodule::create([
-            'name' => 'Filtro',
-            'url' => '/Dashboard/Filters/Index',
-            'icon' => 'fas fa-filter',
-            'module_id' => $Comercial->id,
-            'permission_id' => 153
+            'name' => 'Productos',
+            'url' => '/Dashboard/Products/Index',
+            'icon' => 'fas fa-shoe',
+            'module_id' => $administracion->id,
+            'permission_id' => 22
         ]);
 
-        Submodule::create([
-            'name' => 'Ordenes',
-            'url' => '/Dashboard/Dispatches/Index',
-            'icon' => 'fas fa-truck-fast',
-            'module_id' => $Comercial->id,
-            'permission_id' => 159
-        ]);
+        $comercial = Module::create(['name' => 'Comercial', 'icon' => 'fas fa-money-bill']);
 
-        $Reportes = Module::create(['name' => 'Reportes', 'icon' => 'fas fa-chart-mixed-up-circle-currency']);
-
-        $Reportes->roles()->sync([17]);
+        $comercial->roles()->sync([8, 9]);
 
         Submodule::create([
             'name' => 'Ventas',
-            'url' => '/Dashboard/Reports/Sales/Index',
+            'url' => '/Dashboard/Sales/Index',
             'icon' => 'fas fa-hand-holding-dollar',
-            'module_id' => $Reportes->id,
-            'permission_id' => 187
+            'module_id' => $comercial->id,
+            'permission_id' => 26
         ]);
 
         Submodule::create([
-            'name' => 'Despacho',
-            'url' => '/Dashboard/Reports/Dispatches/Index',
-            'icon' => 'fas fa-hand-holding-box',
-            'module_id' => $Reportes->id,
-            'permission_id' => 189
+            'name' => 'Compras',
+            'url' => '/Dashboard/Shoppings/Index',
+            'icon' => 'fas fa-cart-shopping',
+            'module_id' => $comercial->id,
+            'permission_id' => 32
         ]);
-
-        Submodule::create([
-            'name' => 'Produccion',
-            'url' => '/Dashboard/Reports/Productions/Index',
-            'icon' => 'fas fa-hand-holding-seedling',
-            'module_id' => $Reportes->id,
-            'permission_id' => 191
-        ]);*/
     }
 }

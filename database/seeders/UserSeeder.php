@@ -16,13 +16,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $RolesAndPermissions = Role::with('permissions')->get();
+        $rolesAndPermissions = Role::with('permissions')->get();
 
         $typeDocument = new TypeDocument();
         $typeDocument->code = 'CC';
         $typeDocument->description = 'Cedula';
         $typeDocument->save();
-        
+
         $user = User::create([
             'name' => 'Camilo Andres',
             'document' => '1004845200',
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'type_document_id' => $typeDocument->id
         ]);
 
-        foreach($RolesAndPermissions as $RoleAndPermission) {
+        foreach($rolesAndPermissions as $RoleAndPermission) {
             $user->assignRole([$RoleAndPermission->name]);
             $user->givePermissionTo($RoleAndPermission->permissions->pluck('name'));
         };

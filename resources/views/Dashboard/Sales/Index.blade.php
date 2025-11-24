@@ -33,7 +33,7 @@
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link active" type="button" href="{{ route('Sales.Create') }}">
+                                    <a class="nav-link active" type="button" href="{{ route('Sales.Details.Create') }}">
                                         <i class="fas fa-user-plus"></i>
                                     </a>
                                 </li>
@@ -41,14 +41,11 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="users" class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
+                                <table id="salesTable" class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
-                                            <th>CANTIDAD</th>
-                                            <th>PRECIO UNITARIO</th>
-                                            <th>SUBTOTAL</th>
-                                            <th>PRODUCTO</th>
+                                            <th>CLIENTE</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
@@ -56,10 +53,7 @@
                                         @foreach ($sales as $sale)
                                         <tr>
                                             <td>{{ $sale->id }}</td>
-                                            <td>{{ $sale->count }}</td>
-                                            <td>{{ $sale->unit_price }}</td>
-                                            <td>{{ $sale->subtotal }}</td>
-                                            <td>{{ $sale->product->name}}</td>
+                                            <td>{{ $sale->client->name }}</td>>
                                             <td>
                                                 <a class="nav-link active" type="button" href="{{ route('Sales.Edit', $sale->id) }}">
                                                     <i class="fas fa-pencil"></i>
@@ -78,4 +72,28 @@
     </section>
 @endsection
 @section('script')
+let table = $('#salesTable').DataTable({
+    paging: true,
+    searching: true,
+    info: true,
+    autoWidth: false,
+    responsive: true,
+    language: {
+        oPaginate: {
+            sFirst: 'Primero',
+            sLast: 'Último',
+            sNext: 'Siguiente',
+            sPrevious: 'Anterior',
+        },
+        info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
+        infoEmpty: 'No hay registros para mostrar',
+        infoFiltered: '(filtrados de _MAX_ registros en total)',
+        emptyTable: 'No hay datos disponibles.',
+        lengthMenu: 'Mostrar _MENU_ registros',
+        search: 'Buscar:',
+        zeroRecords: 'No se encontraron registros.',
+        decimal: ',',
+        thousands: '.'
+    }
+});
 @endsection
