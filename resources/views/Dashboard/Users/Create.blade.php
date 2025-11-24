@@ -35,7 +35,7 @@
                             </ul>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('users.store') }}" method="post">
+                            <form action="{{ route('Users.Store') }}" method="post">
                                 @csrf
                                 <div class="form-group c_form_group">
                                     <label for="name">Nombre completo</label>
@@ -64,8 +64,8 @@
                                 </div>
 
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
-                                {{-- <a type="button" class="btn btn-danger" value="devolver" href="{{ route('users.index') }}"></a> --}}
-                                <a class=" btn btn-danger" type="button" href="{{ route('users.index') }}">
+                                {{-- <a type="button" class="btn btn-danger" value="devolver" href="{{ route('Users.Index') }}"></a> --}}
+                                <a class=" btn btn-danger" type="button" href="{{ route('Users.Index') }}">
                                         {{-- <i class="fas fa-user-plus"></i> --}}volver
                                     </a>
                             </form>

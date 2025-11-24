@@ -33,7 +33,7 @@
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link active" type="button" href="{{ route('users.create') }}">
+                                    <a class="nav-link active" type="button" href="{{ route('Users.Create') }}">
                                         <i class="fas fa-user-plus"></i>
                                     </a>
                                 </li>
@@ -61,9 +61,10 @@
                                             <td>{{ $user->document }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>
-                                                <a class="nav-link active" type="button" href="{{ route('users.edit', $user->id) }}">
+                                                <a class="nav-link active" type="button" href="{{ route('Users.Edit', $user->id) }}">
                                                     <i class="fas fa-pencil"></i>
                                                 </a>
+                                                <button class="btn btn-success" onclick="showmessage()">mensaje</button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -78,4 +79,10 @@
     </section>
 @endsection
 @section('script')
+function showmessage() {
+toastr.error('hola');
+toastr.success('hola');
+toastr.info('hola');
+toastr.warning('hola');
+}
 @endsection

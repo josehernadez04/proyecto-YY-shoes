@@ -24,20 +24,14 @@ class SaleStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'count' => ['required', 'numeric'],
-            'unit_price' => ['required', 'numeric'],
-            'subtotal' => ['required', 'numeric'],
-            'product_id' => ['required', 'exists:products,id'],
+            'client_id' => ['required', 'numeric', 'exists:clients,id']
         ];
     }
 
     public function attributes()
     {
         return [
-            'count' => 'cantidad',
-            'unit_price' => 'precio unitario',
-            'subtotal' => 'subtotal',
-            'product_id' => 'producto',
+            'client_id' => 'cliente'
         ];
     }
 }

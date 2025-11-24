@@ -39,23 +39,11 @@
                                 @method('PUT')
                                 @csrf
                                 <div class="form-group c_form_group">
-                                    <label for="document">Cantidad</label>
-                                    <input type="number" class="form-control" id="count" name="count" placeholder="Cantidad"  value="{{ old('count',$sales->count) }}" required>
-                                </div>
-                                <div class="form-group c_form_group">
-                                    <label for="name">Precio Unitario</label>
-                                    <input type="number" class="form-control" id="unit_price" name="unit_price" placeholder="Precio Unitario" value="{{ old('unit_price',$sales->unit_price) }}" required>
-                                </div>
-                                <div class="form-group c_form_group">
-                                    <label for="email">Subtotal</label>
-                                    <input type="number" class="form-control" id="subtotal" name="subtotal" placeholder="Subtotal" value="{{ old('subtotal',$sales->subtotal) }}"required>
-                                </div>
-                                <div class="form-group c_form_group">
-                                    <label for="description">Producto</label>
-                                    <select class="form-control" name="product_id" id="product_id">
+                                    <label for="description">Cliente</label>
+                                    <select class="form-control" name="client_id" id="client_id">
                                         <option selected disabled>Seleccione</option>
-                                        @foreach ($products as $product)
-                                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                        @foreach ($clients as $client)
+                                        <option value="{{ $client->id }}" {{ $sales->client_id == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -7,8 +7,9 @@ use App\Models\Shopping;
 use App\Models\Product;
 use App\Models\ShoppingDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ShoppingDetailsController extends Controller
+class ShoppingsDetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,7 +42,7 @@ class ShoppingDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::findOrFail($request->product_id);
+        $product = Product::with('details')->findOrFail($request->product_id);
 
         $detail = new ShoppingDetail();
         $detail->quantity = $request->quantity;
@@ -52,7 +53,12 @@ class ShoppingDetailsController extends Controller
         $detail->product_id = $request->product_id;
         $detail->save();
 
-        return redirect()->route('Shopping.Show', $request->shopping_id)->with('success', 'Producto agregado correctamente');
+        $product->details()->where('size', $request->size)->updateOrCreate(
+            ['size' => $request->size],
+            ['stock' => DB::raw("stock + $request->quantity")]
+        );
+
+        return redirect()->route('Shoppings.Show', $request->shopping_id)->with('success', 'Producto agregado correctamente y stock actualizado');
     }
 
     /**

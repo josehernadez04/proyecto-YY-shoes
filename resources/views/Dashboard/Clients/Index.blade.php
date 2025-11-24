@@ -41,7 +41,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="users" class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
+                                <table id="clientsTable" class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
@@ -65,7 +65,7 @@
                                             <td>{{ $client->phone}}</td>
                                             <td>{{ $client->address}}</td>
                                             <td>
-                                                <a class="nav-link active" type="button" href="{{ route('Clients.Edit', $client->id) }}">
+                                                <a class="btn btn-warning btn-sm" type="button" href="{{ route('Clients.Edit', $client->id) }}">
 
                                                     <i class="fas fa-pencil"></i>
                                                 </a>
@@ -83,4 +83,28 @@
     </section>
 @endsection
 @section('script')
+let table = $('#clientsTable').DataTable({
+    paging: true,
+    searching: true,
+    info: true,
+    autoWidth: false,
+    responsive: true,
+    language: {
+        oPaginate: {
+            sFirst: 'Primero',
+            sLast: 'Último',
+            sNext: 'Siguiente',
+            sPrevious: 'Anterior',
+        },
+        info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
+        infoEmpty: 'No hay registros para mostrar',
+        infoFiltered: '(filtrados de _MAX_ registros en total)',
+        emptyTable: 'No hay datos disponibles.',
+        lengthMenu: 'Mostrar _MENU_ registros',
+        search: 'Buscar:',
+        zeroRecords: 'No se encontraron registros.',
+        decimal: ',',
+        thousands: '.'
+    }
+});
 @endsection

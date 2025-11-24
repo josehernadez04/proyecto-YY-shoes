@@ -35,7 +35,7 @@
                             </ul>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('Shopping.Update', $shopping->id) }}" method="post">
+                            <form action="{{ route('Shoppings.Update', $shopping->id) }}" method="post">
                                 @method('PUT')
                                 @csrf
                                 <div class="form-group c_form_group">
@@ -82,7 +82,7 @@
                             <h3 class="card-title">Agregar Detalle</h3>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('Shopping.Details.Store', $shopping->id) }}" method="post">
+                            <form action="{{ route('Shoppings.Details.Store', $shopping->id) }}" method="post">
                                 @csrf
                                 <div class="form-group c_form_group">
                                     <label for="description">Producto</label>

@@ -15,10 +15,10 @@
     <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/plugins/fontawesome-free/css/all.min.css') }}">
 
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.1.0/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.1.0/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.1.0/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.1.0/css/sharp-light.css">
         <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
@@ -190,54 +190,6 @@
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
-                                </p>
-                            </a>
-                            <a href="/Dashboard/Users/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
-                                <i class="nav-icon fa-solid fa-circle-user"></i>
-                                <p>
-                                    Usuarios
-                                </p>
-                            </a>
-                            <a href="/Dashboard/Providers/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
-                                <i class="nav-icon fa-solid fa-truck-arrow-right"></i>
-                                <p>
-                                    Proveedores
-                                </p>
-                            </a>
-                            <a href="/Dashboard/Categories/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Categoria
-                                </p>
-                            </a>
-                            <a href="/Dashboard/Products/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Producto
-                                </p>
-                            </a>
-                            <a href="/Dashboard/Clients/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Clientes
-                                </p>
-                            </a>
-                            <a href="/Dashboard/TypeDocuments/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Tipo documento
-                                </p>
-                            </a>
-                            <a href="/Dashboard/Sales/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Ventas
-                                </p>
-                            </a>
-                            <a href="/Dashboard/Shopping/Index" class="nav-link {{ Request::route()->getName() === 'Dashboard' ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Compras
                                 </p>
                             </a>
                         </li>
