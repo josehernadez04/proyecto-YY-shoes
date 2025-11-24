@@ -154,6 +154,18 @@ Route::middleware(['auth'])->group(function () {
                 Route::post('/Details/Store', 'store')->name('Shoppings.Details.Store')->middleware('can:Shoppings,Dashboard.Shoppings.Details.Store');
             });
         });
+
+        Route::prefix('/RolesAndPermissions')->group(function () {
+        Route::controller(RolesAndPermissionsController::class)->group(function () {
+            Route::get('/Index', 'index')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Index')->name('Dashboard.RolesAndPermissions.Index');
+            Route::post('/Index/Query', 'indexQuery')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Index.Query')->name('Dashboard.RolesAndPermissions.Index.Query');
+            Route::post('/Create', 'create')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Create')->name('Dashboard.RolesAndPermissions.Create');
+            Route::post('/Store', 'store')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Store')->name('Dashboard.RolesAndPermissions.Store');
+            Route::post('/Edit/{id}', 'edit')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Edit')->name('Dashboard.RolesAndPermissions.Edit');
+            Route::put('/Update/{id}', 'update')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Update')->name('Dashboard.RolesAndPermissions.Update');
+            Route::delete('/Delete/{id}', 'delete')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Delete')->name('Dashboard.RolesAndPermissions.Delete');
+        });
+    });
     });
 
 
@@ -177,17 +189,7 @@ Route::middleware(['auth'])->group(function () {
         });
     });*/
 
-    Route::prefix('/RolesAndPermissions')->group(function () {
-        Route::controller(RolesAndPermissionsController::class)->group(function () {
-            Route::get('/Index', 'index')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Index')->name('Dashboard.RolesAndPermissions.Index');
-            Route::post('/Index/Query', 'indexQuery')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Index.Query')->name('Dashboard.RolesAndPermissions.Index.Query');
-            Route::post('/Create', 'create')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Create')->name('Dashboard.RolesAndPermissions.Create');
-            Route::post('/Store', 'store')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Store')->name('Dashboard.RolesAndPermissions.Store');
-            Route::post('/Edit/{id}', 'edit')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Edit')->name('Dashboard.RolesAndPermissions.Edit');
-            Route::put('/Update/{id}', 'update')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Update')->name('Dashboard.RolesAndPermissions.Update');
-            Route::delete('/Delete/{id}', 'delete')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Delete')->name('Dashboard.RolesAndPermissions.Delete');
-        });
-    });
+
 
     Route::prefix('/ModulesAndSubmodules')->group(function () {
         Route::controller(ModulesAndSubmodulesController::class)->group(function () {

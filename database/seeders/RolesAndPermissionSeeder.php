@@ -25,6 +25,7 @@ class RolesAndPermissionSeeder extends Seeder
         $products = Role::create(['name' => 'Products']);
         $sales = Role::create(['name' => 'Sales']);
         $shoppings = Role::create(['name' => 'Shoppings']);
+        $rolesAndPermissions = Role::create(['name' => 'RolesAndPermissions']);
 
         Permission::create(['name' => 'Dashboard'])->syncRoles([$dashboard]);
 
@@ -71,5 +72,13 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'Dashboard.Shoppings.Update'])->syncRoles([$shoppings]);
         Permission::create(['name' => 'Dashboard.Shoppings.Delete'])->syncRoles([$shoppings]);
         Permission::create(['name' => 'Dashboard.Shoppings.Details.Store'])->syncRoles([$shoppings]);
+
+        Permission::create(['name' => 'Dashboard.RolesAndPermissions.Index'])->syncRoles([$rolesAndPermissions]);
+        Permission::create(['name' => 'Dashboard.RolesAndPermissions.Index.Query'])->syncRoles([$rolesAndPermissions]);
+        Permission::create(['name' => 'Dashboard.RolesAndPermissions.Create'])->syncRoles([$rolesAndPermissions]);
+        Permission::create(['name' => 'Dashboard.RolesAndPermissions.Store'])->syncRoles([$rolesAndPermissions]);
+        Permission::create(['name' => 'Dashboard.RolesAndPermissions.Edit'])->syncRoles([$rolesAndPermissions]);
+        Permission::create(['name' => 'Dashboard.RolesAndPermissions.Update'])->syncRoles([$rolesAndPermissions]);
+        Permission::create(['name' => 'Dashboard.RolesAndPermissions.Delete'])->syncRoles([$rolesAndPermissions]);
     }
 }
