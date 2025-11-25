@@ -79,8 +79,8 @@
                                                     <form>
                                                         <div class="form-group">
                                                             <label for="name">Nombre del usuario</label>
-                                                            <input type="text" class="form-control" value="{{ auth()->user()->name }}"
-                                                                disabled>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ auth()->user()->name }}" disabled>
                                                         </div>
 
                                                         <div class="row mt-3">
@@ -113,8 +113,8 @@
 
                                                         <div class="form-group mt-3">
                                                             <label for="birthday">Birthday</label>
-                                                            <input type="date" class="form-control" value="{{ auth()->user()->birthday }}"
-                                                                disabled>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ auth()->user()->birthdate }}" disabled>
                                                         </div>
                                                     </form>
 

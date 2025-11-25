@@ -27,6 +27,9 @@ class UserSeeder extends Seeder
             'name' => 'Camilo Andres',
             'document' => '1004845200',
             'email' => 'camiloacacio16@gmail.com',
+            'phone' => '3012345678',
+            'address' => 'Calle 123 #45-67',
+            'birthdate' => '1990-01-01',
             'password' => bcrypt('12345678'),
             'type_document_id' => $typeDocument->id
         ]);
