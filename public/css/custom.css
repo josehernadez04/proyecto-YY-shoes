@@ -1,12 +1,38 @@
+/* Centrado logo login */
 .logo-login {
-    width: 200px;      /* ajusta a tu gusto */
-    height: auto;      /* mantiene proporciones */
+    width: 200px;
+    height: auto;
     display: block;
-    margin: 0 auto;    /* centrado */
+    margin: 0 auto;
 }
 
+/* Gráficas */
 .card-body canvas {
     width: 100% !important;
     height: 100% !important;
     max-height: 100% !important;
+}
+
+/* Nav activo */
+.nav-pills .nav-link.active {
+    background-color: #343a40 !important;
+}
+
+/* ❌ Ocultar completamente el botón "Browse" original */
+.custom-file-label::after {
+    display: none !important;
+}
+
+/* ✔ Agregar tu icono personalizado */
+.custom-file-label::before {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    transform: translateY(-50%);
+    background: url('/images/upload.png') no-repeat center;
+    background-size: contain;
+    pointer-events: none;
 }
