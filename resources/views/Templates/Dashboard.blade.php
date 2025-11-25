@@ -63,6 +63,8 @@
     <link rel="stylesheet" href="{{ asset('css/plugins/dropify/dropify.min.css') }}">
     <!-- Dropzone -->
     <link rel="stylesheet" href="{{ asset('css/plugins/dropzone/dropzone.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
 
     <!-- Auto completar JQuery Search -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.0/jquery.typeahead.min.css" rel="stylesheet" />
@@ -172,11 +174,14 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('css/dist/img/avatar.png') }}" class="img-circle elevation-2"
-                                onerror="this.src = `{{ asset('css/dist/img/user2-160x160.jpg') }}`" alt="User Image">
+                        <img src="{{ auth()->user()->profilePhoto ? auth()->user()->profilePhoto->url : asset('css/dist/img/avatar.png') }}"
+                            class="img-circle elevation-2"
+                            onerror="this.src='{{ asset('css/dist/img/user2-160x160.jpg') }}'"
+                            alt="User Image">
                     </div>
+
                     <div class="info">
-                        <a href="#" class="d-block">{{ Auth::user()->name . ' ' . Auth::user()->last_name }}</a>
+                        <a href="/Dashboard/Profile/Index" class="d-block">{{ Auth::user()->name . ' ' . Auth::user()->last_name }}</a>
                     </div>
                 </div>
 

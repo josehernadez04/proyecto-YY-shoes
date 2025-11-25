@@ -18,8 +18,13 @@ class User extends Authenticatable implements Auditable
 {
     use HasFactory, Notifiable, HasRoles, SoftDeletes, CanResetPasswordTrait, Auditing;
 
-    public function type_document(){
+    public function type_document()
+    {
         return $this->belongsTo(TypeDocument::class);
     }
 
+    public function profilePhoto()
+    {
+        return $this->morphOne(File::class, 'fileable')->where('is_primary', true);
+    }
 }

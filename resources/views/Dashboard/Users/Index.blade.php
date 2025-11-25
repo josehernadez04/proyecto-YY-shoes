@@ -64,7 +64,6 @@
                                                 <a class="nav-link active" type="button" href="{{ route('Users.Edit', $user->id) }}">
                                                     <i class="fas fa-pencil"></i>
                                                 </a>
-                                                <button class="btn btn-success" onclick="showmessage()">mensaje</button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -79,10 +78,28 @@
     </section>
 @endsection
 @section('script')
-function showmessage() {
-toastr.error('hola');
-toastr.success('hola');
-toastr.info('hola');
-toastr.warning('hola');
-}
+let table = $('#users').DataTable({
+    paging: true,
+    searching: true,
+    info: true,
+    autoWidth: false,
+    responsive: true,
+    language: {
+        oPaginate: {
+            sFirst: 'Primero',
+            sLast: 'Último',
+            sNext: 'Siguiente',
+            sPrevious: 'Anterior',
+        },
+        info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
+        infoEmpty: 'No hay registros para mostrar',
+        infoFiltered: '(filtrados de _MAX_ registros en total)',
+        emptyTable: 'No hay datos disponibles.',
+        lengthMenu: 'Mostrar _MENU_ registros',
+        search: 'Buscar:',
+        zeroRecords: 'No se encontraron registros.',
+        decimal: ',',
+        thousands: '.'
+    }
+});
 @endsection

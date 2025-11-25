@@ -12,6 +12,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\TypeDocumentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SalesDetailsController;
 use App\Http\Controllers\ShoppingsController;
 use App\Http\Controllers\ShoppingsDetailsController;
@@ -36,7 +37,6 @@ Route::get('/', function () {
     } else {
         return redirect('/login');
     }
-
 });
 
 Route::get('reset-password/{id}/{token}', [ResetPasswordController::class, 'showResetForm']);
@@ -94,7 +94,6 @@ Route::middleware(['auth'])->group(function () {
                 Route::put('/Update/{id}', 'update')->name('Clients.Update')->middleware('can:Clients,Dashboard.Clients.Update');
                 Route::delete('/Delete/{id}', 'delete')->name('Clients.Delete')->middleware('can:Clients,Dashboard.Clients.Delete');
             });
-
         });
 
         Route::prefix('/Providers')->group(function () {
@@ -106,7 +105,6 @@ Route::middleware(['auth'])->group(function () {
                 Route::put('/Update/{id}', 'update')->name('Providers.Update')->middleware('can:Providers,Dashboard.Providers.Update');
                 Route::delete('/Delete/{id}', 'delete')->name('Providers.Delete')->middleware('can:Providers,Dashboard.Providers.Delete');
             });
-
         });
 
         Route::prefix('/Products')->group(function () {
@@ -120,15 +118,15 @@ Route::middleware(['auth'])->group(function () {
             });
         });
 
-        Route::prefix('/Sales')->group(function(){
-            Route::controller(SalesController::class)->group(function(){
-                Route::get('/Index','index')->name('Sales.Index')->middleware('can:Sales,Dashboard.Sales.Index');
-                Route::get('/Create','create')->name('Sales.Create')->middleware('can:Sales,Dashboard.Sales.Store');
-                Route::post('/Store','store')->name('Sales.Store')->middleware('can:Sales,Dashboard.Sales.Store');
+        Route::prefix('/Sales')->group(function () {
+            Route::controller(SalesController::class)->group(function () {
+                Route::get('/Index', 'index')->name('Sales.Index')->middleware('can:Sales,Dashboard.Sales.Index');
+                Route::get('/Create', 'create')->name('Sales.Create')->middleware('can:Sales,Dashboard.Sales.Store');
+                Route::post('/Store', 'store')->name('Sales.Store')->middleware('can:Sales,Dashboard.Sales.Store');
                 Route::get('/Show/{id}', 'show')->name('Sales.Show')->middleware('can:Sales,Dashboard.Sales.Show');
                 Route::get('/Edit/{id}', 'edit')->name('Sales.Edit')->middleware('can:Sales,Dashboard.Sales.Update');
                 Route::put('/Update/{id}', 'update')->name('Sales.Update')->middleware('can:Sales,Dashboard.Sales.Update');
-                Route::delete('/Delete/{id}','delete')->name('Sales.Delete')->middleware('can:Sales,Dashboard.Sales.Delete');
+                Route::delete('/Delete/{id}', 'delete')->name('Sales.Delete')->middleware('can:Sales,Dashboard.Sales.Delete');
             });
 
             Route::controller(SalesDetailsController::class)->group(function () {
@@ -146,7 +144,6 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/Edit/{id}', 'edit')->name('Shoppings.Edit')->middleware('can:Shoppings,Dashboard.Shoppings.Update');
                 Route::put('/Update/{id}', 'update')->name('Shoppings.Update')->middleware('can:Shoppings,Dashboard.Shoppings.Update');
                 Route::delete('/Delete/{id}', 'delete')->name('Shoppings.Delete')->middleware('can:Shoppings,Dashboard.Shoppings.Delete');
-
             });
 
             Route::controller(ShoppingsDetailsController::class)->group(function () {
@@ -155,17 +152,24 @@ Route::middleware(['auth'])->group(function () {
             });
         });
 
-        Route::prefix('/RolesAndPermissions')->group(function () {
-        Route::controller(RolesAndPermissionsController::class)->group(function () {
-            Route::get('/Index', 'index')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Index')->name('Dashboard.RolesAndPermissions.Index');
-            Route::post('/Index/Query', 'indexQuery')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Index.Query')->name('Dashboard.RolesAndPermissions.Index.Query');
-            Route::post('/Create', 'create')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Create')->name('Dashboard.RolesAndPermissions.Create');
-            Route::post('/Store', 'store')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Store')->name('Dashboard.RolesAndPermissions.Store');
-            Route::post('/Edit/{id}', 'edit')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Edit')->name('Dashboard.RolesAndPermissions.Edit');
-            Route::put('/Update/{id}', 'update')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Update')->name('Dashboard.RolesAndPermissions.Update');
-            Route::delete('/Delete/{id}', 'delete')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Delete')->name('Dashboard.RolesAndPermissions.Delete');
+        Route::prefix('/Profile')->group(function () {
+            Route::controller(ProfileController::class)->group(function () {
+                Route::get('/Index', 'index')->name('Profile.Index');
+                Route::put('/updateImage', 'updateimage')->name('Profile.UpdateImage');
+            });
         });
-    });
+
+        Route::prefix('/RolesAndPermissions')->group(function () {
+            Route::controller(RolesAndPermissionsController::class)->group(function () {
+                Route::get('/Index', 'index')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Index')->name('Dashboard.RolesAndPermissions.Index');
+                Route::post('/Index/Query', 'indexQuery')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Index.Query')->name('Dashboard.RolesAndPermissions.Index.Query');
+                Route::post('/Create', 'create')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Create')->name('Dashboard.RolesAndPermissions.Create');
+                Route::post('/Store', 'store')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Store')->name('Dashboard.RolesAndPermissions.Store');
+                Route::post('/Edit/{id}', 'edit')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Edit')->name('Dashboard.RolesAndPermissions.Edit');
+                Route::put('/Update/{id}', 'update')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Update')->name('Dashboard.RolesAndPermissions.Update');
+                Route::delete('/Delete/{id}', 'delete')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Delete')->name('Dashboard.RolesAndPermissions.Delete');
+            });
+        });
     });
 
 
@@ -202,9 +206,4 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/Delete/{id}', 'delete')->middleware('can:ModulesAndSubmodules,Dashboard.ModulesAndSubmodules.Delete')->name('Dashboard.ModulesAndSubmodules.Delete');
         });
     });
-
 });
-
-
-
-
