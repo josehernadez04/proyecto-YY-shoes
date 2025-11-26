@@ -7,28 +7,20 @@ use App\Traits\ApiResponser;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserAssignRoleAndPermissionsQueryRequest;
 use App\Http\Requests\User\UserAssignRoleAndPermissionsRequest;
-use App\Http\Requests\User\UserAssignWarehousesRequest;
 use App\Http\Requests\User\UserRemoveRoleAndPermissionsQueryRequest;
 use App\Http\Requests\User\UserRemoveRolesAndPermissionsRequest;
-use App\Http\Requests\User\UserIndexQueryRequest;
-use App\Http\Resources\User\UserIndexQueryCollection;
 use App\Http\Requests\User\UserDeleteRequest;
 use App\Http\Requests\User\UserPasswordRequest;
-use App\Http\Requests\User\UserRemoveWarehousesRequest;
 use App\Http\Requests\User\UserRestoreRequest;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
-use App\Models\ModelWarehouse;
 use App\Models\TypeDocument;
-use App\Models\Warehouse;
 use App\Services\UserService;
 use App\Traits\ApiMessage;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -55,7 +47,7 @@ class UserController extends Controller
         return view('Dashboard.Users.Create', compact('typeDocuments'));
     }
 
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
         $user = new User();
         $user->name = $request->name;
@@ -78,14 +70,14 @@ class UserController extends Controller
         return view('Dashboard.Users.Edit', compact('typeDocuments', 'user'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->type_document_id = $request->type_document_id;
         $user->document = $request->document;
         $user->email = $request->email;
-        $user->phone = $request->phone;
+        $user->phone = $request->phone_number;
         $user->address = $request->address;
         $user->birthdate = $request->birthdate;
         if($request->password) {
