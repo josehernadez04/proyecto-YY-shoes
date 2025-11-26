@@ -19,6 +19,7 @@ class RolesAndPermissionSeeder extends Seeder
         $users = Role::create(['name' => 'Users']);
         $categories = Role::create(['name' => 'Categories']);
         $typeDocuments = Role::create(['name' => 'TypeDocuments']);
+        $typePerson = Role::create(['name' => 'TypePerson']);
 
         $clients = Role::create(['name' => 'Clients']);
         $providers = Role::create(['name' => 'Providers']);
@@ -27,6 +28,7 @@ class RolesAndPermissionSeeder extends Seeder
         $shoppings = Role::create(['name' => 'Shoppings']);
         $rolesAndPermissions = Role::create(['name' => 'RolesAndPermissions']);
         $profile = Role::create(['name' => 'Profile']);
+
 
         Permission::create(['name' => 'Dashboard'])->syncRoles([$dashboard]);
 
@@ -83,5 +85,12 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'Dashboard.RolesAndPermissions.Delete'])->syncRoles([$rolesAndPermissions]);
 
         Permission::create(['name' => 'Dashboard.Profile.Index'])->syncRoles([$profile]);
+
+        Permission::create(['name' => 'Dashboard.TypePersons.Index'])->syncRoles([$typePerson]);
+        Permission::create(['name' => 'Dashboard.TypePersons.Store'])->syncRoles([$typePerson]);
+        Permission::create(['name' => 'Dashboard.TypePersons.Edit'])->syncRoles([$typePerson]);
+        Permission::create(['name' => 'Dashboard.TypePersons.Update'])->syncRoles([$typePerson]);
+        Permission::create(['name' => 'Dashboard.TypePersons.Delete'])->syncRoles([$typePerson]);
+
     }
 }

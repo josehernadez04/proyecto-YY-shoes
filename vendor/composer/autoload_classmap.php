@@ -86,6 +86,7 @@ return array(
     'App\\Http\\Resources\\User\\UserIndexQueryCollection' => $baseDir . '/app/Http/Resources/User/UserIndexQueryCollection.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Client' => $baseDir . '/app/Models/Client.php',
+    'App\\Models\\File' => $baseDir . '/app/Models/File.php',
     'App\\Models\\Module' => $baseDir . '/app/Models/Module.php',
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
     'App\\Models\\ProductDetail' => $baseDir . '/app/Models/ProductDetail.php',

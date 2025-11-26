@@ -757,6 +757,7 @@ class ComposerStaticInitd8dacbe985ec62888937197aae0da1ad
         'App\\Http\\Resources\\User\\UserIndexQueryCollection' => __DIR__ . '/../..' . '/app/Http/Resources/User/UserIndexQueryCollection.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Client' => __DIR__ . '/../..' . '/app/Models/Client.php',
+        'App\\Models\\File' => __DIR__ . '/../..' . '/app/Models/File.php',
         'App\\Models\\Module' => __DIR__ . '/../..' . '/app/Models/Module.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\Models\\ProductDetail' => __DIR__ . '/../..' . '/app/Models/ProductDetail.php',

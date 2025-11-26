@@ -16,6 +16,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SalesDetailsController;
 use App\Http\Controllers\ShoppingsController;
 use App\Http\Controllers\ShoppingsDetailsController;
+use App\Http\Controllers\TypePersonController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -161,13 +162,25 @@ Route::middleware(['auth'])->group(function () {
 
         Route::prefix('/RolesAndPermissions')->group(function () {
             Route::controller(RolesAndPermissionsController::class)->group(function () {
-                Route::get('/Index', 'index')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Index')->name('Dashboard.RolesAndPermissions.Index');
-                Route::post('/Index/Query', 'indexQuery')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Index.Query')->name('Dashboard.RolesAndPermissions.Index.Query');
-                Route::post('/Create', 'create')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Create')->name('Dashboard.RolesAndPermissions.Create');
-                Route::post('/Store', 'store')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Store')->name('Dashboard.RolesAndPermissions.Store');
-                Route::post('/Edit/{id}', 'edit')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Edit')->name('Dashboard.RolesAndPermissions.Edit');
-                Route::put('/Update/{id}', 'update')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Update')->name('Dashboard.RolesAndPermissions.Update');
-                Route::delete('/Delete/{id}', 'delete')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Delete')->name('Dashboard.RolesAndPermissions.Delete');
+                Route::get('/Index', 'index')->name('Dashboard.RolesAndPermissions.Index')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Index');
+                Route::post('/Index/Query', 'indexQuery')->name('Dashboard.RolesAndPermissions.Index.Query')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Index.Query');
+                Route::post('/Create', 'create')->name('Dashboard.RolesAndPermissions.Create')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Create');
+                Route::post('/Store', 'store')->name('Dashboard.RolesAndPermissions.Store')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Store');
+                Route::post('/Edit/{id}', 'edit')->name('Dashboard.RolesAndPermissions.Edit')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Edit');
+                Route::put('/Update/{id}', 'update')->name('Dashboard.RolesAndPermissions.Update')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Update');
+                Route::delete('/Delete/{id}', 'delete')->name('Dashboard.RolesAndPermissions.Delete')->middleware('can:RolesAndPermissions,Dashboard.RolesAndPermissions.Delete');
+            });
+        });
+
+        Route::prefix('TypePersons')->group(function () {
+            Route::controller(TypePersonController::class)->group(function () {
+                Route::get('/Index', 'index')->name('Dashboard.TypePersons.Index')->middleware('can:TypePersons,Dashboard.TypePersons.Index');
+                Route::post('/Index/Query', 'indexQuery')->middleware('can:TypePersons,Dashboard.TypePersons.Index.Query')->name('Dashboard.TypePersons.Index.Query');
+                Route::post('/Create', 'create')->middleware('can:TypePersons,Dashboard.TypePersons.Create')->name('Dashboard.TypePersons.Create');
+                Route::post('/Store', 'store')->middleware('can:TypePersons,Dashboard.TypePersons.Store')->name('Dashboard.TypePersons.Store');
+                Route::post('/Edit/{id}', 'edit')->middleware('can:TypePersons,Dashboard.TypePersons.Edit')->name('Dashboard.TypePersons.Edit');
+                Route::put('/Update/{id}', 'update')->middleware('can:TypePersons,Dashboard.TypePersons.Update')->name('Dashboard.TypePersons.Update');
+                Route::delete('/Delete/{id}', 'delete')->middleware('can:TypePersons,Dashboard.TypePersons.Delete')->name('Dashboard.TypePersons.Delete');
             });
         });
     });
