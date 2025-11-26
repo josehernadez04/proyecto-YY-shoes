@@ -21,7 +21,7 @@ class CategoryUpdateRequest extends FormRequest
                 'max:100',
                 Rule::unique('categories', 'name')->ignore($this->route('id'))
             ],
-            'description' => ['nullable', 'string', 'max:500'],
+            'description' => ['nullable', 'string', 'max:250'],
         ];
     }
 

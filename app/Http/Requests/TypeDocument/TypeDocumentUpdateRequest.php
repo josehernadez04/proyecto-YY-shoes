@@ -24,8 +24,8 @@ class TypeDocumentUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|string|max:10|unique:type_documents,code,'.$this->route('id'),
-            'description' => 'required|string|max:255',
+            'code' => 'required|string|max:5|unique:type_documents,code,'.$this->route('id'),
+            'description' => 'required|string|max:250',
 
         ];
     }

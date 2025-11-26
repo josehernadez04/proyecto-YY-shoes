@@ -21,7 +21,7 @@ class CategoryStoreRequest extends FormRequest
                 'max:100',
                 Rule::unique('categories', 'name')
             ],
-            'description' => ['nullable', 'string', 'max:500'],
+            'description' => ['nullable', 'string', 'max:250'],
         ];
     }
 

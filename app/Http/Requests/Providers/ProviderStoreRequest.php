@@ -25,12 +25,12 @@ class ProviderStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'document' => ['required','string','max:20','unique:providers,document'],
+            'document' => ['required','string', 'min:10', 'max:20','unique:providers,document'],
             'type_document_id' => ['required','numeric','exists:type_documents,id'],
-            'name'=>['required','string','max:100'],
-            'phone'=>['nullable','regex:/^[0-9]+$/','max:20'],
+            'name'=>['required','string','max:80'],
+            'phone'=>['nullable','regex:/^[0-9]+$/','min:10', 'max:15'],
             'address'=>['nullable','string','max:150'],
-            'email'=>['nullable','email','max:100'],
+            'email'=>['nullable','email','max:100','email:rfc,dns'],
         ];
     }
     public function attributes()
