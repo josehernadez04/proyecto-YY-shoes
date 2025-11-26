@@ -62,6 +62,9 @@ class UserController extends Controller
         $user->type_document_id = $request->type_document_id;
         $user->document = $request->document;
         $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->birthdate = $request->birthdate;
         $user->password = bcrypt($request->password);
         $user->save();
 
@@ -82,6 +85,9 @@ class UserController extends Controller
         $user->type_document_id = $request->type_document_id;
         $user->document = $request->document;
         $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->birthdate = $request->birthdate;
         if($request->password) {
             $user->password = bcrypt($request->password);
         }

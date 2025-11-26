@@ -39,35 +39,51 @@
                                 @csrf
                                 <div class="form-group c_form_group">
                                     <label for="name">Nombre completo</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nombre completo" required>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Nombre completo" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="type_document_id">Tipos de documento</label>
                                     <select class="form-control" name="type_document_id" id="type_document_id">
                                         <option value="" selected disabled>Seleccione</option>
                                         @foreach ($typeDocuments as $typeDocument)
-                                        <option value="{{ $typeDocument->id }}">{{ $typeDocument->code }}</option>
+                                            <option value="{{ $typeDocument->id }}">{{ $typeDocument->code }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="document">Documento</label>
-                                    <input type="text" class="form-control" id="document" name="document" placeholder="Documento" required>
+                                    <input type="text" class="form-control" id="document" name="document"
+                                        placeholder="Documento" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="email">Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico">
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="Correo Electrónico">
+                                </div>
+                                <div class="form-group c_form_group">
+                                    <label for="phone">Telefono</label>
+                                    <input type="text" class="form-control" id="phone" name="phone"
+                                        placeholder="Telefono">
+                                </div>
+                                <div class="form-group c_form_group">
+                                    <label for="address">Direccion</label>
+                                    <input type="text" class="form-control" id="address" name="address"
+                                        placeholder="Direccion">
+                                </div>
+                                <div class="form-group c_form_group">
+                                    <label for="birthdate">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-control" id="birthdate" name="birthdate"
+                                        placeholder="Fecha de Nacimiento">
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="password">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="Contraseña" required>
                                 </div>
 
-                                <input type="submit" class="btn btn-primary" value="Guardar"/>
-                                {{-- <a type="button" class="btn btn-danger" value="devolver" href="{{ route('Users.Index') }}"></a> --}}
-                                <a class=" btn btn-danger" type="button" href="{{ route('Users.Index') }}">
-                                        {{-- <i class="fas fa-user-plus"></i> --}}volver
-                                    </a>
+                                <input type="submit" class="btn btn-primary" value="Guardar" />
+                                <a class=" btn btn-secondary" type="button" href="{{ route('Users.Index') }}">volver</a>
                             </form>
                         </div>
                     </div>
