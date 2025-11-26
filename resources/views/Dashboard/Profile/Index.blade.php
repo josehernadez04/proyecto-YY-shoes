@@ -84,17 +84,24 @@
                                                         </div>
 
                                                         <div class="row mt-3">
-                                                            <div class="col-md-6">
+                                                            {{-- <div class="col-md-6">
                                                                 <label for="position">Cargo</label>
                                                                 <input type="text" class="form-control"
                                                                     value="{{ auth()->user()->position }}" disabled>
-                                                            </div>
+                                                            </div> --}}
 
                                                             <div class="col-md-6">
                                                                 <label for="phone">Teléfono</label>
                                                                 <input type="text" class="form-control"
                                                                     value="{{ auth()->user()->phone }}" disabled>
                                                             </div>
+                                                            <div class="col-md-6">
+                                                                <label for="birthday">Birthday</label>
+                                                                <input type="text" class="form-control"
+                                                                    value="{{ auth()->user()->birthdate }}" disabled>
+                                                            </div>
+
+
                                                         </div>
 
                                                         <div class="row mt-3">

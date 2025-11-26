@@ -17,7 +17,7 @@ class TypePersonController extends Controller
     {
         $typePerson = TypePerson::all();
         return $typePerson;
-        return view('TypePerson.Index', compact('typePerson'));
+        return view('TypePersons.Index', compact('typePerson'));
     }
 
     /**
@@ -27,7 +27,7 @@ class TypePersonController extends Controller
      */
     public function create()
     {
-        return view('TypePerson.Create');
+        return view('TypePersons.Create');
     }
 
     /**
@@ -42,7 +42,7 @@ class TypePersonController extends Controller
         $typePerson->name = $request->name;
         $typePerson->description = $request->description;
         $typePerson->save();
-        return redirect()->route('TypePerson.Index');
+        return redirect()->route('TypePersons.Index');
     }
 
     /**
@@ -65,7 +65,7 @@ class TypePersonController extends Controller
     public function edit(TypePerson $typePerson)
     {
         $typePerson = TypePerson::findOrFail($typePerson->id);
-        return view('TypePerson.Edit', compact('typePerson'));
+        return view('TypePersons.Edit', compact('typePerson'));
     }
 
     /**
@@ -81,7 +81,7 @@ class TypePersonController extends Controller
         $typePerson->name = $request->name;
         $typePerson->description = $request->description;
         $typePerson->save();
-        return redirect()->route('TypePerson.Index');
+        return redirect()->route('TypePersons.Index');
     }
 
     /**
@@ -94,6 +94,6 @@ class TypePersonController extends Controller
     {
         $typePerson = TypePerson::findOrFail($typePerson->id);
         $typePerson->delete();
-        return redirect()->route('TypePerson.Index');
+        return redirect()->route('TypePersons.Index');
     }
 }

@@ -39,36 +39,40 @@
                                 @csrf
                                 <div class="form-group c_form_group">
                                     <label for="name">Nombre completo</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nombre completo" value="{{ old('name') }}" required>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Nombre completo" value="{{ old('name') }}" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="type_document_id">Tipos de documento</label>
                                     <select class="form-control" name="type_document_id" id="type_document_id">
                                         <option value="" selected disabled>Seleccione</option>
                                         @foreach ($type_documents as $typeDocument)
-                                        <option value="{{ $typeDocument->id }}">{{ $typeDocument->code }}</option>
+                                            <option value="{{ $typeDocument->id }}">{{ $typeDocument->code }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="document">Documento</label>
-                                    <input type="text" class="form-control" id="document" name="document" placeholder="Documento" value="{{ old('document') }}" required>
+                                    <input type="text" class="form-control" id="document" name="document"
+                                        placeholder="Documento" value="{{ old('document') }}" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="email">Correo Electrónico</label>
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="Correo Electrónico" value="{{ old('document') }}">
+                                    <input type="text" class="form-control" id="email" name="email"
+                                        placeholder="Correo Electrónico" value="{{ old('document') }}">
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="phone">Telefono</label>
-                                    <input type="phone" class="form-control" id="phone" name="phone" placeholder="Telefono" value="{{ old('document') }}">
+                                    <input type="phone" class="form-control" id="phone" name="phone"
+                                        placeholder="Telefono" value="{{ old('document') }}">
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="address">Direccion</label>
-                                    <input type="address" class="form-control" id="address" name="address" placeholder="Direccion" value="{{ old('document') }}">
+                                    <input type="address" class="form-control" id="address" name="address"
+                                        placeholder="Direccion" value="{{ old('document') }}">
                                 </div>
-
-                                <a href="{{ route('Clients.Index') }}">regresar</a>
-                                <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <input type="submit" class="btn btn-primary" value="Guardar" />
+                                <a href="{{ route('Clients.Index') }}" class="btn btn-secondary">volver</a>
                             </form>
                         </div>
                     </div>

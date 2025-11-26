@@ -59,13 +59,13 @@ class ModulesAndSubmodulesSeeder extends Seeder
             'permission_id' => 10
         ]);
 
-        Submodule::create([
-            'name' => 'Tipos de Personas',
-            'url' => '/Dashboard/TypePerson/Index',
-            'icon' => 'fas fa-person',
-            'module_id' => $configuracion->id,
-            'permission_id' => 46
-        ]);
+        // Submodule::create([
+        //     'name' => 'Tipos de Personas',
+        //     'url' => '/Dashboard/TypePersons/Index',
+        //     'icon' => 'fas fa-person',
+        //     'module_id' => $configuracion->id,
+        //     'permission_id' => 46
+        // ]);
 
         $administracion = Module::create(['name' => 'Administración', 'icon' => 'fas fa-folder']);
 

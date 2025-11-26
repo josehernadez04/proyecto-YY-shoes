@@ -39,13 +39,18 @@
                                 @csrf
                                 <div class="form-group c_form_group">
                                     <label for="name">Nombre</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nombre " required>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Nombre " required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="description">description</label>
-                                    <input type="text" class="form-control" id="description" name="description" placeholder="Descripcion" required>
+                                    <input type="text" class="form-control" id="description" name="description"
+                                        placeholder="Descripcion" required>
                                 </div>
-                                <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <input type="submit" class="btn btn-primary" value="Guardar" />
+                                <a href="{{ route('Categories.Index') }}" class="btn btn-secondary">
+                                    Volver
+                                </a>
                             </form>
                         </div>
                     </div>

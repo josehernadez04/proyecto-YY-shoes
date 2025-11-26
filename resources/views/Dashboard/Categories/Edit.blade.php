@@ -23,7 +23,7 @@
     @include('Dashboard.Alerts.Info')
     @include('Dashboard.Alerts.Question')
     @include('Dashboard.Alerts.Warning')
-    @include('Dashboard.Alerts.Danger') 
+    @include('Dashboard.Alerts.Danger')
 
     <section class="content">
         <div class="container-fluid">
@@ -40,18 +40,23 @@
                                 @csrf
                                 <div class="form-group c_form_group">
                                     <label for="name">Nombre</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nombre completo" value="{{ $categories->name }}" required>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Nombre completo" value="{{ $categories->name }}" required>
                                 </div>
-                               
+
                                 <div class="form-group c_form_group">
                                     <label for="description">Descripcion</label>
-                                    <input type="text" class="form-control" id="description" name="description" placeholder="Descripcion" value="{{ $categories->description }}" required>
+                                    <input type="text" class="form-control" id="description" name="description"
+                                        placeholder="Descripcion" value="{{ $categories->description }}" required>
                                 </div>
 
                                 <input type="hidden" name="created_at" value="{{ $categories->created_at }}">
-                               
 
-                                <input type="submit" class="btn btn-primary" value="Guardar"/>
+
+                                <input type="submit" class="btn btn-primary" value="Guardar" />
+                                <a href="{{ route('Categories.Index') }}" class="btn btn-secondary">
+                                    Volver
+                                </a>
                             </form>
                         </div>
                     </div>

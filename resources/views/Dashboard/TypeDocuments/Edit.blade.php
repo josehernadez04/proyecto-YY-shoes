@@ -51,10 +51,11 @@
                                     <input type="text" class="form-control" name="description"
                                         value="{{ $typedocument->description }}" required>
                                 </div>
-
-                                <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <input type="submit" class="btn btn-primary" value="Guardar" />
+                                <a href="{{ route('TypeDocuments.Index') }}" class="btn btn-secondary">
+                                    Volver
+                                </a>
                             </form>
-
                         </div>
                     </div>
                 </div>
