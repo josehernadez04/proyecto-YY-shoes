@@ -68,6 +68,9 @@
                                     <input type="email" class="form-control" id="email" name="email" value="{{ $providers->email }}" placeholder="Correo Electrónico">
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <a href="{{ route('Providers.Index') }}" class="btn btn-secondary">
+                                    Volver
+                                </a>    
                             </form>
                         </div>
                     </div>
