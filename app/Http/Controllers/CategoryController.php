@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\CategoryStoreRequest;
 use App\Http\Requests\Category\CategoryUpdateRequest;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -23,27 +21,26 @@ class CategoryController extends Controller
 
     public function store(CategoryStoreRequest $request)
     {
-        $categories = new Category();
-        $categories->name = $request->name;
-        $categories->description = $request->description;
-        $categories->save();
+        Category::create($request->validated());
 
-        return redirect()->route('Categories.Index');
+        return redirect()
+            ->route('Categories.Index')
+            ->with('success', 'Categoría creada exitosamente');
     }
 
     public function edit($id)
     {
-        $categories = Category::findOrFail($id);
-        return view('Dashboard.Categories.Edit', compact('categories'));
+        $category = Category::findOrFail($id);
+        return view('Dashboard.Categories.Edit', compact('category'));
     }
-
 
     public function update(CategoryUpdateRequest $request, $id)
     {
         $category = Category::findOrFail($id);
-        $category->name = $request->name;
-        $category->description = $request->description;
-        $category->save();
-        return redirect()->route('Categories.Index');
+        $category->update($request->validated());
+
+        return redirect()
+            ->route('Categories.Index')
+            ->with('success', 'Categoría actualizada correctamente');
     }
 }
