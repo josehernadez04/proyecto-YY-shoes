@@ -68,6 +68,9 @@
                                 </div>
 
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <a href="{{ route('Providers.Index') }}" class="btn btn-secondary">
+                                    Volver
+                                </a>
                             </form>
                         </div>
                     </div>
