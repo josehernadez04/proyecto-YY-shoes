@@ -92,11 +92,10 @@
 
                                 <input type="submit" class="btn btn-primary" value="Guardar" />
 
-                                <a type="submit" class="btn btn-danger" >enviar</a></a>
-
-                            </form>
-
-                                <button class="btn btn-danger" onclick="showmessage()">enviar2</button>
+                                <a href="{{ route('Products.Index') }}" class="btn btn-secondary">
+                                    Volver
+                                </a>
+                            </form>                               
                         </div>
                     </div>
                 </div>
