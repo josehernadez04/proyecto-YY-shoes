@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::controller(HomeController::class)->group(function () {
             Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+            Route::get('/', [HomeController::class, 'index'])->name('dashboard');
         });
 
         Route::prefix('/Users')->group(function () {

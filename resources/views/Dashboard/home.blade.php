@@ -41,7 +41,7 @@
                     <div class="card card-success">
                         {{-- <div class="card-header">Ventas por Mes</div> --}}
                         <div class="card-body" style="height:300px;">
-                            <canvas id="ventasMes"></canvas>
+                            <canvas id="productosMes"></canvas>
                         </div>
                     </div>
                 </div>
@@ -90,6 +90,41 @@ new Chart(document.getElementById('productosCategoria'), {
             tooltip: {
                 enabled: true
             }
+        }
+    }
+});
+
+new Chart(document.getElementById('productosMes'), {
+    type: 'line',
+    data: {
+        labels: @json($productosMes->pluck('mes')),
+        datasets: [{
+            label: 'Productos creados por mes',
+            data: @json($productosMes->pluck('total')),
+            fill: true,
+            tension: 0.3,
+            backgroundColor: 'rgba(255, 206, 86, 0.4)',
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 2,
+            pointBackgroundColor: 'rgba(255, 159, 64, 1)',
+            pointRadius: 5
+        }]
+    },
+    options: {
+        maintainAspectRatio: false,
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: { color: "#e1e1e1" }
+            },
+            x: {
+                grid: { display: false }
+            }
+        },
+        plugins: {
+            legend: { position: 'top' },
+            tooltip: { enabled: true }
         }
     }
 });

@@ -27,11 +27,24 @@ class HomeController extends Controller
     public function index()
     {
         $category = Category::withCount('products')->get();
-        $stockProducts = Product::select('name', 'stock')->get();
+        // $stockProducts = Product::select('name', 'stock')->get();
+
+        // Productos por mes
+        $productosMes = Product::selectRaw('MONTH(created_at) as mes, COUNT(*) as total')
+            ->groupBy('mes')
+            ->orderBy('mes')
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'mes' => \Carbon\Carbon::create()->month($item['mes'])->locale('es')->monthName,
+                    'total' => $item['total']
+                ];
+            });
 
         return view('Dashboard.home', [
             'category' => $category,
-            'stockProducts' => $stockProducts
+            // 'stockProducts' => $stockProducts,
+            'productosMes' => $productosMes
         ]);
     }
 }
