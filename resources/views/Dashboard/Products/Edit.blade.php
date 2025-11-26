@@ -89,7 +89,7 @@
                                 </div>
 
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
-                                <a href="{{ route('Products.Index') }}" class="btn btn-secondary">Cancelar</a>
+                                <a href="{{ route('Products.Index') }}" class="btn btn-secondary">volver</a>
 
                             </form>
                         </div>
