@@ -19,8 +19,6 @@ class RolesAndPermissionSeeder extends Seeder
         $users = Role::create(['name' => 'Users']);
         $categories = Role::create(['name' => 'Categories']);
         $typeDocuments = Role::create(['name' => 'TypeDocuments']);
-        $typePerson = Role::create(['name' => 'TypePerson']);
-
         $clients = Role::create(['name' => 'Clients']);
         $providers = Role::create(['name' => 'Providers']);
         $products = Role::create(['name' => 'Products']);
@@ -28,6 +26,7 @@ class RolesAndPermissionSeeder extends Seeder
         $shoppings = Role::create(['name' => 'Shoppings']);
         $rolesAndPermissions = Role::create(['name' => 'RolesAndPermissions']);
         $profile = Role::create(['name' => 'Profile']);
+        $typePerson = Role::create(['name' => 'TypePerson']);
 
 
         Permission::create(['name' => 'Dashboard'])->syncRoles([$dashboard]);

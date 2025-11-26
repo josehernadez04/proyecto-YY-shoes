@@ -17,7 +17,7 @@ class ModulesAndSubmodulesSeeder extends Seeder
     {
         $configuracion = Module::create(['name' => 'Configuración', 'icon' => 'fas fa-cog']);
 
-        $configuracion->roles()->sync([2, 3, 4, 46]);
+        $configuracion->roles()->sync([2, 3, 4]);
 
         Submodule::create([
             'name' => 'Usuarios',
@@ -62,7 +62,7 @@ class ModulesAndSubmodulesSeeder extends Seeder
         Submodule::create([
             'name' => 'Tipos de Personas',
             'url' => '/Dashboard/TypePerson/Index',
-            'icon' => 'fas fa-user-tie',
+            'icon' => 'fas fa-person',
             'module_id' => $configuracion->id,
             'permission_id' => 46
         ]);

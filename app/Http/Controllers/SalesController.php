@@ -13,7 +13,7 @@ class SalesController extends Controller
 {
     public function index()
     {
-        $sales = Sale::with('client')->get();
+        $sales = Sale::with('client', 'user')->get();
         return view('Dashboard.Sales.Index', compact('sales'));
     }
 
@@ -31,7 +31,7 @@ class SalesController extends Controller
 
         $sale->save();
 
-        return redirect()->route('Sales.Index');
+        return redirect()->route('Sales.Show', $sale->id);
     }
 
     public function show($id)

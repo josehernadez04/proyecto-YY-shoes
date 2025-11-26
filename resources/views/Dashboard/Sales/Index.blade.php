@@ -33,7 +33,7 @@
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link active" type="button" href="{{ route('Sales.Details.Create') }}">
+                                    <a class="nav-link active" type="button" href="{{ route('Sales.Create') }}">
                                         <i class="fas fa-user-plus"></i>
                                     </a>
                                 </li>
@@ -46,6 +46,9 @@
                                         <tr>
                                             <th>#</th>
                                             <th>CLIENTE</th>
+                                            <th>CODIGO DE VENTA</th>
+                                            <th>FECHA DE COMPRA</th>
+                                            <th>VENDEDOR</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
@@ -53,7 +56,10 @@
                                         @foreach ($sales as $sale)
                                         <tr>
                                             <td>{{ $sale->id }}</td>
-                                            <td>{{ $sale->client->name }}</td>>
+                                            <td>{{ $sale->client->name }}</td>
+                                            <td>{{ $sale->code }}</td>
+                                            <td>{{ $sale->created_at }}</td>
+                                            <td>{{ $sale->user->name }}</td>
                                             <td>
                                                 <a class="nav-link active" type="button" href="{{ route('Sales.Edit', $sale->id) }}">
                                                     <i class="fas fa-pencil"></i>

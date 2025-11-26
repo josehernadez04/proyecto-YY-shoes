@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Crear Venta</h1>
+                        <h1 class="m-0 text-dark">Crear Detalle de Venta</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -38,8 +38,8 @@
                             <form action="{{ route('Sales.Details.Store') }}" method="post">
                                 @csrf
 
-                                <div class="form-group c_form_group" >
-                                    <label for="sale_id">Id compra</label>
+                                <div class="form-group c_form_group" hidden>
+                                    <label for="sale_id">Id venta</label>
                                     <input type="number" class="form-control" id="sale_id" name="sale_id" value="{{ $sale_id }}" required>
                                 </div>
                                 <div class="form-group c_form_group">
