@@ -28,7 +28,7 @@ class ClientStoreRequest extends FormRequest
             'type_document_id' => ['required', 'numeric', 'exists:type_documents,id'],
             'document' => ['required', 'regex:/^[0-9]+$/', 'max:20', 'unique:clients,document'],
             'phone' => ['nullable', 'string', 'max:20'],
-            'email' => ['nullable', 'string', 'email', 'max:100'],
+            'email' => ['required', 'email:rfc', 'regex:/^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,}$/'],
             'address' => ['nullable', 'string', 'max:150'],
         ];
     }
