@@ -26,7 +26,7 @@
 
         <div class="card card-outline card-dark">
             <div class="card-header text-center">
-                <img src={{ asset('/images/logo.png') }} alt="logo" class="logo-login">
+                <img src={{ asset('/images/logo_1.jpg') }} alt="logo" class="logo-login">
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">
