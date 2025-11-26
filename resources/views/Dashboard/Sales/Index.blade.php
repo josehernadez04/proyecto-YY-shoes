@@ -33,7 +33,7 @@
 
                             <a href="{{ route('Sales.Details.Create') }}"
                             class="btn btn-primary btn-sm rounded-pill shadow-sm ml-auto" title="Nueva venta">
-                                <i class="fas fa-plus mr-1"></i>
+                                <i class="fas fa-plus "></i>
                             </a>
                         </div>
 

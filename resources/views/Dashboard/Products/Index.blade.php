@@ -42,7 +42,7 @@
 
                             <a href="{{ route('Products.Create') }}"
                             class="btn btn-primary btn-sm rounded-pill shadow-sm ml-auto" title="Nuevo producto">
-                                <i class="fas fa-plus mr-1"></i>
+                                <i class="fas fa-plus "></i>
                             </a>
                         </div>
 

@@ -32,7 +32,7 @@
 
                             <a href="{{ route('Providers.Create') }}"
                             class="btn btn-primary btn-sm rounded-pill shadow-sm ml-auto" title="Nueva proveedor">
-                                <i class="fas fa-plus mr-1"></i>
+                                <i class="fas fa-plus "></i>
                             </a>
                         </div>
 

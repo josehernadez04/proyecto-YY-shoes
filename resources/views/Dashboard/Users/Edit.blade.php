@@ -224,7 +224,7 @@
                                     </a>
                                     <button type="submit"
                                             class="btn btn-primary btn-sm rounded-pill">
-                                        <i class="fas fa-save mr-1"></i> Guardar cambios
+                                        <i class="fas fa-save "></i> Guardar cambios
                                     </button>
                                 </div>
 

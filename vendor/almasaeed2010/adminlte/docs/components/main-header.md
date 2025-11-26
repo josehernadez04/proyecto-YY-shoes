@@ -71,7 +71,7 @@ The main header contains the navbar. Construction of the navbar differs slightly
                 <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
               </h3>
               <p class="text-sm">Call me whenever you can...</p>
-              <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              <p class="text-sm text-muted"><i class="far fa-clock "></i> 4 Hours Ago</p>
             </div>
           </div>
           <!-- Message End -->
@@ -87,7 +87,7 @@ The main header contains the navbar. Construction of the navbar differs slightly
                 <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
               </h3>
               <p class="text-sm">I got your message bro</p>
-              <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              <p class="text-sm text-muted"><i class="far fa-clock "></i> 4 Hours Ago</p>
             </div>
           </div>
           <!-- Message End -->
@@ -103,7 +103,7 @@ The main header contains the navbar. Construction of the navbar differs slightly
                 <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
               </h3>
               <p class="text-sm">The subject goes here</p>
-              <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              <p class="text-sm text-muted"><i class="far fa-clock "></i> 4 Hours Ago</p>
             </div>
           </div>
           <!-- Message End -->
@@ -204,7 +204,7 @@ The main header contains the navbar. Construction of the navbar differs slightly
                 <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
               </h3>
               <p class="text-sm">Call me whenever you can...</p>
-              <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              <p class="text-sm text-muted"><i class="far fa-clock "></i> 4 Hours Ago</p>
             </div>
           </div>
           <!-- Message End -->
@@ -220,7 +220,7 @@ The main header contains the navbar. Construction of the navbar differs slightly
                 <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
               </h3>
               <p class="text-sm">I got your message bro</p>
-              <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              <p class="text-sm text-muted"><i class="far fa-clock "></i> 4 Hours Ago</p>
             </div>
           </div>
           <!-- Message End -->
@@ -236,7 +236,7 @@ The main header contains the navbar. Construction of the navbar differs slightly
                 <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
               </h3>
               <p class="text-sm">The subject goes here</p>
-              <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              <p class="text-sm text-muted"><i class="far fa-clock "></i> 4 Hours Ago</p>
             </div>
           </div>
           <!-- Message End -->
@@ -351,7 +351,7 @@ Top navbar example can be found in this [demo page](https://adminlte.io/themes/d
                   <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                 </h3>
                 <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                <p class="text-sm text-muted"><i class="far fa-clock "></i> 4 Hours Ago</p>
               </div>
             </div>
             <!-- Message End -->
@@ -367,7 +367,7 @@ Top navbar example can be found in this [demo page](https://adminlte.io/themes/d
                   <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
                 </h3>
                 <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                <p class="text-sm text-muted"><i class="far fa-clock "></i> 4 Hours Ago</p>
               </div>
             </div>
             <!-- Message End -->
@@ -383,7 +383,7 @@ Top navbar example can be found in this [demo page](https://adminlte.io/themes/d
                   <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
                 </h3>
                 <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                <p class="text-sm text-muted"><i class="far fa-clock "></i> 4 Hours Ago</p>
               </div>
             </div>
             <!-- Message End -->
@@ -488,7 +488,7 @@ Top navbar example can be found in this [demo page](https://adminlte.io/themes/d
                   <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                 </h3>
                 <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                <p class="text-sm text-muted"><i class="far fa-clock "></i> 4 Hours Ago</p>
               </div>
             </div>
             <!-- Message End -->
@@ -504,7 +504,7 @@ Top navbar example can be found in this [demo page](https://adminlte.io/themes/d
                   <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
                 </h3>
                 <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                <p class="text-sm text-muted"><i class="far fa-clock "></i> 4 Hours Ago</p>
               </div>
             </div>
             <!-- Message End -->
@@ -520,7 +520,7 @@ Top navbar example can be found in this [demo page](https://adminlte.io/themes/d
                   <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
                 </h3>
                 <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                <p class="text-sm text-muted"><i class="far fa-clock "></i> 4 Hours Ago</p>
               </div>
             </div>
             <!-- Message End -->

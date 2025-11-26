@@ -31,7 +31,7 @@
 
                             <a href="{{ route('TypeDocuments.Create') }}"
                             class="btn btn-primary btn-sm rounded-pill shadow-sm ml-auto" title="Nuevo tipo de documento">
-                                <i class="fas fa-user-plus mr-1"></i>
+                                <i class="fas fa-user-plus "></i>
                             </a>
                         </div>
 

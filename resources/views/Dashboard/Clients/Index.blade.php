@@ -31,7 +31,7 @@
 
                             <a href="{{ route('Clients.Create') }}"
                             class="btn btn-primary btn-sm rounded-pill shadow-sm ml-auto" title="Nuevo cliente">
-                                <i class="fas fa-plus mr-1"></i>
+                                <i class="fas fa-plus "></i>
                             </a>
                         </div>
 
