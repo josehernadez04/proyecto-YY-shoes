@@ -35,7 +35,7 @@ class UserUpdateRequest extends FormRequest
             'document_number' => ['required', 'string', 'min:5', 'max:20', 'unique:users,document_number,' . $this->route('id')],
             'phone_number' => ['required', 'string', 'size:10'],
             'address' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $this->route('id')],
+            'email' => ['required', 'email:rfc', 'regex:/^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,}$/', 'unique:users,email,' . $this->route('id')],
             'title' => ['required', 'string', Rule::in($this->titles())],
             'zone' => ['required', 'string', Rule::in($this->zones())]
         ];
