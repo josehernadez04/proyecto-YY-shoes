@@ -39,7 +39,7 @@
 
                 <div class="col-md-6">
                     <div class="card card-success">
-                        <div class="card-header">Ventas por Mes</div>
+                        <div class="card-header" style="color: #8b5cf6">Ventas por Mes</div>
                         <div class="card-body" style="height:300px;">
                             <canvas id="ventasMes"></canvas>
                         </div>

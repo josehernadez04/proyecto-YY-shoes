@@ -1,103 +1,107 @@
 @extends('Templates.Dashboard')
-@section('content')
-    <section class="content">
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Categoria</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item">Dashboard</li>
-                            <li class="breadcrumb-item">Categories</li>
-                            <li class="breadcrumb-item">Index</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-    </section>
 
+@section('content')
+
+    {{-- Header de la página (si ya tienes el partial global) --}}
+    @include('Dashboard.Partials.page-header', [
+        'title' => 'Categorías',
+        'subtitle' => 'Gestión de categorías de productos.',
+        'breadcrumbs' => [
+            ['label' => 'Dashboard', 'route' => 'dashboard'],
+            ['label' => 'Categories'],
+            ['label' => 'Index'],
+        ],
+    ])
+
+    {{-- Alertas --}}
     @include('Dashboard.Alerts.Success')
     @include('Dashboard.Alerts.Info')
     @include('Dashboard.Alerts.Question')
     @include('Dashboard.Alerts.Warning')
     @include('Dashboard.Alerts.Danger')
 
+    {{-- Contenido principal --}}
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+
                     <div class="card">
-                        <div class="card-header p-2">
-                            <ul class="nav nav-pills">
-                                <li class="nav-item">
-                                    <a class="nav-link active" type="button" href="{{ route('Categories.Create') }}">
-                                        <i class="fas fa-user-plus"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                        <div class="card-header d-flex align-items-center">
+                            <h3 class="card-title mb-0">Listado de categorías</h3>
+
+                            <a href="{{ route('Categories.Create') }}"
+                            class="btn btn-primary btn-sm rounded-pill shadow-sm ml-auto" title="Nueva categoría">
+                                <i class="fas fa-plus mr-1"></i>
+                            </a>
                         </div>
+
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="categoriesTable" class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
-                                    <thead class="thead-dark">
+                                <table id="categoriesTable"
+                                       class="table table-striped table-hover align-middle w-100">
+                                    <thead>
                                         <tr>
-                                            <th>CODIGO</th>
-                                            <th>NOMBRE </th>
-                                            <th>DESCRIPCION</th>
-                                            <th>FECHA DE CREACION</th>
-                                            <th>ACCIONES</th>
+                                            <th>Código</th>
+                                            <th>Nombre</th>
+                                            <th>Descripción</th>
+                                            <th>Fecha de creación</th>
+                                            <th class="text-center">Acciones</th>
                                         </tr>
                                     </thead>
-                                <tbody>
+                                    <tbody>
                                         @foreach ($categories as $category)
-                                        <tr>
-                                            <td>{{ $category->id }}</td>
-                                            <td>{{ $category->name }}</td>
-                                            <td>{{ $category->description }}</td>
-                                            <td>{{ $category->created_at }}</td>
-                                            <td>
-                                                <a class="btn btn-warning btn-sm" type="button" href="{{ route('Categories.Edit', $category->id) }}">
-                                                    <i class="fas fa-pencil"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ $category->id }}</td>
+                                                <td>{{ $category->name }}</td>
+                                                <td>{{ $category->description }}</td>
+                                                <td>{{ $category->created_at?->format('d/m/Y H:i') }}</td>
+                                                <td class="text-center">
+                                                    <a href="{{ route('Categories.Edit', $category->id) }}"
+                                                       class="btn btn-outline-primary btn-sm rounded-pill"
+                                                       title="Editar categoría">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>
+
+                    </div><!-- /.card -->
+
                 </div>
             </div>
         </div>
     </section>
 @endsection
+
 @section('script')
-let table = $('#categoriesTable').DataTable({
-    paging: true,
-    searching: true,
-    info: true,
-    autoWidth: false,
-    responsive: true,
-    language: {
-        oPaginate: {
-            sFirst: 'Primero',
-            sLast: 'Último',
-            sNext: 'Siguiente',
-            sPrevious: 'Anterior',
-        },
-        info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
-        infoEmpty: 'No hay registros para mostrar',
-        infoFiltered: '(filtrados de _MAX_ registros en total)',
-        emptyTable: 'No hay datos disponibles.',
-        lengthMenu: 'Mostrar _MENU_ registros',
-        search: 'Buscar:',
-        zeroRecords: 'No se encontraron registros.',
-        decimal: ',',
-        thousands: '.'
-    }
-});
+    let table = $('#categoriesTable').DataTable({
+        paging: true,
+        searching: true,
+        info: true,
+        autoWidth: false,
+        responsive: true,
+        scrollX: false,
+        language: {
+            oPaginate: {
+                sFirst: 'Primero',
+                sLast: 'Último',
+                sNext: 'Siguiente',
+                sPrevious: 'Anterior',
+            },
+            info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
+            infoEmpty: 'No hay registros para mostrar',
+            infoFiltered: '(filtrados de _MAX_ registros en total)',
+            emptyTable: 'No hay datos disponibles.',
+            lengthMenu: 'Mostrar _MENU_ registros',
+            search: 'Buscar:',
+            zeroRecords: 'No se encontraron registros.',
+            decimal: ',',
+            thousands: '.'
+        }
+    });
 @endsection
