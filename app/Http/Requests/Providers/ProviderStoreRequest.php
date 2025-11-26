@@ -30,7 +30,11 @@ class ProviderStoreRequest extends FormRequest
             'name'=>['required','string','max:100'],
             'phone'=>['nullable','regex:/^[0-9]+$/','max:20'],
             'address'=>['nullable','string','max:150'],
-            'email'=>['nullable','email','max:100'],
+            'email' => [
+                'required',
+                'email:rfc',
+                'regex:/^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,}$/',
+            ],
         ];
     }
     public function attributes()
