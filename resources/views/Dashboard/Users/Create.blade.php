@@ -59,7 +59,7 @@
                                 <div class="form-group c_form_group">
                                     <label for="email">Correo Electrónico</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="Correo Electrónico">
+                                        placeholder="Correo Electrónico" pattern="^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,}$">
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="phone">Telefono</label>
