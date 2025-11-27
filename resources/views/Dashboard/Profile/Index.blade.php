@@ -96,7 +96,7 @@
                                                                     value="{{ auth()->user()->phone }}" disabled>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="birthday">Birthday</label>
+                                                                <label for="birthday">Fecha de nacimiento</label>
                                                                 <input type="text" class="form-control"
                                                                     value="{{ auth()->user()->birthdate }}" disabled>
                                                             </div>
@@ -116,13 +116,7 @@
                                                                 <input type="text" class="form-control"
                                                                     value="{{ auth()->user()->address }}" disabled>
                                                             </div>
-                                                        </div>
-
-                                                        <div class="form-group mt-3">
-                                                            <label for="birthday">Birthday</label>
-                                                            <input type="text" class="form-control"
-                                                                value="{{ auth()->user()->birthdate }}" disabled>
-                                                        </div>
+                                                        </div>                                                        
                                                     </form>
 
                                                 </div>
