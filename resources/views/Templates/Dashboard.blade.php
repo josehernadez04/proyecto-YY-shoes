@@ -149,13 +149,7 @@
                     <form name="logout" action="{{ route('logout') }}" method="POST">
                         @csrf
                     </form>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"
-                        role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li>
+                </li>                
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -164,7 +158,7 @@
         <aside class="main-sidebar elevation-4 sidebar-dark-lightblue">
             <!-- Brand Logo -->
             <a href="/Dashboard" class="brand-link">
-                <img src="{{ asset('css/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                <img src="{{ asset('/images/logo_1.jpg') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>YY SHOES</b></span>
             </a>
