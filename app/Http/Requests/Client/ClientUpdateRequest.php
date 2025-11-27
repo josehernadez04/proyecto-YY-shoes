@@ -29,7 +29,7 @@ class ClientUpdateRequest extends FormRequest
             'document' => ['required', 'digits_between:5,20', 'regex:/^[0-9]+$/', 'max:20', 'unique:clients,document,'.$this->route('id').',id'],
             'phone' => ['nullable', 'string', 'digits_between:10,15', 'regex:/^[0-9]+$/', 'min:10', 'max:15'],
             'email' => ['nullable', 'string', 'email', 'max:100', 'email:rfc,dns'],
-            'address' => ['nullable', 'string', 'max:100'],
+            'address' => ['required', 'string', 'min:10', 'max:100'],
         ];
     }
 

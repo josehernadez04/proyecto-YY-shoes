@@ -57,6 +57,7 @@
                                                 name="name"
                                                 placeholder="Nombre completo"
                                                 value="{{ old('name', $client->name) }}"
+                                                maxlength="100"
                                                 required>
                                             @error('name')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -157,6 +158,7 @@
                                                 id="address"
                                                 name="address"
                                                 value="{{ old('address', $client->address) }}"
+                                                maxlength="100"
                                                 placeholder="Dirección">
                                             @error('address')
                                                 <div class="invalid-feedback">{{ $message }}</div>

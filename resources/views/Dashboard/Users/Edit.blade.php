@@ -1,7 +1,6 @@
 @extends('Templates.Dashboard')
 
 @section('content')
-
     {{-- Header de la página --}}
     <section class="content-header pb-0">
         <div class="container-fluid">
@@ -50,13 +49,9 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group c_form_group">
                                             <label for="name">Nombre completo</label>
-                                            <input
-                                                type="text"
-                                                id="name"
-                                                name="name"
+                                            <input type="text" id="name" name="name"
                                                 class="form-control @error('name') is-invalid @enderror"
-                                                placeholder="Nombre completo"
-                                                value="{{ old('name', $user->name) }}"
+                                                placeholder="Nombre completo" value="{{ old('name', $user->name) }}"
                                                 required>
                                             @error('name')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -68,9 +63,7 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group c_form_group">
                                             <label for="type_document_id">Tipo de documento</label>
-                                            <select
-                                                id="type_document_id"
-                                                name="type_document_id"
+                                            <select id="type_document_id" name="type_document_id"
                                                 class="form-control @error('type_document_id') is-invalid @enderror"
                                                 required>
                                                 <option value="" disabled>Seleccione</option>
@@ -91,16 +84,10 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group c_form_group">
                                             <label for="document">Número de documento</label>
-                                            <input
-                                                type="text"
-                                                id="document"
-                                                name="document"
+                                            <input type="text" id="document" name="document"
                                                 class="form-control @error('document') is-invalid @enderror"
-                                                placeholder="Documento"
-                                                value="{{ old('document', $user->document) }}"
-                                                required
-                                                inputmode="numeric"
-                                                pattern="[0-9]*"
+                                                placeholder="Documento" value="{{ old('document', $user->document) }}"
+                                                required inputmode="numeric" pattern="[0-9]*"
                                                 oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.maxLength = 20;">
                                             @error('document')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -112,13 +99,9 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group c_form_group">
                                             <label for="email">Correo electrónico</label>
-                                            <input
-                                                type="email"
-                                                id="email"
-                                                name="email"
+                                            <input type="email" id="email" name="email"
                                                 class="form-control @error('email') is-invalid @enderror"
-                                                placeholder="correo@ejemplo.com"
-                                                value="{{ old('email', $user->email) }}"
+                                                placeholder="correo@ejemplo.com" value="{{ old('email', $user->email) }}"
                                                 required>
                                             @error('email')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -130,16 +113,11 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group c_form_group">
                                             <label for="phone_number">Teléfono</label>
-                                            <input
-                                                type="text"
-                                                id="phone_number"
-                                                name="phone_number"
+                                            <input type="text" id="phone_number" name="phone_number"
                                                 class="form-control @error('phone_number') is-invalid @enderror"
                                                 placeholder="Número de teléfono"
                                                 value="{{ old('phone_number', $user->phone_number ?? $user->phone) }}"
-                                                required maxlength="15"
-                                                inputmode="numeric"
-                                                pattern="[0-9]*"
+                                                required maxlength="15" inputmode="numeric" pattern="[0-9]*"
                                                 oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                                             @error('phone_number')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -151,13 +129,9 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group c_form_group">
                                             <label for="address">Dirección</label>
-                                            <input
-                                                type="text"
-                                                id="address"
-                                                name="address"
+                                            <input type="text" id="address" name="address"
                                                 class="form-control @error('address') is-invalid @enderror"
-                                                placeholder="Dirección"
-                                                value="{{ old('address', $user->address) }}"
+                                                placeholder="Dirección" value="{{ old('address', $user->address) }}"
                                                 required>
                                             @error('address')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -169,10 +143,7 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group c_form_group">
                                             <label for="birthdate">Fecha de nacimiento</label>
-                                            <input
-                                                type="date"
-                                                id="birthdate"
-                                                name="birthdate"
+                                            <input type="date" id="birthdate" name="birthdate"
                                                 class="form-control @error('birthdate') is-invalid @enderror"
                                                 value="{{ old('birthdate', $user->birthdate) }}"
                                                 max="{{ \Carbon\Carbon::now()->subYears(18)->format('Y-m-d') }}">
@@ -186,10 +157,7 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group c_form_group">
                                             <label for="password">Contraseña (dejar en blanco para no cambiar)</label>
-                                            <input
-                                                type="password"
-                                                id="password"
-                                                name="password"
+                                            <input type="password" id="password" name="password"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 placeholder="Mínimo 6 caracteres">
                                             @error('password')
@@ -202,9 +170,7 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group c_form_group">
                                             <label for="password_confirmation">Confirmar nueva contraseña</label>
-                                            <input
-                                                type="password"
-                                                id="password_confirmation"
+                                            <input type="password" id="password_confirmation"
                                                 name="password_confirmation"
                                                 class="form-control @error('password_confirmation') is-invalid @enderror"
                                                 placeholder="Repite la contraseña">
@@ -216,14 +182,45 @@
 
                                 </div>
 
+                                @foreach ($roles as $key => $rol)
+                                    <div class="card collapsed-card">
+                                        <div class="card-header border-0 ui-sortable-handle">
+                                            <h3 class="card-title mt-1">
+                                                <i class="fas fa-shield-check fa-lg mr-1">
+                                                </i>{{ $rol->name }}
+                                            </h3>
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-info btn-sm ml-2"
+                                                    data-card-widget="collapse">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body table-responsive" style="display: none;">
+                                            @foreach ($rol->permissions as $val => $permission)
+                                                <div class="row pl-2 icheck-primary">
+                                                    <input type="checkbox" id="{{ $permission->name }}"
+                                                        name="permissions[]" value="{{ $permission->name }}"
+                                                        {{ $user->permissions->contains('name', $permission->name) ? 'checked' : '' }}
+                                                    >
+                                                    <label for="{{ $permission->name }}"
+                                                        class="mt-3 ml-3">{{ $permission->name }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endforeach
+
+
+
                                 {{-- Botones --}}
                                 <div class="d-flex justify-content-end mt-3">
                                     <a href="{{ route('Users.Index') }}"
-                                       class="btn btn-outline-secondary btn-sm rounded-pill mr-2">
+                                        class="btn btn-outline-secondary btn-sm rounded-pill mr-2">
                                         Cancelar
                                     </a>
-                                    <button type="submit"
-                                            class="btn btn-primary btn-sm rounded-pill">
+                                    <button type="submit" class="btn btn-primary btn-sm rounded-pill">
                                         <i class="fas fa-save "></i> Guardar cambios
                                     </button>
                                 </div>

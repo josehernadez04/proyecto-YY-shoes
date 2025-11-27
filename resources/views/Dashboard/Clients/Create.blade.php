@@ -120,7 +120,9 @@
                                                 id="email"
                                                 name="email"
                                                 placeholder="correo@ejemplo.com"
-                                                value="{{ old('email') }}" maxlength="100">
+                                                value="{{ old('email') }}"
+                                                maxlength="100"
+                                                required>
                                             @error('email')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -142,6 +144,7 @@
                                                 pattern="[0-9]*"
                                                 minlength="10"
                                                 maxlength="15"
+                                                required
                                                 oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                                             @error('phone')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -159,7 +162,10 @@
                                                 id="address"
                                                 name="address"
                                                 placeholder="Dirección"
-                                                value="{{ old('address') }}" maxlength="100">
+                                                required
+                                                value="{{ old('address') }}"
+                                                minlength="9"
+                                                maxlength="100">
                                             @error('address')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -178,10 +184,8 @@
                                         <i class="fas fa-save"></i> Guardar
                                     </button>
                                 </div>
-
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>

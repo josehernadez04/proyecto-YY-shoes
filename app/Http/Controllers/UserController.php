@@ -44,7 +44,8 @@ class UserController extends Controller
     public function create()
     {
         $typeDocuments = TypeDocument::all();
-        return view('Dashboard.Users.Create', compact('typeDocuments'));
+        $roles = Role::with('permissions')->get();
+        return view('Dashboard.Users.Create', compact('typeDocuments', 'roles'));
     }
 
     public function store(UserStoreRequest $request)
@@ -60,14 +61,25 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
+        if ($request->has('permissions')) {
+            $user->givePermissionTo($request->permissions);
+            $roles = Role::whereHas('permissions', function($q) use ($request) {
+                $q->whereIn('name', $request->permissions);
+            })->pluck('name');
+
+            // Asignar los roles encontrados
+            $user->assignRole($roles);
+        }
+
         return redirect()->route('Users.Index');
     }
 
     public function edit($id)
     {
         $typeDocuments = TypeDocument::all();
-        $user = User::findOrFail($id);
-        return view('Dashboard.Users.Edit', compact('typeDocuments', 'user'));
+        $roles = Role::with('permissions')->get();
+        $user = User::with('permissions')->findOrFail($id);
+        return view('Dashboard.Users.Edit', compact('typeDocuments', 'user', 'roles'));
     }
 
     public function update(UserUpdateRequest $request, $id)

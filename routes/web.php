@@ -65,23 +65,23 @@ Route::middleware(['auth'])->group(function () {
 
         Route::prefix('/Categories')->group(function () {
             Route::controller(CategoryController::class)->group(function () {
-                Route::get('/Index', 'index')->name('Categories.Index')->middleware('can:Users,Dashboard.Categories.Index');
-                Route::get('/Create', 'create')->name('Categories.Create')->middleware('can:Users,Dashboard.Categories.Store');
-                Route::post('/Store', 'store')->name('Categories.Store')->middleware('can:Users,Dashboard.Categories.Store');
-                Route::get('/Edit/{id}', 'edit')->name('Categories.Edit')->middleware('can:Users,Dashboard.Categories.Update');
-                Route::put('/Update/{id}', 'update')->name('Categories.Update')->middleware('can:Users,Dashboard.Categories.Update');
-                Route::delete('/Delete/{id}', 'delete')->name('Categories.Delete')->middleware('can:Users,Dashboard.Categories.Delete');
+                Route::get('/Index', 'index')->name('Categories.Index')->middleware('can:Categories,Dashboard.Categories.Index');
+                Route::get('/Create', 'create')->name('Categories.Create')->middleware('can:Categories,Dashboard.Categories.Store');
+                Route::post('/Store', 'store')->name('Categories.Store')->middleware('can:Categories,Dashboard.Categories.Store');
+                Route::get('/Edit/{id}', 'edit')->name('Categories.Edit')->middleware('can:Categories,Dashboard.Categories.Update');
+                Route::put('/Update/{id}', 'update')->name('Categories.Update')->middleware('can:Categories,Dashboard.Categories.Update');
+                Route::delete('/Delete/{id}', 'delete')->name('Categories.Delete')->middleware('can:Categories,Dashboard.Categories.Delete');
             });
         });
 
         Route::prefix('/TypeDocuments')->group(function () {
             Route::controller(TypeDocumentController::class)->group(function () {
-                Route::get('/Index', 'index')->name('TypeDocuments.Index')->middleware('can:Users,Dashboard.TypeDocuments.Index');
-                Route::get('/Create', 'create')->name('TypeDocuments.Create')->middleware('can:Users,Dashboard.TypeDocuments.Store');
-                Route::post('/Store', 'store')->name('TypeDocuments.Store')->middleware('can:Users,Dashboard.TypeDocuments.Store');
-                Route::get('/Edit/{id}', 'edit')->name('TypeDocuments.Edit')->middleware('can:Users,Dashboard.TypeDocuments.Update');
-                Route::put('/Update/{id}', 'update')->name('TypeDocuments.Update')->middleware('can:Users,Dashboard.TypeDocuments.Update');
-                Route::delete('/Delete/{id}', 'delete')->name('TypeDocuments.Delete')->middleware('can:Users,Dashboard.TypeDocuments.Delete');
+                Route::get('/Index', 'index')->name('TypeDocuments.Index')->middleware('can:TypeDocuments,Dashboard.TypeDocuments.Index');
+                Route::get('/Create', 'create')->name('TypeDocuments.Create')->middleware('can:TypeDocuments,Dashboard.TypeDocuments.Store');
+                Route::post('/Store', 'store')->name('TypeDocuments.Store')->middleware('can:TypeDocuments,Dashboard.TypeDocuments.Store');
+                Route::get('/Edit/{id}', 'edit')->name('TypeDocuments.Edit')->middleware('can:TypeDocuments,Dashboard.TypeDocuments.Update');
+                Route::put('/Update/{id}', 'update')->name('TypeDocuments.Update')->middleware('can:TypeDocuments,Dashboard.TypeDocuments.Update');
+                Route::delete('/Delete/{id}', 'delete')->name('TypeDocuments.Delete')->middleware('can:TypeDocuments,Dashboard.TypeDocuments.Delete');
             });
         });
 
