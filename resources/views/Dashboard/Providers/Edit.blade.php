@@ -125,6 +125,7 @@
                                                 pattern="[0-9]*"
                                                 minlength="10"
                                                 maxlength="15"
+                                                required
                                                 oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                                             @error('phone')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -142,7 +143,10 @@
                                                 id="address"
                                                 name="address"
                                                 value="{{ old('address', $providers->address) }}"
-                                                placeholder="Dirección" maxlength="100">
+                                                placeholder="Dirección"
+                                                minlength="9"
+                                                maxlength="100"
+                                                required>
                                             @error('address')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -159,7 +163,9 @@
                                                 id="email"
                                                 name="email"
                                                 value="{{ old('email', $providers->email) }}"
-                                                placeholder="correo@ejemplo.com" maxlength="100">
+                                                placeholder="correo@ejemplo.com"
+                                                maxlength="100"
+                                                required>
                                             @error('email')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror

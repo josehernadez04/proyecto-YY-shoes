@@ -31,7 +31,7 @@
                         <div class="card-header d-flex align-items-center">
                             <h3 class="card-title mb-0">Listado de ventas</h3>
 
-                            <a href="{{ route('Sales.Details.Create') }}"
+                            <a href="{{ route('Sales.Create') }}"
                             class="btn btn-primary btn-sm rounded-pill shadow-sm ml-auto" title="Nueva venta">
                                 <i class="fas fa-plus "></i>
                             </a>

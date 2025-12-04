@@ -44,7 +44,7 @@ class ClientStoreRequest extends FormRequest
             'digits_between' => 'El campo :attribute debe tener entre :min y :max dígitos.',
             'regex' => 'El campo :attribute debe ser un número de documento.',
             'unique' => 'El campo :attribute ya ha sido tomado.',
-            'email' => 'El campo :attribute debe ser una dirección de correo electrónica.',
+            'email' => 'El campo :attribute debe ser una dirección de correo electrónica valida.',
         ];
     }
 

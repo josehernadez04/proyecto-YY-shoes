@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
                             <h3 class="card-title mb-0">Listado de proveedores</h3>
-                            @can('Providers,Dashboard.Providers.Store')
+                            @can('Dashboard.Providers.Store')
                             <a href="{{ route('Providers.Create') }}"
                             class="btn btn-primary btn-sm rounded-pill shadow-sm ml-auto" title="Nueva proveedor">
                                 <i class="fas fa-plus "></i>
@@ -64,7 +64,7 @@
                                                 <td>{{ $provider->address }}</td>
                                                 <td>{{ $provider->email }}</td>
                                                 <td class="text-center">
-                                                @can('Providers,Dashboard.Providers.Update')
+                                                @can('Dashboard.Providers.Update')
                                                     <a href="{{ route('Providers.Edit', $provider->id) }}"
                                                        class="btn btn-outline-primary btn-sm rounded-pill"
                                                        title="Editar proveedor">

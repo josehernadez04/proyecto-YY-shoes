@@ -23,7 +23,7 @@
     @include('Dashboard.Alerts.Info')
     @include('Dashboard.Alerts.Question')
     @include('Dashboard.Alerts.Warning')
-    @include('Dashboard.Alerts.Danger') 
+    @include('Dashboard.Alerts.Danger')
 
     <section class="content">
         <div class="container-fluid">
@@ -42,16 +42,25 @@
                                     <label for="name">Nombre</label>
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Nombre completo" value="{{ $category->name }}" required maxlength="100">
                                 </div>
-                               
+
                                 <div class="form-group c_form_group">
                                     <label for="description">Descripcion</label>
                                     <input type="text" class="form-control" id="description" name="description" placeholder="Descripcion" value="{{ $category->description }}" required maxlength="250">
                                 </div>
 
                                 <input type="hidden" name="created_at" value="{{ $category->created_at }}">
-                               
 
-                                <input type="submit" class="btn btn-primary" value="Guardar"/>
+
+                                <div class="d-flex justify-content-end mt-3">
+                                    <a href="{{ route('Categories.Index') }}"
+                                       class="btn btn-outline-secondary btn-sm rounded-pill mr-2">
+                                        Cancelar
+                                    </a>
+                                    <button type="submit"
+                                            class="btn btn-primary btn-sm rounded-pill">
+                                        <i class="fas fa-save"></i> Guardar
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
