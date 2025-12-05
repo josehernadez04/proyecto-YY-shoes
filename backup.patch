@@ -1,0 +1,257 @@
+diff --git a/database/seeders/UserSeeder.php b/database/seeders/UserSeeder.php
+index 59694f1..dbca570 100644
+--- a/database/seeders/UserSeeder.php
++++ b/database/seeders/UserSeeder.php
+@@ -34,9 +34,20 @@ public function run()
+             'type_document_id' => $typeDocument->id
+         ]);
+ 
+-        foreach($rolesAndPermissions as $RoleAndPermission) {
+-            $user->assignRole([$RoleAndPermission->name]);
+-            $user->givePermissionTo($RoleAndPermission->permissions->pluck('name'));
+-        };
++        // foreach($rolesAndPermissions as $RoleAndPermission) {
++        //     $user->assignRole([$RoleAndPermission->name]);
++        //     $user->givePermissionTo($RoleAndPermission->permissions->pluck('name'));
++        // };
++
++         // ASIGNAR TODOS LOS ROLES
++        $user->syncRoles($rolesAndPermissions->pluck('name'));
++
++        // ASIGNAR TODOS LOS PERMISOS (CORRECTAMENTE)
++        $user->syncPermissions(
++            $rolesAndPermissions
++                ->pluck('permissions')
++                ->flatten()
++                ->pluck('name')
++        );
+     }
+ }
+diff --git a/resources/views/Dashboard/Clients/Create.blade.php b/resources/views/Dashboard/Clients/Create.blade.php
+index a542216..bf64bf6 100644
+--- a/resources/views/Dashboard/Clients/Create.blade.php
++++ b/resources/views/Dashboard/Clients/Create.blade.php
+@@ -73,6 +73,10 @@
+                                 </div>
+                                 <input type="submit" class="btn btn-primary" value="Guardar" />
+                                 <a href="{{ route('Clients.Index') }}" class="btn btn-secondary">volver</a>
++
++                                 <a href="{{ route('dashboard') }}" class="btn btn-primary">
++                                                        Ir al Dashboard
++                                                    </a>
+                             </form>
+                         </div>
+                     </div>
+diff --git a/resources/views/Dashboard/Clients/Index.blade.php b/resources/views/Dashboard/Clients/Index.blade.php
+index 00f4382..fa97565 100644
+--- a/resources/views/Dashboard/Clients/Index.blade.php
++++ b/resources/views/Dashboard/Clients/Index.blade.php
+@@ -41,7 +41,8 @@
+                         </div>
+                         <div class="card-body">
+                             <div class="table-responsive">
+-                                <table id="clientsTable" class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
++                                <table id="clientsTable"
++                                    class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
+                                     <thead class="thead-dark">
+                                         <tr>
+                                             <th>#</th>
+@@ -56,21 +57,24 @@
+                                     </thead>
+                                     <tbody>
+                                         @foreach ($clients as $client)
+-                                        <tr>
+-                                            <td>{{ $client->id }}</td>
+-                                            <td>{{ $client->name }}</td>
+-                                            <td>{{ $client->type_document->code }}</td>
+-                                            <td>{{ $client->document }}</td>
+-                                            <td>{{ $client->email }}</td>
+-                                            <td>{{ $client->phone}}</td>
+-                                            <td>{{ $client->address}}</td>
+-                                            <td>
+-                                                <a class="btn btn-warning btn-sm" type="button" href="{{ route('Clients.Edit', $client->id) }}">
++                                            <tr>
++                                                <td>{{ $client->id }}</td>
++                                                <td>{{ $client->name }}</td>
++                                                <td>{{ $client->type_document->code }}</td>
++                                                <td>{{ $client->document }}</td>
++                                                <td>{{ $client->email }}</td>
++                                                <td>{{ $client->phone }}</td>
++                                                <td>{{ $client->address }}</td>
++                                                <td>
++                                                    <a class="btn btn-warning btn-sm" type="button"
++                                                        href="{{ route('Clients.Edit', $client->id) }}">
+ 
+-                                                    <i class="fas fa-pencil"></i>
+-                                                </a>
+-                                            </td>
+-                                        </tr>
++                                                        <i class="fas fa-pencil"></i>
++                                                    </a>
++
++                                                   
++                                                </td>
++                                            </tr>
+                                         @endforeach
+                                     </tbody>
+                                 </table>
+@@ -83,28 +87,28 @@
+     </section>
+ @endsection
+ @section('script')
+-let table = $('#clientsTable').DataTable({
++    let table = $('#clientsTable').DataTable({
+     paging: true,
+     searching: true,
+     info: true,
+     autoWidth: false,
+     responsive: true,
+     language: {
+-        oPaginate: {
+-            sFirst: 'Primero',
+-            sLast: 'Último',
+-            sNext: 'Siguiente',
+-            sPrevious: 'Anterior',
+-        },
+-        info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
+-        infoEmpty: 'No hay registros para mostrar',
+-        infoFiltered: '(filtrados de _MAX_ registros en total)',
+-        emptyTable: 'No hay datos disponibles.',
+-        lengthMenu: 'Mostrar _MENU_ registros',
+-        search: 'Buscar:',
+-        zeroRecords: 'No se encontraron registros.',
+-        decimal: ',',
+-        thousands: '.'
++    oPaginate: {
++    sFirst: 'Primero',
++    sLast: 'Último',
++    sNext: 'Siguiente',
++    sPrevious: 'Anterior',
++    },
++    info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
++    infoEmpty: 'No hay registros para mostrar',
++    infoFiltered: '(filtrados de _MAX_ registros en total)',
++    emptyTable: 'No hay datos disponibles.',
++    lengthMenu: 'Mostrar _MENU_ registros',
++    search: 'Buscar:',
++    zeroRecords: 'No se encontraron registros.',
++    decimal: ',',
++    thousands: '.'
+     }
+-});
++    });
+ @endsection
+diff --git a/resources/views/Dashboard/home.blade.php b/resources/views/Dashboard/home.blade.php
+index 8c35926..e15512a 100644
+--- a/resources/views/Dashboard/home.blade.php
++++ b/resources/views/Dashboard/home.blade.php
+@@ -67,33 +67,33 @@
+         }]
+     },
+     options: {
+-        maintainAspectRatio: false,       // 🔥 evita deformación
+-        responsive: true,                 // 🔥 se adapta al card
++        maintainAspectRatio: false,
++        responsive: true,
++
+         scales: {
+-            y: {
+-                beginAtZero: true,
+-                grid: {
+-                    color: '#e1e1e1'
++            yAxes: [{
++                ticks: {
++                    beginAtZero: true,
++                    stepSize: 1,
++                    callback: function(value) {
++                        if (Number.isInteger(value)) {
++                            return value;
++                        }
++                    }
+                 }
+-            },
+-            x: {
+-                grid: {
+-                    display: false
+-                }
+-            }
+-        },
+-        plugins: {
+-            legend: {
+-                display: true,
+-                position: 'top'
+-            },
+-            tooltip: {
+-                enabled: true
+-            }
++            }],
++            xAxes: [{
++                gridLines: { display: false }
++            }]
+         }
+     }
+ });
+ 
++
++
++
++
++
+ new Chart(document.getElementById('productosMes'), {
+     type: 'line',
+     data: {
+@@ -102,7 +102,7 @@
+             label: 'Productos creados por mes',
+             data: @json($productosMes->pluck('total')),
+             fill: true,
+-            tension: 0.3,
++            lineTension: 0.3,
+             backgroundColor: 'rgba(255, 206, 86, 0.4)',
+             borderColor: 'rgba(255, 159, 64, 1)',
+             borderWidth: 2,
+@@ -113,20 +113,34 @@
+     options: {
+         maintainAspectRatio: false,
+         responsive: true,
++
+         scales: {
+-            y: {
+-                beginAtZero: true,
+-                grid: { color: "#e1e1e1" }
+-            },
+-            x: {
+-                grid: { display: false }
+-            }
++            yAxes: [{
++                ticks: {
++                    beginAtZero: true,
++                    stepSize: 1,  // 🔥 SOLO ENTEROS
++                    callback: function(value) {
++                        return Number.isInteger(value) ? value : null;
++                    }
++                },
++                gridLines: {
++                    color: "#e1e1e1"
++                }
++            }],
++            xAxes: [{
++                gridLines: { display: false }
++            }]
+         },
+-        plugins: {
+-            legend: { position: 'top' },
+-            tooltip: { enabled: true }
+-        }
++
++        legend: {
++            display: true,
++            position: 'top'
++        },
++
++        tooltips: { enabled: true }
+     }
+ });
+ 
++
++
+ @endsection
