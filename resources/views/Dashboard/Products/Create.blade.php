@@ -104,7 +104,7 @@
                                     </select>
                                 </div> --}}
 
-                                {{-- <div class="form-group c_form_group">
+                                <div class="form-group c_form_group">
                                     <label for="provider_id">Proveedores</label>
                                     <div class="d-flex gap-2">
                                         <select class="form-control" name="provider_id" id="provider_id">
@@ -119,25 +119,9 @@
                                         </a>
                                     </div>
                                     <small class="text-muted">¿No existe el proveedor? Créalo aquí.</small>
-                                </div> --}}
-
-                                <div class="form-group c_form_group">
-                                    <label for="provider_id">Proveedores</label>
-                                    <div class="d-flex gap-2">
-                                        <select class="form-control" name="provider_id" id="provider_id">
-                                            <option value="" selected disabled>Seleccione</option>
-                                            @foreach ($providers as $provider)
-                                                <option value="{{ $provider->id }}">{{ $provider->name }}</option>
-                                            @endforeach
-                                        </select>
-
-                                        <button type="button" class="btn btn-success ml-2" data-toggle="modal"
-                                            data-target="#modalCreateProvider">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                    </div>
-                                    <small class="text-muted">¿No existe el proveedor? Créalo aquí.</small>
                                 </div>
+
+
 
 
 
