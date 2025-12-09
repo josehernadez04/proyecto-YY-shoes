@@ -54,5 +54,32 @@ class ProviderController extends Controller
 
         return redirect()->route('Providers.Index');
     }
+
+    public function ajaxStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'type_document_id' => 'required|integer|exists:type_documents,id',
+            'document' => 'required|numeric',
+            'phone' => 'required|numeric',
+            'address' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255'
+        ]);
+    
+        $provider = Provider::create([
+            'name' => $request->name,
+            'type_document_id' => $request->type_document_id,
+            'document' => $request->document,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'email' => $request->email,
+        ]);
+    
+        return response()->json([
+            'success' => true,
+            'provider' => $provider
+        ]);
+    }
+
 }
 

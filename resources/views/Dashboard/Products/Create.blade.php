@@ -48,7 +48,7 @@
                                         placeholder="Nombre " required>
                                 </div>
 
-                                <div class="form-group c_form_group">
+                                {{-- <div class="form-group c_form_group">
                                     <label for="category_id">Categoria</label>
                                     <select class="form-control" name="category_id" id="category_id">
                                         <option value="" selected disabled>Seleccione</option>
@@ -56,9 +56,45 @@
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div> --}}
+
+                                {{-- <div class="form-group c_form_group">
+                                    <label for="category_id">Categoría</label>
+                                    <div class="d-flex gap-2">
+                                        <select class="form-control" name="category_id" id="category_id">
+                                            <option value="" selected disabled>Seleccione</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+
+                                        <a href="{{ route('Categories.Create') }}" class="btn btn-success ml-2">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                    </div>
+                                    <small class="text-muted">¿No existe la categoría? Créala aquí.</small>
+                                </div> --}}
 
                                 <div class="form-group c_form_group">
+                                    <label for="category_id">Categoría</label>
+
+                                    <div class="d-flex">
+                                        <select class="form-control" name="category_id" id="category_id">
+                                            <option value="" selected disabled>Seleccione</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+
+                                        <button type="button" class="btn btn-success ml-2" data-toggle="modal"
+                                            data-target="#modalCreateCategory">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                                {{-- <div class="form-group c_form_group">
                                     <label for="provider_id">Provedores</label>
                                     <select class="form-control" name="provider_id" id="provider_id">
                                         <option value="" selected disabled>Seleccione</option>
@@ -66,7 +102,44 @@
                                             <option value="{{ $provider->id }}">{{ $provider->name }}</option>
                                         @endforeach
                                     </select>
+                                </div> --}}
+
+                                {{-- <div class="form-group c_form_group">
+                                    <label for="provider_id">Proveedores</label>
+                                    <div class="d-flex gap-2">
+                                        <select class="form-control" name="provider_id" id="provider_id">
+                                            <option value="" selected disabled>Seleccione</option>
+                                            @foreach ($providers as $provider)
+                                                <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                                            @endforeach
+                                        </select>
+
+                                        <a href="{{ route('Providers.Create') }}" class="btn btn-success ml-2">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                    </div>
+                                    <small class="text-muted">¿No existe el proveedor? Créalo aquí.</small>
+                                </div> --}}
+
+                                <div class="form-group c_form_group">
+                                    <label for="provider_id">Proveedores</label>
+                                    <div class="d-flex gap-2">
+                                        <select class="form-control" name="provider_id" id="provider_id">
+                                            <option value="" selected disabled>Seleccione</option>
+                                            @foreach ($providers as $provider)
+                                                <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                                            @endforeach
+                                        </select>
+
+                                        <button type="button" class="btn btn-success ml-2" data-toggle="modal"
+                                            data-target="#modalCreateProvider">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <small class="text-muted">¿No existe el proveedor? Créalo aquí.</small>
                                 </div>
+
+
 
                                 <div class="form-group c_form_group">
                                     <label for="description">description</label>
@@ -95,7 +168,41 @@
                                 <a href="{{ route('Products.Index') }}" class="btn btn-secondary">
                                     Volver
                                 </a>
-                            </form>                               
+                            </form>
+
+                            {{-- =============================================================
+                                                  MODAL CATEGORIA
+                            ================================================================== --}}
+
+                            <div class="modal fade" id="modalCreateCategory" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary text-white">
+                                            <h5 class="modal-title">Crear Categoría</h5>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <form id="formCreateCategory">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label>Nombre de la categoría</label>
+                                                    <input type="text" class="form-control" name="name" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Descripción</label>
+                                                    <input type="text" class="form-control" name="description">
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <button class="btn btn-primary" onclick="saveCategory()">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,10 +211,37 @@
     </section>
 @endsection
 @section('script')
-function showmessage() {
-toastr.error('hola');
-toastr.success('hola');
-toastr.info('hola');
-toastr.warning('hola');
-}
+    function saveCategory() {
+    const form = document.getElementById('formCreateCategory');
+    const data = new FormData(form);
+
+    fetch("{{ route('Categories.AjaxStore') }}", {
+    method: "POST",
+    body: data
+    })
+    .then(response => response.json())
+    .then(result => {
+
+    if (!result.success) {
+    alert("Error al crear la categoría");
+    return;
+    }
+
+    let category = result.category;
+
+    // 👉 Agregar opción al select
+    const select = document.getElementById('category_id');
+    const option = new Option(category.name, category.id, true, true);
+    select.add(option);
+
+    // 👉 Cerrar modal
+    $('#modalCreateCategory').modal('hide');
+
+    // 👉 Limpiar formulario
+    form.reset();
+    })
+    .catch(error => {
+    console.error('Error:', error);
+    });
+    }
 @endsection

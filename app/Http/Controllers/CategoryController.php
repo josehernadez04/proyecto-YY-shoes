@@ -46,4 +46,22 @@ class CategoryController extends Controller
         $category->save();
         return redirect()->route('Categories.Index');
     }
+
+    public function ajaxStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+    
+        $category = Category::create([
+            'name' => $request->name,
+            'description' => $request->description ?? null,
+        ]);
+    
+        return response()->json([
+            'success' => true,
+            'category' => $category
+        ]);
+    }
+
 }

@@ -9,6 +9,16 @@ class Provider extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+    'name',
+    'type_document_id',
+    'document',
+    'address',
+    'phone',
+    'email'
+];
+
+
     public function type_document(){
         return $this->belongsTo(TypeDocument::class);
     }

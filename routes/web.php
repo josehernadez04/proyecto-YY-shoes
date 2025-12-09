@@ -76,6 +76,10 @@ Route::middleware(['auth'])->group(function () {
             });
         });
 
+        Route::post('/Categories/AjaxStore', [CategoryController::class, 'ajaxStore'])->name('Categories.AjaxStore');
+// ->middleware('can:Users,Dashboard.Categories.Store')
+        Route::post('/Providers/AjaxStore', [ProviderController::class, 'ajaxStore'])->name('Providers.AjaxStore');
+
         Route::prefix('/TypeDocuments')->group(function () {
             Route::controller(TypeDocumentController::class)->group(function () {
                 Route::get('/Index', 'index')->name('TypeDocuments.Index')->middleware('can:Users,Dashboard.TypeDocuments.Index');
