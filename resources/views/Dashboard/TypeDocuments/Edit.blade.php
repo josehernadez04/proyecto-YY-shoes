@@ -43,13 +43,13 @@
                                 <div class="form-group c_form_group">
                                     <label for="name">Código</label>
                                     <input type="text" class="form-control" name="code"
-                                        value="{{ $typedocument->code }}" required>
+                                        value="{{ $typedocument->code }}" maxlength="10" required>
                                 </div>
 
                                 <div class="form-group c_form_group">
                                     <label for="description">Descripción</label>
                                     <input type="text" class="form-control" name="description"
-                                        value="{{ $typedocument->description }}" required>
+                                        value="{{ $typedocument->description }}" maxlength="50" required>
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Guardar" />
                                 <a href="{{ route('TypeDocuments.Index') }}" class="btn btn-secondary">

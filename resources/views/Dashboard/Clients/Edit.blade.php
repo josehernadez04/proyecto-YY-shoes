@@ -41,7 +41,7 @@
                                 <div class="form-group c_form_group">
                                     <label for="name">Nombre completo</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Nombre completo" value="{{ $client->name }}" required>
+                                        placeholder="Nombre completo" value="{{ $client->name }}" minlength="3" maxlength="100" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="type_document_id">Tipos de documento</label>
@@ -57,22 +57,22 @@
                                 <div class="form-group c_form_group">
                                     <label for="document">Documento</label>
                                     <input type="text" class="form-control" id="document" name="document"
-                                        value="{{ $client->document }}" placeholder="Documento" required>
+                                        value="{{ $client->document }}" placeholder="Documento"     minlength="5" maxlength="20" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="email">Correo Electrónico</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        value="{{ $client->email }}" placeholder="Correo Electrónico">
+                                        value="{{ $client->email }}" placeholder="Correo Electrónico" minlength="10" maxlength="50" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="phone">Telefono</label>
                                     <input type="text" class="form-control" id="phone" name="phone"
-                                        value="{{ $client->phone }}" placeholder="Telefono">
+                                        value="{{ $client->phone }}" placeholder="Telefono" minlength="5" maxlength="20" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="address">Direccion</label>
                                     <input type="text" class="form-control" id="address" name="address"
-                                        value="{{ $client->address }}" placeholder="Direccion">
+                                        value="{{ $client->address }}" placeholder="Direccion" minlength="5" maxlength="150" required>
                                 </div>
                                 <input type="hidden" name="created_at" value="{{ $client->created_at }}">
                                 <input type="submit" class="btn btn-primary" value="Guardar" />

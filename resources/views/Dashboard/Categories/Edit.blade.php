@@ -41,13 +41,15 @@
                                 <div class="form-group c_form_group">
                                     <label for="name">Nombre</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Nombre completo" value="{{ $categories->name }}" required>
+                                        placeholder="Nombre completo" value="{{ $categories->name }}" minlength="3"
+                                        maxlength="100" required>
                                 </div>
 
                                 <div class="form-group c_form_group">
                                     <label for="description">Descripcion</label>
                                     <input type="text" class="form-control" id="description" name="description"
-                                        placeholder="Descripcion" value="{{ $categories->description }}" required>
+                                        placeholder="Descripcion" value="{{ $categories->description }}" minlength="3"
+                                        maxlength="500" required>
                                 </div>
 
                                 <input type="hidden" name="created_at" value="{{ $categories->created_at }}">

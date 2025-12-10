@@ -40,7 +40,8 @@
                                 @csrf
                                 <div class="form-group c_form_group">
                                     <label for="document">Documento</label>
-                                    <input type="number" class="form-control" id="document" name="document" placeholder="Documento" value="{{ $providers->document }}" required>
+                                    <input type="number" class="form-control" id="document" name="document"
+                                        placeholder="Documento" value="{{ $providers->document }}" minlength="5" maxlength="20" required>
                                 </div>
 
                                 <div class="form-group c_form_group">
@@ -48,29 +49,35 @@
                                     <select class="form-control" name="type_document_id" id="type_document_id">
                                         <option value="" selected disabled>Seleccione</option>
                                         @foreach ($typeDocuments as $typeDocument)
-                                        <option value="{{ $typeDocument->id }}" {{ $typeDocument->id == $providers->type_document_id ? 'selected' : '' }}>{{ $typeDocument->code }}</option>
+                                            <option value="{{ $typeDocument->id }}"
+                                                {{ $typeDocument->id == $providers->type_document_id ? 'selected' : '' }}>
+                                                {{ $typeDocument->code }}</option>
                                         @endforeach
                                     </select>
-                                <div class="form-group c_form_group">
-                                    <label for="name">Nombre completo</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nombre completo" value="{{ $providers->name }}" required>
-                                </div>
-                                <div class="form-group c_form_group">
-                                    <label for="email">Telefono</label>
-                                    <input type="number" class="form-control" id="phone" name="phone" value="{{ $providers->phone }}" placeholder="phone">
-                                </div>
-                                <div class="form-group c_form_group">
-                                    <label for="email">Direccion</label>
-                                    <input type="text" class="form-control" id="address" name="address" value="{{ $providers->address }}" placeholder="Direccion">
-                                </div>
-                                <div class="form-group c_form_group">
-                                    <label for="email">Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="{{ $providers->email }}" placeholder="Correo Electrónico">
-                                </div>
-                                <input type="submit" class="btn btn-primary" value="Guardar"/>
-                                <a href="{{ route('Providers.Index') }}" class="btn btn-secondary">
-                                    Volver
-                                </a>    
+                                    <div class="form-group c_form_group">
+                                        <label for="name">Nombre completo</label>
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            placeholder="Nombre completo" value="{{ $providers->name }}" minlength="3" maxlength="100" required>
+                                    </div>
+                                    <div class="form-group c_form_group">
+                                        <label for="email">Telefono</label>
+                                        <input type="number" class="form-control" id="phone" name="phone"
+                                            value="{{ $providers->phone }}" placeholder="phone" minlength="5" maxlength="20" required>
+                                    </div>
+                                    <div class="form-group c_form_group">
+                                        <label for="email">Direccion</label>
+                                        <input type="text" class="form-control" id="address" name="address"
+                                            value="{{ $providers->address }}" placeholder="Direccion" minlength="5" maxlength="150" required>
+                                    </div>
+                                    <div class="form-group c_form_group">
+                                        <label for="email">Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            value="{{ $providers->email }}" placeholder="Correo Electrónico" minlength="10" maxlength="50" required>
+                                    </div>
+                                    <input type="submit" class="btn btn-primary" value="Guardar" />
+                                    <a href="{{ route('Providers.Index') }}" class="btn btn-secondary">
+                                        Volver
+                                    </a>
                             </form>
                         </div>
                     </div>

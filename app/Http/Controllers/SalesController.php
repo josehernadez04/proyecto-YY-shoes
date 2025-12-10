@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Http\Requests\Sale\SaleStoreRequest;
 use App\Http\Requests\Sale\SaleUpdateRequest;
 use App\Models\Client;
+use App\Models\TypeDocument;
 use Illuminate\Support\Facades\Auth;
 
 class SalesController extends Controller
@@ -20,7 +21,8 @@ class SalesController extends Controller
     public function create()
     {
         $clients = Client::get();
-        return view('Dashboard.Sales.Create', compact('clients'));
+        $typeDocuments = TypeDocument::all();
+        return view('Dashboard.Sales.Create', compact('clients', 'typeDocuments'));
     }
 
     public function store(SaleStoreRequest $request)

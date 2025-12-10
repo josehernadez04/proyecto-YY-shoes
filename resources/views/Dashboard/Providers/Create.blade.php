@@ -39,35 +39,44 @@
                                 @csrf
                                 <div class="form-group c_form_group">
                                     <label for="name">Nombre completo</label>
-                                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"  placeholder="Nombre completo" required >
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        value="{{ old('name') }}" placeholder="Nombre completo" minlength="3"
+                                        maxlength="100" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="type_document_id">Tipos de documento</label>
                                     <select class="form-control" name="type_document_id" id="type_document_id">
                                         <option selected disabled>Seleccione</option>
                                         @foreach ($typeDocuments as $typeDocument)
-                                        <option value="{{ $typeDocument->id }}">{{ $typeDocument->code }}</option>
+                                            <option value="{{ $typeDocument->id }}">{{ $typeDocument->code }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="document">Documento</label>
-                                    <input type="number" class="form-control" id="document" name="document" value="{{ old('document') }}" placeholder="Documento" required >
+                                    <input type="number" class="form-control" id="document" name="document"
+                                        value="{{ old('document') }}" placeholder="Documento" minlength="5" maxlength="20"
+                                        required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="phone">Teléfono</label>
-                                    <input type="number" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Teléfono" required>
+                                    <input type="number" class="form-control" id="phone" name="phone"
+                                        value="{{ old('phone') }}" placeholder="Teléfono" minlength="5" maxlength="20"
+                                        required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="address">Dirección</label>
-                                    <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" placeholder="Dirección">
+                                    <input type="text" class="form-control" id="address" name="address"
+                                        value="{{ old('address') }}" minlength="5" maxlength="150" placeholder="Dirección" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="email">Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Correo Electrónico">
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        value="{{ old('email') }}" placeholder="Correo Electrónico" minlength="10"
+                                        maxlength="50" required>
                                 </div>
 
-                                <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <input type="submit" class="btn btn-primary" value="Guardar" />
                                 <a href="{{ route('Providers.Index') }}" class="btn btn-secondary">
                                     Volver
                                 </a>

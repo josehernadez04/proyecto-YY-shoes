@@ -40,12 +40,12 @@
                                 <div class="form-group c_form_group">
                                     <label for="name">Nombre</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Nombre " required>
+                                        placeholder="Nombre" minlength="3" maxlength="100" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="description">description</label>
                                     <input type="text" class="form-control" id="description" name="description"
-                                        placeholder="Descripcion" required>
+                                        placeholder="Descripcion" minlength="3" maxlength="500" required>
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Guardar" />
                                 <a href="{{ route('Categories.Index') }}" class="btn btn-secondary">

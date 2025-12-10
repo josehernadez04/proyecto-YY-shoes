@@ -35,6 +35,13 @@ class ClientController extends Controller
         $clients->address = $request->address;
         $clients->save();
 
+        if ($request->ajax()) {
+            return response()->json([
+                'id' => $clients->id,
+                'name' => $clients->name, // <-- necesario
+            ]);
+        }
+
         return redirect()->route('Clients.Index');
     }
 
