@@ -38,6 +38,13 @@ class ProviderController extends Controller
         $provider->email = $request->email;
         $provider->save();
 
+        if ($request->ajax()) {
+            return response()->json([
+                'id' => $provider->id,
+                'name' => $provider->name,
+            ]);
+        }
+
         return redirect()->route('Providers.Index');
     }
     public function update(ProviderUpdateRequest $request, $id)
@@ -65,7 +72,7 @@ class ProviderController extends Controller
             'address' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255'
         ]);
-    
+
         $provider = Provider::create([
             'name' => $request->name,
             'type_document_id' => $request->type_document_id,
@@ -74,7 +81,7 @@ class ProviderController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
         ]);
-    
+
         return response()->json([
             'success' => true,
             'provider' => $provider

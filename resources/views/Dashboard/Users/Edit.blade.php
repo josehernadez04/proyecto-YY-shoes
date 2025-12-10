@@ -40,31 +40,41 @@
                                 @csrf
                                 <div class="form-group c_form_group">
                                     <label for="name">Nombre completo</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nombre completo" value="{{ $user->name }}" required>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Nombre completo" value="{{ $user->name }}" minlength="3"
+                                        maxlength="100" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="type_document_id">Tipos de documento</label>
                                     <select class="form-control" name="type_document_id" id="type_document_id">
                                         <option value="" selected disabled>Seleccione</option>
                                         @foreach ($typeDocuments as $typeDocument)
-                                        <option value="{{ $typeDocument->id }}" {{ $typeDocument->id == $user->type_document_id ? 'selected' : '' }}>{{ $typeDocument->code }}</option>
+                                            <option value="{{ $typeDocument->id }}"
+                                                {{ $typeDocument->id == $user->type_document_id ? 'selected' : '' }}>
+                                                {{ $typeDocument->code }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="document">Documento</label>
-                                    <input type="text" class="form-control" id="document" name="document" placeholder="Documento" value="{{ $user->document }}" required>
+                                    <input type="text" class="form-control" id="document" name="document"
+                                        placeholder="Documento" value="{{ $user->document }}" minlength="5" maxlength="20"
+                                        required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="email">Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" placeholder="Correo Electrónico" pattern="^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,}$">
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        value="{{ $user->email }}" placeholder="Correo Electrónico"
+                                        pattern="^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,}$" minlength="10" maxlength="50"
+                                        required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="password">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="Contraseña">
                                 </div>
 
-                                <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <input type="submit" class="btn btn-primary" value="Guardar" />
                             </form>
                         </div>
                     </div>

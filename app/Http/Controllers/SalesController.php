@@ -15,7 +15,8 @@ class SalesController extends Controller
     public function index()
     {
         $sales = Sale::with('client', 'user')->get();
-        return view('Dashboard.Sales.Index', compact('sales'));
+        $clients = Client::all();
+        return view('Dashboard.Sales.Index', compact('sales', 'clients'));
     }
 
     public function create()
@@ -30,8 +31,13 @@ class SalesController extends Controller
         $sale = new Sale();
         $sale->client_id = $request->client_id;
         $sale->user_id = Auth::user()->id;
-
         $sale->save();
+
+        if ($request->ajax()) {
+            return response()->json([
+                'id' => $sale->id
+            ]);
+        }
 
         return redirect()->route('Sales.Show', $sale->id);
     }
@@ -60,5 +66,3 @@ class SalesController extends Controller
         return redirect()->route('Sales.Index');
     }
 }
-
-

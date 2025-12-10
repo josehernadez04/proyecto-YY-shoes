@@ -12,7 +12,7 @@ class UserStoreRequest extends FormRequest
 {
     use Titles;
     use Zones;
-    
+
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
@@ -29,11 +29,11 @@ class UserStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:100'],
+            'last_name' => ['required', 'string', 'max:100'],
             'document_number' => ['required', 'string', 'min:5', 'max:20', 'unique:users'],
             'phone_number' => ['required', 'string', 'size:10'],
-            'address' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:150'],
             'email' => ['required', 'email:rfc', 'regex:/^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,}$/','unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
             'password_confirmation' => ['required', 'string', 'min:6'],

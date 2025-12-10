@@ -9,6 +9,7 @@ use App\Models\Shopping;
 use App\Models\Provider;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\TypeDocument;
 use Illuminate\Http\Request;
 
 class ShoppingsController extends Controller
@@ -23,7 +24,8 @@ class ShoppingsController extends Controller
     {
         $providers = Provider::get();
         $users = User::get();
-        return view('Dashboard.Shoppings.Create', compact('providers', 'users'));
+        $typeDocuments = TypeDocument::all();
+        return view('Dashboard.Shoppings.Create', compact('providers', 'users', 'typeDocuments'));
     }
 
     public function store(ShoppingStoreRequest $request)

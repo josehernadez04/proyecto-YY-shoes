@@ -40,7 +40,7 @@
                                 <div class="form-group c_form_group">
                                     <label for="name">Nombre completo</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Nombre completo" required>
+                                        placeholder="Nombre completo" minlength="3" maxlength="100" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="type_document_id">Tipos de documento</label>
@@ -54,27 +54,27 @@
                                 <div class="form-group c_form_group">
                                     <label for="document">Documento</label>
                                     <input type="text" class="form-control" id="document" name="document"
-                                        placeholder="Documento" required>
+                                        placeholder="Documento" minlength="5" maxlength="20" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="email">Correo Electrónico</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="Correo Electrónico" pattern="^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,}$">
+                                        placeholder="Correo Electrónico" pattern="^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,}$" minlength="10" maxlength="50" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="phone">Telefono</label>
                                     <input type="text" class="form-control" id="phone" name="phone"
-                                        placeholder="Telefono">
+                                        placeholder="Telefono" minlength="5" maxlength="20" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="address">Direccion</label>
                                     <input type="text" class="form-control" id="address" name="address"
-                                        placeholder="Direccion">
+                                        placeholder="Direccion" minlength="5" maxlength="150" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="birthdate">Fecha de Nacimiento</label>
                                     <input type="date" class="form-control" id="birthdate" name="birthdate"
-                                        placeholder="Fecha de Nacimiento">
+                                        placeholder="Fecha de Nacimiento" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="password">Contraseña</label>
