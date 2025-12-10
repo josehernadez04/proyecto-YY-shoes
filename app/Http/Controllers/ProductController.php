@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Provider;
+use App\Models\TypeDocument;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -20,7 +21,8 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $providers = Provider::get();
-        return view('Dashboard.Products.Create', compact('categories', 'providers'));
+        $typeDocuments = TypeDocument::get();
+        return view('Dashboard.Products.Create', compact('categories', 'providers', 'typeDocuments'));
     }
 
 

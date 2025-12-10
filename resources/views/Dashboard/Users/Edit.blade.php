@@ -75,6 +75,7 @@
                                 </div>
 
                                 <input type="submit" class="btn btn-primary" value="Guardar" />
+                                <a class=" btn btn-secondary" type="button" href="{{ route('Users.Index') }}">volver</a>
                             </form>
                         </div>
                     </div>

@@ -124,6 +124,9 @@ Route::middleware(['auth'])->group(function () {
             });
         });
 
+        Route::post('/Providers/AjaxStore', [ProviderController::class, 'ajaxStore'])->name('Providers.AjaxStore');
+
+
         Route::prefix('/Sales')->group(function () {
             Route::controller(SalesController::class)->group(function () {
                 Route::get('/Index', 'index')->name('Sales.Index')->middleware('can:Sales,Dashboard.Sales.Index');
