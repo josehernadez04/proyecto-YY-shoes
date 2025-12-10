@@ -16,7 +16,8 @@ class SalesController extends Controller
     {
         $sales = Sale::with('client', 'user')->get();
         $clients = Client::all();
-        return view('Dashboard.Sales.Index', compact('sales', 'clients'));
+        $typeDocuments = TypeDocument::all();
+        return view('Dashboard.Sales.Index', compact('sales', 'clients', 'typeDocuments'));
     }
 
     public function create()

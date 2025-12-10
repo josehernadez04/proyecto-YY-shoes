@@ -113,9 +113,74 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Continuar</button>
                     </div>
-
                 </form>
+            </div>
+        </div>
+    </div>
 
+    <!-- Modal Crear Cliente -->
+    <div class="modal fade" id="modalCreateClient" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Crear Cliente</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+
+                <form id="formCreateClient" action="{{ route('Clients.Store') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label>Nombre completo</label>
+                            <input type="text" name="name" class="form-control" required minlength="3"
+                                maxlength="100">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tipo de documento</label>
+                            <select name="type_document_id" class="form-control" required>
+                                <option selected disabled>Seleccione</option>
+                                @foreach ($typeDocuments as $doc)
+                                    <option value="{{ $doc->id }}">{{ $doc->code }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Documento</label>
+                            <input type="text" name="document" class="form-control" required minlength="5"
+                                maxlength="20">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Correo electrónico</label>
+                            <input type="email" name="email" class="form-control" required minlength="10"
+                                maxlength="50">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="text" name="phone" class="form-control" required minlength="5"
+                                maxlength="20">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <input type="text" name="address" class="form-control" required minlength="5"
+                                maxlength="150">
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -169,6 +234,59 @@
     icon: 'error',
     title: 'Error',
     text: 'Debe seleccionar un cliente válido.'
+    });
+    }
+    });
+    });
+
+    // ABRIR modal de cliente desde modal de venta
+    $('#modalNewSale').on('click', '.btn-success', function () {
+    // cerrar modal de nueva venta
+    $('#modalNewSale').modal('hide');
+
+    setTimeout(() => {
+    $('#modalCreateClient').modal('show');
+    }, 300);
+    });
+
+    // Guardar cliente por AJAX
+    $('#formCreateClient').on('submit', function (e) {
+    e.preventDefault();
+
+    $.ajax({
+    url: $(this).attr('action'),
+    method: 'POST',
+    data: $(this).serialize(),
+    success: function (response) {
+
+    $('#modalCreateClient').modal('hide');
+
+    $('#clientNewSale').append(
+    `<option value="${response.id}" selected>${response.name}</option>`
+    );
+
+    Swal.fire({
+    icon: 'success',
+    title: 'Cliente creado',
+    text: 'El cliente se registró correctamente.',
+    timer: 1500,
+    showConfirmButton: false
+    });
+
+    $('#formCreateClient')[0].reset();
+    },
+    error: function (xhr) {
+    let errors = xhr.responseJSON.errors;
+    let message = '';
+
+    for (const field in errors) {
+    message += `• ${errors[field][0]}<br>`;
+    }
+
+    Swal.fire({
+    icon: 'error',
+    title: 'Error',
+    html: message
     });
     }
     });

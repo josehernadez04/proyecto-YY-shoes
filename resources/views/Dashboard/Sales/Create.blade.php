@@ -47,14 +47,13 @@
                                     </select>
 
                                     <div class="input-group-append">
-                                        <button class="btn btn-success" type="button" data-toggle="modal"
-                                            data-target="#modalCreateClient">
+                                        <button class="btn btn-success" type="button" id="btnOpenClientModal">
                                             <i class="fas fa-user-plus"></i>
                                         </button>
                                     </div>
 
                                 </div>
-                                 <button type="submit" class="btn btn-primary">Continuar</button>
+                                <button type="submit" class="btn btn-primary">Continuar</button>
                             </div>
 
                         </form>
@@ -131,7 +130,23 @@
         </div>
     </section>
 @endsection
-@section('script')
+@section('scripts')
+    console.log("Script cargado correctamente");
+
+    $('#btnOpenClientModal').on('click', function () {
+    console.log("BOTÓN DETECTADO");
+    });
+    // ABRIR MODAL DE CREAR CLIENTE DESDE OTRA MODAL (SOLUCIÓN RECOMENDADA)
+    $('#btnOpenClientModal').on('click', function () {
+
+    // Cerrar cualquier modal abierta (por ejemplo, la de Nueva Venta)
+    $('.modal.show').modal('hide');
+
+    // Abrir modal de cliente después de un pequeño delay
+    setTimeout(() => {
+    $('#modalCreateClient').modal('show');
+    }, 300);
+    });
     $('#formCreateClient').on('submit', function(e) {
     e.preventDefault();
 
