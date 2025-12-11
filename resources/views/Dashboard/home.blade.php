@@ -26,11 +26,66 @@
     <section class="content">
         <div class="container-fluid">
 
+            {{-- 🔹 FILA DE CARDS (por ahora solo COMPRAS) --}}
+            <div class="row mb-4">
+
+                {{-- Total Compras --}}
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{ $totalCompras }}</h3>
+                            <p>Total de Compras</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-truck-loading"></i>
+                        </div>
+                        <a href="{{ route('Shoppings.Index') }}" class="small-box-footer">
+                            Más información <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                {{-- Total Ventas --}}
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{ $totalVentas }}</h3>
+                            <p>Total de Ventas</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <a href="{{ route('Sales.Index') }}" class="small-box-footer">
+                            Más información <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                {{-- Total Productos --}}
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{ $totalProductos }}</h3>
+                            <p>Total de Productos</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <a href="{{ route('Products.Index') }}" class="small-box-footer">
+                            Más información <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            {{-- 🔹 FIN FILA CARDS --}}
+
+            {{-- 🔹 FILA DE GRÁFICAS QUE YA TENÍAS --}}
             <div class="row">
 
                 <div class="col-md-6">
                     <div class="card card-primary">
-                        {{-- <div class="card-header">Productos por Categoría</div> --}}
                         <div class="card-body" style="height:300px;">
                             <canvas id="productosCategoria"></canvas>
                         </div>
@@ -39,7 +94,6 @@
 
                 <div class="col-md-6">
                     <div class="card card-success">
-                        {{-- <div class="card-header">Ventas por Mes</div> --}}
                         <div class="card-body" style="height:300px;">
                             <canvas id="productosMes"></canvas>
                         </div>
@@ -47,14 +101,21 @@
                 </div>
 
             </div>
+            {{-- 🔹 FIN FILA GRÁFICAS --}}
 
         </div>
     </section>
 @endsection
 
+
 @section('script')
 
-new Chart(document.getElementById('productosCategoria'), {
+    @php
+        $maxValue = $category->pluck('products_count')->max();
+        $maxY = $maxValue + 2;
+    @endphp
+
+    new Chart(document.getElementById('productosCategoria'), {
     type: 'bar',
     data: {
         labels: @json($category->pluck('name')),
@@ -67,66 +128,70 @@ new Chart(document.getElementById('productosCategoria'), {
         }]
     },
     options: {
-        maintainAspectRatio: false,       // 🔥 evita deformación
-        responsive: true,                 // 🔥 se adapta al card
+        maintainAspectRatio: false,
+        responsive: true,
         scales: {
-            y: {
-                beginAtZero: true,
-                grid: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 1,     // ⭐ Ahora sí funciona en Chart.js 2
+                    precision: 0,    // ⭐ Sin decimales
+                    max: {{ $maxY }}           // ⭐ Puedes ajustar o calcular dinámico
+                },
+                gridLines: {
                     color: '#e1e1e1'
                 }
-            },
-            x: {
-                grid: {
-                    display: false
-                }
-            }
+            }],
+            xAxes: [{
+                gridLines: { display: false }
+            }]
         },
-        plugins: {
-            legend: {
-                display: true,
-                position: 'top'
-            },
-            tooltip: {
-                enabled: true
-            }
+        legend: {
+            display: true,
+            position: 'top'
         }
     }
 });
 
+
+    @php
+    $maxValueMes = $productosMes->pluck('total')->max();
+    $maxYMes = $maxValueMes + 2; // margen superior
+@endphp
+
 new Chart(document.getElementById('productosMes'), {
-    type: 'line',
+    type: 'bar',  // ⭐ AHORA ES UNA GRÁFICA DE BARRAS
     data: {
         labels: @json($productosMes->pluck('mes')),
         datasets: [{
             label: 'Productos creados por mes',
             data: @json($productosMes->pluck('total')),
-            fill: true,
-            tension: 0.3,
-            backgroundColor: 'rgba(255, 206, 86, 0.4)',
+            backgroundColor: 'rgba(255, 206, 86, 0.7)',
             borderColor: 'rgba(255, 159, 64, 1)',
-            borderWidth: 2,
-            pointBackgroundColor: 'rgba(255, 159, 64, 1)',
-            pointRadius: 5
+            borderWidth: 1
         }]
     },
     options: {
         maintainAspectRatio: false,
         responsive: true,
         scales: {
-            y: {
-                beginAtZero: true,
-                grid: { color: "#e1e1e1" }
-            },
-            x: {
-                grid: { display: false }
-            }
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 1,           // ⭐ Enteros
+                    precision: 0,          // ⭐ Sin decimales
+                    max: {{ $maxYMes }}    // ⭐ Máximo dinámico
+                },
+                gridLines: { color: "#e1e1e1" }
+            }],
+            xAxes: [{
+                gridLines: { display: false }
+            }]
         },
-        plugins: {
-            legend: { position: 'top' },
-            tooltip: { enabled: true }
-        }
+        legend: { position: 'top' },
+        tooltips: { enabled: true }
     }
 });
+
 
 @endsection

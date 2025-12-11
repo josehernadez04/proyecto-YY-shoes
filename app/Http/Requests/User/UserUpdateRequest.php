@@ -31,9 +31,9 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:100'],
-            'last_name' => ['required', 'string', 'max:100'],
+            // 'last_name' => ['required', 'string', 'max:100'],
             'document_number' => ['required', 'string', 'min:5', 'max:20', 'unique:users,document_number,' . $this->route('id')],
-            'phone_number' => ['required', 'string', 'size:10'],
+            'phone_number' => ['required','regex:/^[0-9]+$/','max:20'],
             'address' => ['required', 'string', 'max:150'],
             'email' => ['required', 'email:rfc', 'regex:/^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,}$/', 'unique:users,email,' . $this->route('id')],
             'title' => ['required', 'string', Rule::in($this->titles())],
@@ -59,7 +59,7 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'name' => 'nombre',
-            'last_name' => 'apellido',
+            // 'last_name' => 'apellido',
             'document_number' => 'numero de documento',
             'phone_number' => 'numero de telefono',
             'address' => 'direccion',

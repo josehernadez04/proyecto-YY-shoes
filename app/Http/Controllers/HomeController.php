@@ -9,6 +9,8 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\TypeDocument;
 use App\Models\User;
+use App\Models\Sale;
+use App\Models\Shopping;
 use App\Traits\ApiMessage;
 use App\Traits\ApiResponser;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +28,15 @@ class HomeController extends Controller
 
     public function index()
     {
+
+        $totalCompras = Shopping::count();
+
+        $totalVentas = Sale::count();
+
+        $totalProductos = Product::count();
+
+        
+
         $category = Category::withCount('products')->get();
         // $stockProducts = Product::select('name', 'stock')->get();
 
@@ -42,9 +53,14 @@ class HomeController extends Controller
             });
 
         return view('Dashboard.home', [
+             'totalCompras' => $totalCompras,
+            'totalVentas' => $totalVentas,
+            'totalProductos' => $totalProductos,
             'category' => $category,
             // 'stockProducts' => $stockProducts,
             'productosMes' => $productosMes
         ]);
+
+
     }
 }
