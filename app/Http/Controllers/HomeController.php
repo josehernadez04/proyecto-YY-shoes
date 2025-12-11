@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\TypeDocument;
 use App\Models\User;
 use App\Models\Sale;
+use App\Models\Provider;
 use App\Models\Shopping;
 use App\Traits\ApiMessage;
 use App\Traits\ApiResponser;
@@ -35,7 +36,7 @@ class HomeController extends Controller
 
         $totalProductos = Product::count();
 
-        
+        $totalProveedores = Provider::count();
 
         $category = Category::withCount('products')->get();
         // $stockProducts = Product::select('name', 'stock')->get();
@@ -56,11 +57,9 @@ class HomeController extends Controller
              'totalCompras' => $totalCompras,
             'totalVentas' => $totalVentas,
             'totalProductos' => $totalProductos,
+            'totalProveedores' => $totalProveedores,
             'category' => $category,
-            // 'stockProducts' => $stockProducts,
             'productosMes' => $productosMes
         ]);
-
-
     }
 }

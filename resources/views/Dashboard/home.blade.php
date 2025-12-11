@@ -76,6 +76,22 @@
                         </a>
                     </div>
                 </div>
+
+                {{-- Total Proveedores --}}
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{{ $totalProveedores }}</h3>
+                            <p>Total de Proveedores</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <a href="{{ route('Providers.Index') }}" class="small-box-footer">
+                            Más información <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
 
 
