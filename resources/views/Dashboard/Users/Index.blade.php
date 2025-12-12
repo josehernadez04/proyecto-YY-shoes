@@ -49,6 +49,7 @@
                                             <th>TIPO DOCUMENTO</th>
                                             <th>DOCUMENTO</th>
                                             <th>CORREO ELECTRONICO</th>
+                                            <th>ESTADO</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
@@ -61,9 +62,29 @@
                                             <td>{{ $user->document }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>
+                                                <span class="badge {{ $user->is_active ? 'badge-success' : 'badge-danger' }}">
+                                                    {{ $user->is_active ? 'Activo' : 'Inactivo' }}
+                                                </span>
+                                            </td>
+                                            {{-- <td>
                                                 <a class="nav-link active" type="button" href="{{ route('Users.Edit', $user->id) }}">
                                                     <i class="fas fa-pencil"></i>
                                                 </a>
+                                            </td> --}}
+                                            <td class="text-center">
+                                                <a href="{{ route('Users.Edit', $user->id) }}" class="btn btn-sm btn-warning" title="Editar">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
+
+                                                <form action="{{ route('Users.ToggleStatus', $user->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <button type="submit"
+                                                        class="btn btn-sm {{ $user->is_active ? 'btn-danger' : 'btn-success' }}"
+                                                        title="{{ $user->is_active ? 'Inactivar usuario' : 'Activar usuario' }}">
+                                                        <i class="fas {{ $user->is_active ? 'fa-user-slash' : 'fa-user-check' }}"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach

@@ -45,7 +45,9 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::with('type_document')->get();
+        // $users = User::with('type_document')->get();
+        $users = User::with('type_document')->orderByDesc('is_active')->get();
+        // $users = User::with('type_document')->where('is_active', true)->get();
         return view('Dashboard.Users.Index', compact('users'));
     }
 
@@ -163,6 +165,17 @@ class UserController extends Controller
             );
         }
     }
+
+    public function toggleStatus($id)
+    {
+        $user = User::findOrFail($id);
+        $user->is_active = !$user->is_active;
+        $user->save();
+
+        return redirect()->route('Users.Index')
+            ->with('success', 'Estado del usuario actualizado correctamente.');
+    }
+
 
     public function delete(UserDeleteRequest $request)
     {

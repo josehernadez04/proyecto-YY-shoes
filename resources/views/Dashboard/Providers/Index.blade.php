@@ -51,6 +51,7 @@
                                             <th>TELEFONO</th>
                                             <th>DIRECCION</th>
                                             <th>CORREO ELECTRONICO</th>
+                                            <th>ESTADO</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
@@ -65,10 +66,31 @@
                                             <td>{{ $provider->address }}</td>
                                             <td>{{ $provider->email }}</td>
                                             <td>
+                                                <span class="badge {{ $provider->is_active ? 'badge-success' : 'badge-danger' }}">
+                                                    {{ $provider->is_active ? 'Activo' : 'Inactivo' }}
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                <a class="btn btn-warning btn-sm" href="{{ route('Providers.Edit', $provider->id) }}" title="Editar">
+                                                    <i class="fas fa-pencil"></i>
+                                                </a>
+
+                                                <form action="{{ route('Providers.ToggleStatus', $provider->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <button type="submit"
+                                                        class="btn btn-sm {{ $provider->is_active ? 'btn-danger' : 'btn-success' }}"
+                                                        title="{{ $provider->is_active ? 'Bloquear proveedor' : 'Activar proveedor' }}">
+                                                        <i class="fas {{ $provider->is_active ? 'fa-user-slash' : 'fa-user-check' }}"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+
+                                            {{-- <td>
                                                 <a class="nav-link active" type="button" href="{{ route('Providers.Edit', $provider->id) }}">
                                                     <i class="fas fa-pencil"></i>
                                                 </a>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                         @endforeach
                                     </tbody>

@@ -62,6 +62,16 @@ class ProviderController extends Controller
         return redirect()->route('Providers.Index');
     }
 
+    public function toggleStatus($id)
+    {
+        $provider = Provider::findOrFail($id);
+        $provider->is_active = !$provider->is_active;
+        $provider->save();
+
+        return redirect()->route('Providers.Index')
+            ->with('success', 'Estado del proveedor actualizado correctamente.');
+    }
+
     public function ajaxStore(Request $request)
     {
         $request->validate([

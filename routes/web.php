@@ -62,6 +62,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/Edit/{id}', 'edit')->name('Users.Edit')->middleware('can:Users,Dashboard.Users.Update');
                 Route::put('/Update/{id}', 'update')->name('Users.Update')->middleware('can:Users,Dashboard.Users.Update');
                 Route::delete('/Delete/{id}', 'delete')->name('Users.Delete')->middleware('can:Users,Dashboard.Users.Delete');
+                Route::patch('/ToggleStatus/{id}', 'toggleStatus')->name('Users.ToggleStatus')->middleware('can:Users,Dashboard.Users.Update');
             });
         });
 
@@ -77,7 +78,7 @@ Route::middleware(['auth'])->group(function () {
         });
 
         Route::post('/Categories/AjaxStore', [CategoryController::class, 'ajaxStore'])->name('Categories.AjaxStore');
-// ->middleware('can:Users,Dashboard.Categories.Store')
+        // ->middleware('can:Users,Dashboard.Categories.Store')
         Route::post('/Providers/AjaxStore', [ProviderController::class, 'ajaxStore'])->name('Providers.AjaxStore');
 
         Route::prefix('/TypeDocuments')->group(function () {
@@ -99,6 +100,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/Edit/{id}', 'edit')->name('Clients.Edit')->middleware('can:Clients,Dashboard.Clients.Update');
                 Route::put('/Update/{id}', 'update')->name('Clients.Update')->middleware('can:Clients,Dashboard.Clients.Update');
                 Route::delete('/Delete/{id}', 'delete')->name('Clients.Delete')->middleware('can:Clients,Dashboard.Clients.Delete');
+                Route::patch('/ToggleStatus/{id}', 'toggleStatus')->name('Clients.ToggleStatus')->middleware('can:Clients,Dashboard.Clients.Update');
             });
         });
 
@@ -110,6 +112,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/Edit/{id}', 'edit')->name('Providers.Edit')->middleware('can:Providers,Dashboard.Providers.Update');
                 Route::put('/Update/{id}', 'update')->name('Providers.Update')->middleware('can:Providers,Dashboard.Providers.Update');
                 Route::delete('/Delete/{id}', 'delete')->name('Providers.Delete')->middleware('can:Providers,Dashboard.Providers.Delete');
+                Route::patch('/ToggleStatus/{id}', 'toggleStatus')->name('Providers.ToggleStatus')->middleware('can:Providers,Dashboard.Providers.Update');
             });
         });
 

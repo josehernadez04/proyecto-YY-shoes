@@ -18,13 +18,13 @@ class ClientController extends Controller
         return view('Dashboard.Clients.Index', compact('clients'));
     }
 
-    public function create ()
+    public function create()
     {
         $type_documents = TypeDocument::all();
         return view('Dashboard.Clients.Create', compact('type_documents'));
     }
 
-    public function store (ClientStoreRequest $request)
+    public function store(ClientStoreRequest $request)
     {
         $clients = new Client();
         $clients->name = $request->name;
@@ -45,14 +45,14 @@ class ClientController extends Controller
         return redirect()->route('Clients.Index');
     }
 
-    public function edit ($id)
+    public function edit($id)
     {
         $type_documents = TypeDocument::all();
         $client = Client::findOrFail($id);
-        return view('Dashboard.Clients.Edit', compact('type_documents' , 'client'));
+        return view('Dashboard.Clients.Edit', compact('type_documents', 'client'));
     }
 
-    public function update (ClientupdateRequest $request, $id)
+    public function update(ClientupdateRequest $request, $id)
     {
         $clients = Client::findOrFail($id);
         $clients->name = $request->name;
@@ -66,6 +66,13 @@ class ClientController extends Controller
         return redirect()->route('Clients.Index');
     }
 
+    public function toggleStatus($id)
+    {
+        $client = Client::findOrFail($id);
+        $client->is_active = !$client->is_active;
+        $client->save();
+
+        return redirect()->route('Clients.Index')
+            ->with('success', 'Estado del cliente actualizado correctamente.');
+    }
 }
-
-

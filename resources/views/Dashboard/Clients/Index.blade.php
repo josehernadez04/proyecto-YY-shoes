@@ -41,7 +41,8 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="clientsTable" class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
+                                <table id="clientsTable"
+                                    class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
@@ -51,26 +52,51 @@
                                             <th>CORREO ELECTRONICO</th>
                                             <th>TELEFONO</th>
                                             <th>DIRECCION</th>
+                                            <th>ESTADO</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($clients as $client)
-                                        <tr>
-                                            <td>{{ $client->id }}</td>
-                                            <td>{{ $client->name }}</td>
-                                            <td>{{ $client->type_document->code }}</td>
-                                            <td>{{ $client->document }}</td>
-                                            <td>{{ $client->email }}</td>
-                                            <td>{{ $client->phone}}</td>
-                                            <td>{{ $client->address}}</td>
-                                            <td>
+                                            <tr>
+                                                <td>{{ $client->id }}</td>
+                                                <td>{{ $client->name }}</td>
+                                                <td>{{ $client->type_document->code }}</td>
+                                                <td>{{ $client->document }}</td>
+                                                <td>{{ $client->email }}</td>
+                                                <td>{{ $client->phone }}</td>
+                                                <td>{{ $client->address }}</td>
+                                                <td>
+                                                    <span class="badge {{ $client->is_active ? 'badge-success' : 'badge-danger' }}">
+                                                        {{ $client->is_active ? 'Activo' : 'Inactivo' }}
+                                                    </span>
+                                                </td>
+
+                                                {{-- <td>
                                                 <a class="btn btn-warning btn-sm" type="button" href="{{ route('Clients.Edit', $client->id) }}">
 
                                                     <i class="fas fa-pencil"></i>
                                                 </a>
-                                            </td>
-                                        </tr>
+                                            </td> --}}
+                                                <td class="text-center">
+                                                    <a class="btn btn-warning btn-sm"
+                                                        href="{{ route('Clients.Edit', $client->id) }}" title="Editar">
+                                                        <i class="fas fa-pencil"></i>
+                                                    </a>
+
+                                                    <form action="{{ route('Clients.ToggleStatus', $client->id) }}"
+                                                        method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <button type="submit"
+                                                            class="btn btn-sm {{ $client->is_active ? 'btn-danger' : 'btn-success' }}"
+                                                            title="{{ $client->is_active ? 'Bloquear cliente' : 'Activar cliente' }}">
+                                                            <i
+                                                                class="fas {{ $client->is_active ? 'fa-user-slash' : 'fa-user-check' }}"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -83,28 +109,28 @@
     </section>
 @endsection
 @section('script')
-let table = $('#clientsTable').DataTable({
+    let table = $('#clientsTable').DataTable({
     paging: true,
     searching: true,
     info: true,
     autoWidth: false,
     responsive: true,
     language: {
-        oPaginate: {
-            sFirst: 'Primero',
-            sLast: 'Último',
-            sNext: 'Siguiente',
-            sPrevious: 'Anterior',
-        },
-        info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
-        infoEmpty: 'No hay registros para mostrar',
-        infoFiltered: '(filtrados de _MAX_ registros en total)',
-        emptyTable: 'No hay datos disponibles.',
-        lengthMenu: 'Mostrar _MENU_ registros',
-        search: 'Buscar:',
-        zeroRecords: 'No se encontraron registros.',
-        decimal: ',',
-        thousands: '.'
+    oPaginate: {
+    sFirst: 'Primero',
+    sLast: 'Último',
+    sNext: 'Siguiente',
+    sPrevious: 'Anterior',
+    },
+    info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
+    infoEmpty: 'No hay registros para mostrar',
+    infoFiltered: '(filtrados de _MAX_ registros en total)',
+    emptyTable: 'No hay datos disponibles.',
+    lengthMenu: 'Mostrar _MENU_ registros',
+    search: 'Buscar:',
+    zeroRecords: 'No se encontraron registros.',
+    decimal: ',',
+    thousands: '.'
     }
-});
+    });
 @endsection

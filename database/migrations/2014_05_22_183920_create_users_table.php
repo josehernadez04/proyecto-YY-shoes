@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('birthdate',255)->nullable();
             $table->string('password',255);
             $table->rememberToken()->nullable();
+            $table->boolean('is_active')->default(true);
             $table->foreignIdFor(TypeDocument::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();

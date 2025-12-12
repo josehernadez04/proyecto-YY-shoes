@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('phone', 20)->nullable();
             $table->string('email', 100)->nullable();
             $table->string('address', 150)->nullable();
+            $table->boolean('is_active')->default(true);
             $table->foreignIdFor(TypeDocument::class)->constrained()->onDelete('cascade');
             $table->timestamps();
         });
