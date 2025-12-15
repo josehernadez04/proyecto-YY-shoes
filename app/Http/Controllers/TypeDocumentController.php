@@ -62,4 +62,17 @@ class TypeDocumentController extends Controller
 
         return redirect()->route('TypeDocuments.Index');
     }
+
+    public function toggleStatus($id)
+    {
+
+        $typedocument = TypeDocument::findOrFail($id);
+        $typedocument->is_active = !$typedocument->is_active;
+        $typedocument->save();
+
+        return redirect()
+            ->route('TypeDocuments.Index')
+            ->with('success', 'Estado del tipo de documento actualizado correctamente.');
+    }
+
 }

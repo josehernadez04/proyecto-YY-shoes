@@ -89,7 +89,7 @@
                     @csrf
                     <div class="modal-body">
 
-                        <label>Cliente</label>
+                        <label class="required">Cliente</label>
                         <div class="input-group">
                             <select name="client_id" id="clientNewSale" class="form-control" required>
                                 <option selected disabled>Seleccione</option>
@@ -135,13 +135,13 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Nombre completo</label>
+                            <label class="required">Nombre completo</label>
                             <input type="text" name="name" class="form-control" required minlength="3"
                                 maxlength="100">
                         </div>
 
                         <div class="form-group">
-                            <label>Tipo de documento</label>
+                            <label class="required">Tipo de documento</label>
                             <select name="type_document_id" class="form-control" required>
                                 <option selected disabled>Seleccione</option>
                                 @foreach ($typeDocuments as $doc)
@@ -151,25 +151,25 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Documento</label>
+                            <label class="required">Documento</label>
                             <input type="text" name="document" class="form-control" required minlength="5"
                                 maxlength="20">
                         </div>
 
                         <div class="form-group">
-                            <label>Correo electrónico</label>
+                            <label class="required">Correo electrónico</label>
                             <input type="email" name="email" class="form-control" required minlength="10"
                                 maxlength="50">
                         </div>
 
                         <div class="form-group">
-                            <label>Teléfono</label>
+                            <label class="required">Teléfono</label>
                             <input type="text" name="phone" class="form-control" required minlength="5"
                                 maxlength="20">
                         </div>
 
                         <div class="form-group">
-                            <label>Dirección</label>
+                            <label class="required">Dirección</label>
                             <input type="text" name="address" class="form-control" required minlength="5"
                                 maxlength="150">
                         </div>

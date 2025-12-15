@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('code', 10)->unique();
             $table->string('description', 50)->notNullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

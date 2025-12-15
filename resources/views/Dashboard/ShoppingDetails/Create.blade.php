@@ -39,32 +39,41 @@
                                 @csrf
 
                                 <div class="form-group c_form_group" hidden>
-                                    <label for="shopping_id">Id compra</label>
-                                    <input type="number" class="form-control" id="shopping_id" name="shopping_id" value="{{ $shopping_id }}" required>
+                                    <label for="shopping_id" class="required">Id compra</label>
+                                    <input type="number" class="form-control" id="shopping_id" name="shopping_id"
+                                        value="{{ $shopping_id }}" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="description">Producto</label>
+                                    <label for="description" class="required">Producto</label>
                                     <select class="form-control" name="product_id" id="product_id">
                                         <option selected disabled>Seleccione</option>
                                         @foreach ($products as $product)
-                                        <option value="{{ $product->id }}">{{ $product->name }}({{ $product->reference }}) - {{ $product->color }}</option>
+                                            <option value="{{ $product->id }}">
+                                                {{ $product->name }}({{ $product->reference }}) - {{ $product->color }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="size">Talla</label>
+                                    <label for="size" class="required">Talla</label>
                                     <select class="form-control" name="size" id="size">
                                         <option selected disabled>Seleccione</option>
                                         @foreach ($tallas as $talla)
-                                        <option value="{{ $talla }}">{{ $talla }}</option>
+                                            <option value="{{ $talla }}">{{ $talla }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="quantity">Cantidad</label>
-                                    <input type="number" class="form-control" id="quantity" name="quantity" placeholder=" cantidad " required>
+                                    <label for="quantity" class="required">Cantidad</label>
+                                    <input type="number" class="form-control" id="quantity" name="quantity" min="1"
+                                        step="1" max="9999999"
+                                        oninput="if(this.value.length > 7) this.value = this.value.slice(0,7);"
+                                        placeholder=" cantidad " required>
                                 </div>
-                                <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <input type="submit" class="btn btn-primary" value="Guardar" />
+                                <a href="{{ route('Shoppings.Index') }}" class="btn btn-secondary">
+                                    Volver
+                                </a>
                             </form>
                         </div>
                     </div>

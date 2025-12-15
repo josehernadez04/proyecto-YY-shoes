@@ -37,7 +37,7 @@
                         <form method="POST" action="{{ route('Sales.Store') }}">
                             @csrf
                             <div class="form-group c_form_group">
-                                <label for="description">Cliente</label>
+                                <label for="description" class="required">Cliente</label>
                                 <div class="input-group">
                                     <select class="form-control" name="client_id" id="client_id">
                                         <option selected disabled>Seleccione</option>

@@ -45,8 +45,9 @@
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="name">Total</label>
-                                    <input type="number" class="form-control" id="total" name="total"
-                                        placeholder="total" value="{{ old('total', $shopping->total) }}" disabled>
+                                    <input type="text" class="form-control" id="total" name="total"
+                                        value="{{ number_format($shopping->details_sum_subtotal, 0, ',', '.') }}"
+                                        placeholder="total" disabled>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="description">Proveedor</label>
@@ -67,12 +68,13 @@
                                     </select>
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Guardar" />
+                                <a href="{{ route('Shoppings.Index') }}" class="btn btn-secondary">Volver</a>
                             </form>
                         </div>
                     </div>
                 </div>
 
-        </div>
+            </div>
     </section>
 @endsection
 @section('script')

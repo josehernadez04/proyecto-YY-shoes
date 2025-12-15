@@ -38,12 +38,12 @@
                             <form action="{{ route('Clients.Store') }}" method="post">
                                 @csrf
                                 <div class="form-group c_form_group">
-                                    <label for="name">Nombre completo</label>
+                                    <label for="name" class="required">Nombre completo</label>
                                     <input type="text" class="form-control" id="name" name="name"
                                         placeholder="Nombre completo" value="{{ old('name') }}" minlength="3" maxlength="100" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="type_document_id">Tipos de documento</label>
+                                    <label for="type_document_id" class="required">Tipos de documento</label>
                                     <select class="form-control" name="type_document_id" id="type_document_id">
                                         <option value="" selected disabled>Seleccione</option>
                                         @foreach ($type_documents as $typeDocument)
@@ -52,22 +52,22 @@
                                     </select>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="document">Documento</label>
+                                    <label for="document" class="required">Documento</label>
                                     <input type="text" class="form-control" id="document" name="document"
                                         placeholder="Documento" value="{{ old('document') }}" minlength="5" maxlength="20" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="email">Correo Electrónico</label>
+                                    <label for="email" class="required">Correo Electrónico</label>
                                     <input type="text" class="form-control" id="email" name="email"
                                         placeholder="Correo Electrónico" value="{{ old('document') }}" minlength="10" maxlength="50" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="phone">Telefono</label>
+                                    <label for="phone" class="required">Telefono</label>
                                     <input type="phone" class="form-control" id="phone" name="phone"
                                         placeholder="Telefono" value="{{ old('document') }}" minlength="5" maxlength="20" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="address">Direccion</label>
+                                    <label for="address" class="required">Direccion</label>
                                     <input type="address" class="form-control" id="address" name="address"
                                         placeholder="Direccion" value="{{ old('document') }}" minlength="5" maxlength="150" required>
                                 </div>

@@ -11,5 +11,10 @@ class TypeDocument extends Model
     protected $fillable = [
         'code',
         'description',
+        'is_active'
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
     ];
 }

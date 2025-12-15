@@ -11,21 +11,25 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\TypeDocument;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ShoppingsController extends Controller
 {
     public function index()
     {
-        $shopping = Shopping::all();
+        // $shopping = Shopping::all();
+        $shopping = Shopping::withSum('details', 'subtotal')
+        ->with(['provider', 'user'])
+        ->get();
         return view('Dashboard.Shoppings.Index', compact('shopping'));
     }
 
     public function create()
     {
         $providers = Provider::get();
-        $users = User::get();
         $typeDocuments = TypeDocument::all();
-        return view('Dashboard.Shoppings.Create', compact('providers', 'users', 'typeDocuments'));
+        return view('Dashboard.Shoppings.Create', compact('providers', 'typeDocuments'));
     }
 
     public function store(ShoppingStoreRequest $request)
@@ -33,7 +37,7 @@ class ShoppingsController extends Controller
         $shopping = new Shopping();
         $shopping->date = $request->date;
         $shopping->provider_id = $request->provider_id;
-        $shopping->user_id = $request->user_id;
+        $shopping->user_id = Auth::id();
         $shopping->save();
 
         return redirect()->route('Shoppings.Show', $shopping->id);
@@ -47,7 +51,8 @@ class ShoppingsController extends Controller
 
     public function edit($id)
     {
-        $shopping = Shopping::findOrFail($id);
+        // $shopping = Shopping::findOrFail($id);
+        $shopping = Shopping::withSum('details', 'subtotal')->findOrFail($id);
         $providers = Provider::all();
         $users = User::all();
         return view('Dashboard.Shoppings.Edit', compact('shopping','providers','users'));

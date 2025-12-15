@@ -32,7 +32,13 @@
     width: 22px;
     height: 22px;
     transform: translateY(-50%);
-    background: url('/images/upload.png') no-repeat center;
+    background: url("/images/upload.png") no-repeat center;
     background-size: contain;
     pointer-events: none;
+}
+
+.required::after {
+    content: " *";
+    color: #dc3545;
+    font-weight: bold;
 }

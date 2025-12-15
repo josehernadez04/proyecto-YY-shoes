@@ -90,6 +90,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/Edit/{id}', 'edit')->name('TypeDocuments.Edit')->middleware('can:Users,Dashboard.TypeDocuments.Update');
                 Route::put('/Update/{id}', 'update')->name('TypeDocuments.Update')->middleware('can:Users,Dashboard.TypeDocuments.Update');
                 Route::delete('/Delete/{id}', 'delete')->name('TypeDocuments.Delete')->middleware('can:Users,Dashboard.TypeDocuments.Delete');
+                Route::patch('/Toggle/{id}', 'toggleStatus')->name('TypeDocuments.Toggle');
             });
         });
 

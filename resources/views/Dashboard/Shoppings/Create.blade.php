@@ -38,13 +38,13 @@
                             <form action="{{ route('Shoppings.Store') }}" method="post">
                                 @csrf
                                 <div class="form-group c_form_group">
-                                    <label for="name">Fecha</label>
+                                    <label for="name" class="required">Fecha</label>
                                     <input type="datetime-local" class="form-control" id="date" name="date" placeholder=" cantidad " required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="description">Proveedor</label>
+                                    <label for="description" class="required">Proveedor</label>
                                     <div class="input-group">
-                                        <select class="form-control" name="provider_id" id="provider_id">
+                                        <select class="form-control" name="provider_id" id="provider_id" >
                                             <option selected disabled>Seleccione</option>
                                             @foreach ($providers as $provider)
                                                 <option value="{{ $provider->id }}">{{ $provider->name }}</option>
@@ -62,14 +62,10 @@
 
                                 <div class="form-group c_form_group">
                                     <label for="description">Usuario</label>
-                                    <select class="form-control" name="user_id" id="user_id">
-                                        <option selected disabled>Seleccione</option>
-                                        @foreach ($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" value="{{ auth()->user()->name }}" disabled>
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Guardar"/>
+                                <a href="{{ route('Shoppings.Index') }}" class="btn btn-secondary">Volver</a>
                             </form>
                         </div>
                     </div>
@@ -94,12 +90,12 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label>Nombre completo</label>
+                        <label class="required">Nombre completo</label>
                         <input type="text" name="name" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Tipo de documento</label>
+                        <label class="required">Tipo de documento</label>
                         <select name="type_document_id" class="form-control" required>
                             <option selected disabled>Seleccione</option>
                             @foreach ($typeDocuments as $doc)
@@ -109,22 +105,22 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Documento</label>
+                        <label class="required">Documento</label>
                         <input type="number" name="document" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Teléfono</label>
+                        <label class="required">Teléfono</label>
                         <input type="number" name="phone" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Dirección</label>
+                        <label class="required">Dirección</label>
                         <input type="text" name="address" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Correo Electrónico</label>
+                        <label class="required">Correo Electrónico</label>
                         <input type="email" name="email" class="form-control" required>
                     </div>
 

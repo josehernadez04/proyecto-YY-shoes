@@ -39,26 +39,72 @@ class SalesDetailsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // public function store(Request $request)
+    // {
+    //     $product = Product::with('details')->findOrFail($request->product_id);
+
+    //     $detail = new SaleDetail();
+    //     $detail->quantity = $request->quantity;
+    //     $detail->size = $request->size;
+    //     $detail->price_unit = $product->purchase_price;
+    //     $detail->subtotal = $request->quantity * $product->purchase_price;
+    //     $detail->sale_id = $request->sale_id;
+    //     $detail->product_id = $request->product_id;
+    //     $detail->save();
+
+    //     $product->details()->where('size', $request->size)->updateOrCreate(
+    //         ['size' => $request->size],
+    //         ['stock' => DB::raw("stock - $request->quantity")]
+    //     );
+
+    //     return redirect()->route('Sales.Show', $request->sale_id)->with('success', 'Producto agregado correctamente y stock actualizado');
+    // }
+
     public function store(Request $request)
-    {
+{
+    DB::beginTransaction();
+
+    try {
         $product = Product::with('details')->findOrFail($request->product_id);
 
+        // Buscar stock por talla
+        $stockDetail = $product->details()
+            ->where('size', $request->size)
+            ->first();
+
+        // Validar stock suficiente
+        if (!$stockDetail || $stockDetail->stock < $request->quantity) {
+            return redirect()
+                ->back()
+                ->with('danger', 'Stock insuficiente. Disponible: ' . ($stockDetail->stock ?? 0));
+        }
+
+        // Guardar detalle de venta
         $detail = new SaleDetail();
         $detail->quantity = $request->quantity;
         $detail->size = $request->size;
-        $detail->price_unit = $product->purchase_price;
-        $detail->subtotal = $request->quantity * $product->purchase_price;
+        $detail->price_unit = $product->sale_price ?? $product->purchase_price;
+        $detail->subtotal = $request->quantity * $detail->price_unit;
         $detail->sale_id = $request->sale_id;
         $detail->product_id = $request->product_id;
         $detail->save();
 
-        $product->details()->where('size', $request->size)->updateOrCreate(
-            ['size' => $request->size],
-            ['stock' => DB::raw("stock - $request->quantity")]
-        );
+        // Descontar stock
+        $stockDetail->decrement('stock', $request->quantity);
 
-        return redirect()->route('Sales.Show', $request->sale_id)->with('success', 'Producto agregado correctamente y stock actualizado');
+        DB::commit();
+
+        return redirect()
+            ->route('Sales.Show', $request->sale_id)
+            ->with('success', 'Producto vendido correctamente');
+
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return redirect()
+            ->back()
+            ->with('danger', 'Error al procesar la venta');
     }
+}
 
     /**
      * Display the specified resource.

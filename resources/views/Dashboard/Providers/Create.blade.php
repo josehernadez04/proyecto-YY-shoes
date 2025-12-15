@@ -38,13 +38,13 @@
                             <form action="{{ route('Providers.Store') }}" method="post">
                                 @csrf
                                 <div class="form-group c_form_group">
-                                    <label for="name">Nombre completo</label>
+                                    <label for="name" class="required">Nombre completo</label>
                                     <input type="text" class="form-control" id="name" name="name"
                                         value="{{ old('name') }}" placeholder="Nombre completo" minlength="3"
                                         maxlength="100" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="type_document_id">Tipos de documento</label>
+                                    <label for="type_document_id" class="required">Tipos de documento</label>
                                     <select class="form-control" name="type_document_id" id="type_document_id">
                                         <option selected disabled>Seleccione</option>
                                         @foreach ($typeDocuments as $typeDocument)
@@ -53,24 +53,24 @@
                                     </select>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="document">Documento</label>
+                                    <label for="document" class="required">Documento</label>
                                     <input type="number" class="form-control" id="document" name="document"
                                         value="{{ old('document') }}" placeholder="Documento" minlength="5" maxlength="20"
                                         required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="phone">Teléfono</label>
+                                    <label for="phone" class="required">Teléfono</label>
                                     <input type="number" class="form-control" id="phone" name="phone"
                                         value="{{ old('phone') }}" placeholder="Teléfono" minlength="5" maxlength="20"
                                         required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="address">Dirección</label>
+                                    <label for="address" class="required">Dirección</label>
                                     <input type="text" class="form-control" id="address" name="address"
                                         value="{{ old('address') }}" minlength="5" maxlength="150" placeholder="Dirección" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="email">Correo Electrónico</label>
+                                    <label for="email" class="required">Correo Electrónico</label>
                                     <input type="email" class="form-control" id="email" name="email"
                                         value="{{ old('email') }}" placeholder="Correo Electrónico" minlength="10"
                                         maxlength="50" required>

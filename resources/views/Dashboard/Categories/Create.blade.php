@@ -38,12 +38,12 @@
                             <form action="{{ route('Categories.Store') }}" method="post">
                                 @csrf
                                 <div class="form-group c_form_group">
-                                    <label for="name">Nombre</label>
+                                    <label for="name" class="required">Nombre</label>
                                     <input type="text" class="form-control" id="name" name="name"
                                         placeholder="Nombre" minlength="3" maxlength="100" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="description">description</label>
+                                    <label for="description" class="required">description</label>
                                     <input type="text" class="form-control" id="description" name="description"
                                         placeholder="Descripcion" minlength="3" maxlength="500" required>
                                 </div>

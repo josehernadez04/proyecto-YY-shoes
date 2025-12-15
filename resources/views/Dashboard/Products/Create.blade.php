@@ -38,18 +38,18 @@
                             <form action="{{ route('Products.Store') }}" method="post">
                                 @csrf
                                 <div class="form-group c_form_group">
-                                    <label for="reference">Referencia</label>
+                                    <label for="reference" class="required">Referencia</label>
                                     <input type="number" class="form-control" id="refence" name="reference"
                                         placeholder="Referencia" minlength="3" maxlength="20" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="name">Nombre</label>
+                                    <label for="name" class="required">Nombre</label>
                                     <input type="text" class="form-control" id="name" name="name"
                                         placeholder="Nombre " required minlength="3" maxlength="100" required>
                                 </div>
 
                                 <div class="form-group c_form_group">
-                                    <label for="category_id">Categoría</label>
+                                    <label for="category_id" class="required">Categoría</label>
 
                                     <div class="d-flex">
                                         <select class="form-control" name="category_id" id="category_id">
@@ -67,7 +67,7 @@
                                 </div>
 
                                 <div class="form-group c_form_group">
-                                    <label for="provider_id">Proveedores</label>
+                                    <label for="provider_id" class="required">Proveedores</label>
                                     <div class="d-flex gap-2">
                                         <select class="form-control" name="provider_id" id="provider_id">
                                             <option value="" selected disabled>Seleccione</option>
@@ -85,22 +85,22 @@
                                 </div>
 
                                 <div class="form-group c_form_group">
-                                    <label for="description">description</label>
+                                    <label for="description" class="required">description</label>
                                     <input type="text" class="form-control" id="description" name="description"
                                         placeholder="Descripcion" minlength="3" maxlength="500" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="color">Color</label>
+                                    <label for="color" class="required">Color</label>
                                     <input type="text" class="form-control" id="color" name="color"
                                         placeholder="Color" minlength="3" maxlength="20" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="purchase_price">Precio compra</label>
+                                    <label for="purchase_price" class="required">Precio compra</label>
                                     <input type="text" class="form-control" id="purchase_price" name="purchase_price"
                                         placeholder="Precio compra" required>
                                 </div>
                                 <div class="form-group c_form_group">
-                                    <label for="sale_price">Precio venta</label>
+                                    <label for="sale_price" class="required">Precio venta</label>
                                     <input type="texts" class="form-control" id="sale_price" name="sale_price"
                                         placeholder="Precio venta" required>
                                 </div>
@@ -129,12 +129,12 @@
                                             <form id="formCreateCategory">
                                                 @csrf
                                                 <div class="form-group">
-                                                    <label>Nombre de la categoría</label>
+                                                    <label class="required">Nombre de la categoría</label>
                                                     <input type="text" class="form-control" name="name"
                                                         minlength="3" maxlength="100" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Descripción</label>
+                                                    <label class="required">Descripción</label>
                                                     <input type="text" class="form-control" name="description"
                                                         minlength="3" maxlength="500" required>
                                                 </div>
@@ -164,13 +164,13 @@
                                             <form id="formCreateProvider">
                                                 @csrf
                                                 <div class="form-group">
-                                                    <label>Nombre del proveedor</label>
+                                                    <label class="required">Nombre del proveedor</label>
                                                     <input type="text" class="form-control" name="name"
                                                         minlength="3" maxlength="100" required>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Tipo de Documento</label>
+                                                    <label class="required">Tipo de Documento</label>
                                                     <select class="form-control" name="type_document_id" required>
                                                         @foreach ($typeDocuments as $doc)
                                                             <option value="{{ $doc->id }}">{{ $doc->code }}
@@ -180,18 +180,18 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Número de documento</label>
+                                                    <label class="required">Número de documento</label>
                                                     <input type="text" class="form-control" name="document" required
                                                         minlength="3" maxlength="20">
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Teléfono</label>
+                                                    <label class="required">Teléfono</label>
                                                     <input type="text" class="form-control" name="phone" required>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Dirección</label>
+                                                    <label class="required">Dirección</label>
                                                     <input type="text" class="form-control" name="address"
                                                         minlength="3" maxlength="100">
                                                 </div>

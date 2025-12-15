@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ShoppingDetailStoreRequest\ShoppingDetailStoreRequest;
 use App\Models\Shopping;
 use App\Models\Product;
 use App\Models\ShoppingDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class ShoppingsDetailsController extends Controller
 {
@@ -40,7 +42,7 @@ class ShoppingsDetailsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ShoppingDetailStoreRequest $request)
     {
         $product = Product::with('details')->findOrFail($request->product_id);
 
@@ -60,6 +62,7 @@ class ShoppingsDetailsController extends Controller
 
         return redirect()->route('Shoppings.Show', $request->shopping_id)->with('success', 'Producto agregado correctamente y stock actualizado');
     }
+
 
     /**
      * Display the specified resource.

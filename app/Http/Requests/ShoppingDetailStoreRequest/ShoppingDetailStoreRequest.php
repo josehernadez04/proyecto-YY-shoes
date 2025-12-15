@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Requests\ShoppingDetailStoreRequest;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class ShoppingDetailStoreRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function rules()
+    {
+        return [
+            'shopping_id' => ['required', 'exists:shoppings,id'],
+            'product_id'  => ['required', 'exists:products,id'],
+            'size'        => ['required', 'string', 'max:2'],
+            'quantity'    => ['required', 'integer', 'min:1', 'max:9999999'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'quantity.required' => 'El campo cantidad es obligatorio.',
+            'quantity.integer'  => 'El campo cantidad debe ser un número entero.',
+            'quantity.min'      => 'El campo cantidad debe ser mayor a cero.',
+
+            'size.required' => 'El campo talla es obligatorio.',
+            'size.max'      => 'El campo talla no debe tener más de 2 dígitos.',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'quantity' => 'cantidad',
+            'size'     => 'talla',
+        ];
+    }
+}

@@ -71,13 +71,6 @@
                                                         {{ $client->is_active ? 'Activo' : 'Inactivo' }}
                                                     </span>
                                                 </td>
-
-                                                {{-- <td>
-                                                <a class="btn btn-warning btn-sm" type="button" href="{{ route('Clients.Edit', $client->id) }}">
-
-                                                    <i class="fas fa-pencil"></i>
-                                                </a>
-                                            </td> --}}
                                                 <td class="text-center">
                                                     <a class="btn btn-warning btn-sm"
                                                         href="{{ route('Clients.Edit', $client->id) }}" title="Editar">

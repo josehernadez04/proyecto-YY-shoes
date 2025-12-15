@@ -39,13 +39,13 @@
                                 @csrf
 
                                 <div class="form-group c_form_group">
-                                    <label for="code">Código</label>
+                                    <label for="code" class="required">Código</label>
                                     <input type="text" class="form-control" id="code" name="code"
                                         placeholder="Código" value="{{ old('code') }}" minlength="3" maxlength="10" required>
                                 </div>
 
                                 <div class="form-group c_form_group">
-                                    <label for="description">Descripción</label>
+                                    <label for="description" class="required">Descripción</label>
                                     <input type="text" class="form-control" id="description" name="description"
                                         placeholder="Descripción" value="{{ old('description') }}" minlength="3" maxlength="50" required>
                                 </div>

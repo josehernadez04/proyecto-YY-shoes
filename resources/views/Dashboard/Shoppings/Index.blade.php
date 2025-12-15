@@ -41,7 +41,8 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="shoppingsTable" class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
+                                <table id="shoppingsTable"
+                                    class="table table-bordered table-hover dataTable dtr-inline nowrap w-100">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
@@ -54,18 +55,21 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($shopping as $shipping)
-                                        <tr>
-                                            <td>{{ $shipping->id }}</td>
-                                            <td>{{ $shipping->date }}</td>
-                                            <td>{{ $shipping->total }}</td>
-                                            <td>{{ $shipping->provider->name}}</td>
-                                            <td>{{ $shipping->user->name}}</td>
-                                            <td>
-                                                <a class="nav-link active" type="button" href="{{ route('Shoppings.Edit', $shipping->id) }}">
-                                                    <i class="fas fa-pencil"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ $shipping->id }}</td>
+                                                <td>{{ $shipping->date }}</td>
+                                                <td>
+                                                    ${{ number_format($shipping->details_sum_subtotal ?? 0, 0, ',', '.') }}
+                                                </td>
+                                                <td>{{ $shipping->provider->name }}</td>
+                                                <td>{{ $shipping->user->name }}</td>
+                                                <td>
+                                                    <a class="nav-link active" type="button"
+                                                        href="{{ route('Shoppings.Edit', $shipping->id) }}">
+                                                        <i class="fas fa-pencil"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -78,28 +82,28 @@
     </section>
 @endsection
 @section('script')
-let table = $('#shoppingsTable').DataTable({
+    let table = $('#shoppingsTable').DataTable({
     paging: true,
     searching: true,
     info: true,
     autoWidth: false,
     responsive: true,
     language: {
-        oPaginate: {
-            sFirst: 'Primero',
-            sLast: 'Último',
-            sNext: 'Siguiente',
-            sPrevious: 'Anterior',
-        },
-        info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
-        infoEmpty: 'No hay registros para mostrar',
-        infoFiltered: '(filtrados de _MAX_ registros en total)',
-        emptyTable: 'No hay datos disponibles.',
-        lengthMenu: 'Mostrar _MENU_ registros',
-        search: 'Buscar:',
-        zeroRecords: 'No se encontraron registros.',
-        decimal: ',',
-        thousands: '.'
+    oPaginate: {
+    sFirst: 'Primero',
+    sLast: 'Último',
+    sNext: 'Siguiente',
+    sPrevious: 'Anterior',
+    },
+    info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
+    infoEmpty: 'No hay registros para mostrar',
+    infoFiltered: '(filtrados de _MAX_ registros en total)',
+    emptyTable: 'No hay datos disponibles.',
+    lengthMenu: 'Mostrar _MENU_ registros',
+    search: 'Buscar:',
+    zeroRecords: 'No se encontraron registros.',
+    decimal: ',',
+    thousands: '.'
     }
-});
+    });
 @endsection
