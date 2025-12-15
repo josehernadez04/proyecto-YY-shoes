@@ -96,12 +96,12 @@
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="purchase_price">Precio compra</label>
-                                    <input type="number" class="form-control" id="purchase_price" name="purchase_price"
+                                    <input type="text" class="form-control" id="purchase_price" name="purchase_price"
                                         placeholder="Precio compra" required>
                                 </div>
                                 <div class="form-group c_form_group">
                                     <label for="sale_price">Precio venta</label>
-                                    <input type="number" class="form-control" id="sale_price" name="sale_price"
+                                    <input type="texts" class="form-control" id="sale_price" name="sale_price"
                                         placeholder="Precio venta" required>
                                 </div>
 

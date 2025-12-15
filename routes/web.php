@@ -74,6 +74,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/Edit/{id}', 'edit')->name('Categories.Edit')->middleware('can:Users,Dashboard.Categories.Update');
                 Route::put('/Update/{id}', 'update')->name('Categories.Update')->middleware('can:Users,Dashboard.Categories.Update');
                 Route::delete('/Delete/{id}', 'delete')->name('Categories.Delete')->middleware('can:Users,Dashboard.Categories.Delete');
+                Route::patch('/ToggleStatus/{id}', 'toggleStatus')->name('Categories.ToggleStatus');
             });
         });
 

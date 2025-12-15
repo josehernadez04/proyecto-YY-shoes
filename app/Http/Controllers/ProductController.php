@@ -7,7 +7,11 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Provider;
 use App\Models\TypeDocument;
+use App\Http\Requests\Product\ProductStoreRequest;
+use App\Http\Requests\Product\ProductUpdateRequest;
 use Illuminate\Http\Request;
+
+
 
 class ProductController extends Controller
 {
@@ -19,14 +23,14 @@ class ProductController extends Controller
 
     public function create()
     {
-        $categories = Category::get();
-        $providers = Provider::get();
+        $categories = Category::where('is_active', true)->get();
+        $providers = Provider::where('is_active', true)->get();
         $typeDocuments = TypeDocument::get();
         return view('Dashboard.Products.Create', compact('categories', 'providers', 'typeDocuments'));
     }
 
 
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
         $products = new Product();
         $products->reference = $request->reference;
@@ -44,14 +48,24 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $categories = Category::all();
-        $providers = Provider::all();
+        $product = Product::findOrFail($id);
+
+        $categories = Category::where('is_active', true)->get();
+        // Si la categoría actual del producto está inactiva, la agregamos solo para mostrarla
+        if ($product->category && !$product->category->is_active) {
+            $categories->push($product->category);
+        }
+        $providers = Provider::where('is_active', true)->get();
+        // Si el proveedor actual del producto está inactiva, la agregamos solo para mostrarla
+        if ($product->provider && !$product->provider->is_active) {
+            $providers->push($product->provider);
+        }
         $products = Product::findOrFail($id);
         return view('Dashboard.Products.Edit', compact('products', 'categories', 'providers'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(ProductUpdateRequest $request, $id)
     {
         $product = Product::findOrFail($id);
         $product->reference = $request->reference;

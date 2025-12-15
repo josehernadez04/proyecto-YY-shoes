@@ -48,6 +48,7 @@
                                             <th>NOMBRE </th>
                                             <th>DESCRIPCION</th>
                                             <th>FECHA DE CREACION</th>
+                                            <th>ESTADO</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
@@ -59,9 +60,25 @@
                                             <td>{{ $category->description }}</td>
                                             <td>{{ $category->created_at }}</td>
                                             <td>
-                                                <a class="btn btn-warning btn-sm" type="button" href="{{ route('Categories.Edit', $category->id) }}">
+                                                <span class="badge {{ $category->is_active ? 'badge-success' : 'badge-danger' }}">
+                                                    {{ $category->is_active ? 'Activa' : 'Inactiva' }}
+                                                </span>
+                                            </td>
+
+                                            <td class="text-center">
+                                                <a class="btn btn-warning btn-sm" href="{{ route('Categories.Edit', $category->id) }}" title="Editar">
                                                     <i class="fas fa-pencil"></i>
                                                 </a>
+
+                                                <form action="{{ route('Categories.ToggleStatus', $category->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <button type="submit"
+                                                        class="btn btn-sm {{ $category->is_active ? 'btn-danger' : 'btn-success' }}"
+                                                        title="{{ $category->is_active ? 'Inactivar categoría' : 'Activar categoría' }}">
+                                                        <i class="fas {{ $category->is_active ? 'fa-ban' : 'fa-check' }}"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach

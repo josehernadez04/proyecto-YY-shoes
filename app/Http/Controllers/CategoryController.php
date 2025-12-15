@@ -52,16 +52,35 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
-    
+
         $category = Category::create([
             'name' => $request->name,
             'description' => $request->description ?? null,
         ]);
-    
+
         return response()->json([
             'success' => true,
             'category' => $category
         ]);
     }
+
+    public function toggleStatus($id)
+    {
+        $category = Category::findOrFail($id);
+
+        // 🔒 Protección opcional
+        if ($category->products()->exists() && $category->is_active) {
+            return back()->withErrors(
+                'No se puede inactivar una categoría con productos asociados.'
+            );
+        }
+
+        $category->is_active = !$category->is_active;
+        $category->save();
+
+        return redirect()->route('Categories.Index')
+            ->with('success', 'Estado de la categoría actualizado correctamente.');
+    }
+
 
 }

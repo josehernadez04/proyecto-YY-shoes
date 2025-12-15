@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProductUpdateRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class ProductUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,16 +25,21 @@ class ProductUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'reference' => ['required','string','max:20'],
-            'name' => ['required','string','max:100'],
-            'description' => ['nullable','string','max:500'],
-            'size' => ['required','regex:/^[0-9]+$/','max:4'],
-            'color' => ['required','string','max:20'],
-            'purchase_price' => ['required','regex:/^[0-9]+$/','max:20'],
-            'sale_price' => ['required','regex:/^[0-9]+$/','max:20'],
-            'stock' => ['required', 'numeric','max:20'],
-            'category_id' => ['required','numeric','unique:category,id'],
-            'provider_id' => ['required','numeric','unique:provider,id']
+            'reference' => ['required', 'string', 'max:20'],
+            'name' => ['required', 'string', 'max:100'],
+            'description' => ['nullable', 'string', 'max:500'],
+            'color' => ['required', 'string', 'max:20'],
+            'purchase_price' => ['required', 'integer', 'min:0'],
+            'sale_price'     => ['required', 'integer', 'min:0'],
+            'category_id' => [
+                'required',
+                Rule::exists('categories', 'id')->where(function ($query) {
+                    $query->where('is_active', true);
+                }),
+            ],
+            'provider_id' => ['required', Rule::exists('providers', 'id')->where(function ($query) {
+                $query->where('is_active', true);
+            }),]
         ];
     }
     public function attributes()

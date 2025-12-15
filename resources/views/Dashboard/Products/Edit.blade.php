@@ -52,13 +52,19 @@
                                 </div>
 
                                 <div class="form-group c_form_group">
-                                    <label for="categories">Categoria</label>
-                                    <select class="form-control" name="category_id" id="category_id">
-                                        <option value="" selected disabled>Seleccione</option>
+                                    <label for="category">Categoria</label>
+                                    <select class="form-control" name="category_id" id="category_id" required>
+                                        <option value="" disabled>Seleccione</option>
+
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}"
-                                                {{ $category->id == $products->category_id ? 'selected' : '' }}>
-                                                {{ $category->name }}</option>
+                                                {{ $category->id == $products->category_id ? 'selected' : '' }}
+                                                {{ !$category->is_active ? 'disabled' : '' }}>
+
+                                                {{ $category->name }}
+                                                {{ !$category->is_active ? '(Inactiva)' : '' }}
+
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -89,14 +95,26 @@
 
                                 <div class="form-group c_form_group">
                                     <label for="purchase_price">Precio compra</label>
-                                    <input type="text" class="form-control" id="purchase_price" name="purchase_price"
-                                        value="{{ $products->purchase_price }}" placeholder="Precio compra">
+                                    <input type="number"
+                                            class="form-control"
+                                            name="purchase_price"
+                                            id="purchase_price"
+                                            value="{{ (int) $products->purchase_price }}"
+                                            min="0"
+                                            step="1"
+                                            placeholder="Precio compra">
                                 </div>
 
                                 <div class="form-group c_form_group">
                                     <label for="sale_price">Precio venta</label>
-                                    <input type="text" class="form-control" id="sale_price" name="sale_price"
-                                        value="{{ $products->sale_price }}" placeholder="Precio venta">
+                                    <input type="number"
+                                            class="form-control"
+                                            name="sale_price"
+                                            id="sale_price"
+                                            value="{{ (int) $products->sale_price }}"
+                                            min="0"
+                                            step="1"
+                                            placeholder="Precio venta">
                                 </div>
 
                                 <input type="submit" class="btn btn-primary" value="Guardar" />
