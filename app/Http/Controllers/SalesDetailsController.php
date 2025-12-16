@@ -39,26 +39,6 @@ class SalesDetailsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
-    //     $product = Product::with('details')->findOrFail($request->product_id);
-
-    //     $detail = new SaleDetail();
-    //     $detail->quantity = $request->quantity;
-    //     $detail->size = $request->size;
-    //     $detail->price_unit = $product->purchase_price;
-    //     $detail->subtotal = $request->quantity * $product->purchase_price;
-    //     $detail->sale_id = $request->sale_id;
-    //     $detail->product_id = $request->product_id;
-    //     $detail->save();
-
-    //     $product->details()->where('size', $request->size)->updateOrCreate(
-    //         ['size' => $request->size],
-    //         ['stock' => DB::raw("stock - $request->quantity")]
-    //     );
-
-    //     return redirect()->route('Sales.Show', $request->sale_id)->with('success', 'Producto agregado correctamente y stock actualizado');
-    // }
 
     public function store(Request $request)
 {

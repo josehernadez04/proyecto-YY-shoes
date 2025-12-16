@@ -34,7 +34,7 @@
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
                                     <a class="nav-link active" type="button" href="{{ route('Shoppings.Details.Create', ['shopping_id' => $shopping->id]) }}">
-                                        AGREAGR DETALLE
+                                        AGREGAR DETALLE
                                     </a>
                                 </li>
                             </ul>

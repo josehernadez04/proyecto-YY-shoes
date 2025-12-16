@@ -37,6 +37,16 @@
     pointer-events: none;
 }
 
+.invalid-feedback {
+    display: block;
+}
+
+/* Espacio después del error de password */
+.login-box input[name="password"] ~ .invalid-feedback {
+    margin-bottom: 0.75rem;
+}
+
+
 .required::after {
     content: " *";
     color: #dc3545;

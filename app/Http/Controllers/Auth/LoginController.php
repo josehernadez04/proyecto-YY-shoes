@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -28,18 +29,13 @@ class LoginController extends Controller
     {
         $username = $this->username(); // email por defecto
 
-        // Buscar usuario por email (o username)
         $user = User::where($username, $request->input($username))->first();
 
         // 🔴 Usuario existe pero está inactivo
         if ($user && !$user->is_active) {
-            abort(
-                redirect()
-                    ->back()
-                    ->withErrors([
-                        $username => 'Usuario bloqueado, comunícate con el administrador del sistema.'
-                    ])
-            );
+            throw ValidationException::withMessages([
+                $username => 'Usuario bloqueado, comunícate con el administrador del sistema.'
+            ]);
         }
 
         // Login normal
@@ -47,6 +43,27 @@ class LoginController extends Controller
             $this->credentials($request),
             $request->filled('remember')
         );
+    }
+
+    /**
+     *  Detectar si el error fue email o contraseña
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        $username = $this->username(); // email
+        $user = User::where($username, $request->input($username))->first();
+
+        //  Correo NO existe
+        if (!$user) {
+            throw ValidationException::withMessages([
+                $username => 'El correo electrónico no está registrado.'
+            ]);
+        }
+
+        //  Contraseña incorrecta
+        throw ValidationException::withMessages([
+            'password' => 'La contraseña es incorrecta.'
+        ]);
     }
 
     /**
